@@ -1,4 +1,4 @@
-import {BuildOptions} from "./types/config";
+import {BuildMode, BuildOptions} from "./types/config";
 import webpack from "webpack";
 import {buildPlugins} from "./buildPlugins.";
 import {buildLoaders} from "./buildLoaders";
@@ -21,7 +21,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             rules: buildLoaders(),
         },
         resolve: buildResolvers(),
-        devtool: 'inline-source-map',
-        devServer: buildDevServer(options),
+        devtool: mode === BuildMode.DEV ? 'inline-source-map' : undefined,
+        devServer: mode === BuildMode.DEV ? buildDevServer(options) : undefined,
     }
 }
