@@ -12,6 +12,7 @@ const paths: BuildPaths = {
 const config: webpack.Configuration = buildWebpackConfig({
     mode: BuildMode.DEV,
     paths,
+    port: 3001
 })
 
 
