@@ -5,6 +5,7 @@ import {ListPage} from "1_pages/ListPage";
 import cls from './App.module.scss'
 import classNames from "classnames";
 import {useTheme} from "5_shared/libs/hooks/useTheme";
+import {AppRouter} from "./prodivers/router";
 
 const App = () => {
     const { theme, toggleTheme } = useTheme();
@@ -16,12 +17,7 @@ const App = () => {
             <button onClick={toggleTheme}>
                 Сменить тему
             </button>
-            <Suspense fallback={<div>Загрузка...</div>}>
-                <Routes>
-                    <Route path={'/'} element={<FrontPage />}/>
-                    <Route path={'/list/'} element={<ListPage />} />
-y                </Routes>
-            </Suspense>
+            <AppRouter />
         </div>
     );
 };
