@@ -5,11 +5,14 @@ import "0_app/styles/index.scss";
 import ThemeProvider from "0_app/prodivers/ui/ThemeProvider";
 
 const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(
-    <BrowserRouter>
-        <ThemeProvider>
-            <App />
-        </ThemeProvider>
-    </BrowserRouter>
-);
+
+if (container) {
+    const root = createRoot(container);
+    root.render(
+        <BrowserRouter>
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
+        </BrowserRouter>
+    );
+}
