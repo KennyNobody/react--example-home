@@ -1,0 +1,10 @@
+.app {
+    &--app-theme-light {
+        color: var(--dark-primary);
+        background-color: var(--bg-light);
+    }
+    &--app-theme-dark {
+        color: var(--light-primary);
+        background-color: var(--bg-dark);
+    }
+}
