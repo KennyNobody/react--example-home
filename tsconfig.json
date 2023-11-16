@@ -2,18 +2,24 @@
     "compilerOptions": {
       "allowJs": true,
       "allowSyntheticDefaultImports": true,
+      "baseUrl": ".",
       "esModuleInterop": true,
       "jsx": "react-jsx",
-      "module": "es2020",
+      //      "strict": true,
+      "module": "ESNext",
       "moduleResolution": "node",
       "noImplicitAny": false,
       "outDir": "./dist/",
-      "target": "es5",
-      "baseUrl": ".",
+      "paths": {
+        "*": [
+          "./src/*"
+        ]
+      },
+      "target": "es5"
     },
     "ts-node": {
       "compilerOptions": {
         "module": "CommonJS"
       }
-    }
+    },
 }

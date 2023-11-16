@@ -2,11 +2,11 @@
     height: 100%;
     min-height: 100vh;
 
-    &--app-theme-light {
+    &--theme-light {
         color: var(--dark-primary);
         background-color: var(--bg-light);
     }
-    &--app-theme-dark {
+    &--theme-dark {
         color: var(--light-primary);
         background-color: var(--bg-dark);
     }
