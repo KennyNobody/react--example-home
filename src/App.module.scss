@@ -1,4 +1,7 @@
 .app {
+    height: 100%;
+    min-height: 100vh;
+
     &--app-theme-light {
         color: var(--dark-primary);
         background-color: var(--bg-light);
