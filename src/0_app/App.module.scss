@@ -1,6 +1,9 @@
 .app {
     height: 100%;
+    display: flex;
     min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 
     &--theme-light {
         color: var(--dark-primary);
@@ -10,4 +13,8 @@
         color: var(--light-primary);
         background-color: var(--bg-dark);
     }
+}
+
+.main {
+    flex-grow: 1;
 }

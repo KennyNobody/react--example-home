@@ -1,14 +1,7 @@
-import {Route, RouteProps, Routes} from "react-router-dom";
 import React, {Suspense} from "react";
+import {Route, RouteProps, Routes} from "react-router-dom";
 import {routeConfig} from "5_shared/config/router/routerConfig";
-
-interface AppRouterProps {
-    className?: string
-}
-
-const AppRouter = (props: AppRouterProps) => {
-    const { className } = props;
-
+const AppRouter = () => {
     return (
         <Suspense fallback={<div>Загрузка...</div>}>
             <Routes>
