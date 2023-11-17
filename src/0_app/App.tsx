@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import cls from './App.module.scss'
 import classNames from "classnames";
 import {useTheme} from "5_shared/libs/hooks/useTheme";
@@ -11,15 +11,17 @@ const App = () => {
 
     return (
         <div className={classNames(cls.app, cls[`app--${theme}`])}>
-            <Header
-                className={classNames(cls.header)}
-            />
-            <main className={classNames(cls.main)}>
-                <AppRouter/>
-            </main>
-            <Footer
-                className={cls.footer}
-            />
+            <Suspense fallback="">
+                <Header
+                    className={classNames(cls.header)}
+                />
+                <main className={classNames(cls.main)}>
+                    <AppRouter/>
+                </main>
+                <Footer
+                    className={cls.footer}
+                />
+            </Suspense>
         </div>
     );
 };
