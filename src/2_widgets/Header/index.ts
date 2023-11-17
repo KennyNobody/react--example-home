@@ -1,3 +1,3 @@
 export {
     Header,
-} from './ui/Header';
+} from './ui/Header/Header';
