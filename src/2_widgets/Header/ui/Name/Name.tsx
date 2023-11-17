@@ -5,7 +5,7 @@ interface NameProps {
     className?: string
 }
 
-export const Name = (props: NameProps) => {
+export function Name(props: NameProps) {
     const { className } = props;
 
     return (
@@ -13,4 +13,4 @@ export const Name = (props: NameProps) => {
             Егор Бадулин / @KennyNobody
         </h1>
     );
-};
+}

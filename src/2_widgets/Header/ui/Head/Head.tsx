@@ -1,14 +1,14 @@
 import classNames from 'classnames';
+import { ReactNode } from 'react';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import cls from './Head.module.scss';
-import {ReactNode} from "react";
-import {useTheme} from "5_shared/libs/hooks/useTheme";
 
 interface HeadProps {
     className?: string;
     children: ReactNode;
 }
 
-export const Head = (props: HeadProps) => {
+export function Head(props: HeadProps) {
     const { className, children } = props;
     const { theme } = useTheme();
 
@@ -17,4 +17,4 @@ export const Head = (props: HeadProps) => {
             { children }
         </div>
     );
-};
+}

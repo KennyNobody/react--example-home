@@ -5,7 +5,7 @@ interface YearsProps {
     className?: string
 }
 
-export const Years = (props: YearsProps) => {
+export function Years(props: YearsProps) {
     const { className } = props;
 
     return (
@@ -13,4 +13,4 @@ export const Years = (props: YearsProps) => {
             2019 — 2023
         </p>
     );
-};
+}

@@ -1,22 +1,20 @@
 import classNames from 'classnames';
-import cls from './Footer.module.scss';
-import React from "react";
-import {ThemeSwitcher} from "3_features/ThemeSwitcher";
-import {useTheme} from "5_shared/libs/hooks/useTheme";
-import {IconKey, LinkSocial} from "5_shared/ui/LinkSocial/LinkSocial";
-import {Controls} from "5_shared/ui/Controls/Controls";
-import {Container} from "5_shared/ui/Container/Container";
+import React from 'react';
+import { ThemeSwitcher } from '3_features/ThemeSwitcher';
+import { IconKey, LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
+import { Controls } from '5_shared/ui/Controls/Controls';
+import { Container } from '5_shared/ui/Container/Container';
 import grid from '5_shared/css/grid.module.scss';
-import {Years} from "../Years/Years";
-import {Author} from "../Author/Author";
+import cls from './Footer.module.scss';
+import { Years } from '../Years/Years';
+import { Author } from '../Author/Author';
 
 interface FooterProps {
     className?: string;
 }
 
-export const Footer = (props: FooterProps) => {
+export function Footer(props: FooterProps) {
     const { className } = props;
-    const {toggleTheme} = useTheme();
 
     return (
         <div className={classNames(cls.block, className)}>
@@ -34,19 +32,19 @@ export const Footer = (props: FooterProps) => {
                             <Controls>
                                 <LinkSocial
                                     iconKey={IconKey.TG}
-                                    href={'https://web.telegram.org/'}
+                                    href="https://web.telegram.org/"
                                 />
                                 <LinkSocial
                                     iconKey={IconKey.INST}
-                                    href={'https://www.instagram.com/'}
+                                    href="https://www.instagram.com/"
                                 />
                                 <LinkSocial
                                     iconKey={IconKey.VK}
-                                    href={'https://vk.com/feed'}
+                                    href="https://vk.com/feed"
                                 />
                                 <LinkSocial
                                     iconKey={IconKey.GH}
-                                    href={'https://github.com/KennyNobody/'}
+                                    href="https://github.com/KennyNobody/"
                                 />
                             </Controls>
                         </div>
@@ -55,4 +53,4 @@ export const Footer = (props: FooterProps) => {
             </Container>
         </div>
     );
-};
+}

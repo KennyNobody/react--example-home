@@ -1,12 +1,12 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import cls from './LanguageSwitcher.module.scss';
-import {useTranslation} from "react-i18next";
 
 interface LanguageSwitcherProps {
     className?: string
 }
 
-export const LanguageSwitcher = (props: LanguageSwitcherProps) => {
+export function LanguageSwitcher(props: LanguageSwitcherProps) {
     const { className } = props;
     const { i18n } = useTranslation();
 
@@ -14,7 +14,7 @@ export const LanguageSwitcher = (props: LanguageSwitcherProps) => {
         const isChecked = e.target.checked;
 
         i18n.changeLanguage(isChecked ? 'en' : 'ru');
-    }
+    };
 
     return (
         <div className={classNames(cls.LanguageSwitcher, className)}>
@@ -33,8 +33,8 @@ export const LanguageSwitcher = (props: LanguageSwitcherProps) => {
                     className={classNames(cls.input)}
                     onChange={changeLanguage}
                 />
-                <div className={classNames(cls.button)}></div>
+                <div className={classNames(cls.button)} />
             </label>
         </div>
     );
-};
+}

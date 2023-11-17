@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 import cls from './Controls.module.scss';
 
 interface ControlsProps {
@@ -7,7 +7,7 @@ interface ControlsProps {
     children: ReactNode;
 }
 
-export const Controls = (props: ControlsProps) => {
+export function Controls(props: ControlsProps) {
     const { className, children } = props;
 
     return (
@@ -15,4 +15,4 @@ export const Controls = (props: ControlsProps) => {
             { children }
         </div>
     );
-};
+}

@@ -5,10 +5,10 @@ interface AvatarProps {
     className?: string
 }
 
-export const Avatar = (props: AvatarProps) => {
+export function Avatar(props: AvatarProps) {
     const { className } = props;
 
     return (
         <div className={classNames(cls.block, className)} />
     );
-};
+}

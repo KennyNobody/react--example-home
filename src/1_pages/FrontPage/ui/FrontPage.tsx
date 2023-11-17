@@ -1,12 +1,12 @@
+import React from 'react';
 import cls from './FrontPage.module.scss';
-import React from "react";
 
-const FrontPage = () => {
+function FrontPage() {
     return (
         <div className={cls.page}>
             Front page
         </div>
     );
-};
+}
 
 export default FrontPage;

@@ -1,13 +1,13 @@
-import React, {Suspense} from 'react';
-import cls from './App.module.scss'
-import classNames from "classnames";
-import {useTheme} from "5_shared/libs/hooks/useTheme";
-import {AppRouter} from "./prodivers/router";
-import {Footer} from "2_widgets/Footer";
-import {Header} from "2_widgets/Header";
+import React, { Suspense } from 'react';
+import classNames from 'classnames';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { Footer } from '2_widgets/Footer';
+import { Header } from '2_widgets/Header';
+import { AppRouter } from './prodivers/router';
+import cls from './App.module.scss';
 
-const App = () => {
-    const { theme} = useTheme();
+function App() {
+    const { theme } = useTheme();
 
     return (
         <div className={classNames(cls.app, cls[`app--${theme}`])}>
@@ -16,7 +16,7 @@ const App = () => {
                     className={classNames(cls.header)}
                 />
                 <main className={classNames(cls.main)}>
-                    <AppRouter/>
+                    <AppRouter />
                 </main>
                 <Footer
                     className={cls.footer}
@@ -24,6 +24,6 @@ const App = () => {
             </Suspense>
         </div>
     );
-};
+}
 
 export default App;

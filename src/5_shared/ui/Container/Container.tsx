@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 import cls from './Container.module.scss';
 
@@ -7,7 +7,7 @@ interface ContainerProps {
     children: ReactNode;
 }
 
-export const Container = (props: ContainerProps) => {
+export function Container(props: ContainerProps) {
     const { className, children } = props;
 
     return (
@@ -15,4 +15,4 @@ export const Container = (props: ContainerProps) => {
             { children }
         </div>
     );
-};
+}

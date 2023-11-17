@@ -1,12 +1,12 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import cls from './Description.module.scss';
-import {useTranslation} from "react-i18next";
 
 interface DescriptionProps {
     className?: string
 }
 
-export const Description = (props: DescriptionProps) => {
+export function Description(props: DescriptionProps) {
     const { className } = props;
 
     const { t } = useTranslation();
@@ -18,4 +18,4 @@ export const Description = (props: DescriptionProps) => {
             </p>
         </div>
     );
-};
+}

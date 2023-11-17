@@ -1,12 +1,12 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import cls from './Author.module.scss';
-import {useTranslation} from "react-i18next";
 
 interface AuthorProps {
     className?: string
 }
 
-export const Author = (props: AuthorProps) => {
+export function Author(props: AuthorProps) {
     const { className } = props;
     const { t } = useTranslation();
 
@@ -15,4 +15,4 @@ export const Author = (props: AuthorProps) => {
             { t('footerAuthor') }
         </div>
     );
-};
+}

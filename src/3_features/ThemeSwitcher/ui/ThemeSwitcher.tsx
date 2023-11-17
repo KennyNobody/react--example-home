@@ -1,24 +1,24 @@
 import classNames from 'classnames';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { AppTheme } from '5_shared/config/ThemeContext';
 import cls from './ThemeSwitcher.module.scss';
-import {useTheme} from "5_shared/libs/hooks/useTheme";
-import {AppTheme} from "5_shared/config/ThemeContext";
 
 interface ThemeSwitcherProps {
     className?: string
 }
 
-export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
+export function ThemeSwitcher(props: ThemeSwitcherProps) {
     const { className } = props;
-    const {theme, toggleTheme, setThemeManual} = useTheme();
+    const { theme, setThemeManual } = useTheme();
     const changeTheme = (e) => {
         const isChecked = e.target.checked;
 
         if (isChecked) {
-            setThemeManual(AppTheme.DARK)
+            setThemeManual(AppTheme.DARK);
         } else {
-            setThemeManual(AppTheme.LIGHT)
+            setThemeManual(AppTheme.LIGHT);
         }
-    }
+    };
 
     return (
         <div className={classNames(cls.block, className)}>
@@ -32,4 +32,4 @@ export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
             </label>
         </div>
     );
-};
+}

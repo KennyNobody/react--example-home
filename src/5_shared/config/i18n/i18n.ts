@@ -8,7 +8,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // for passing in lng and translations on init
 
 i18n
-.use(Backend)
+    .use(Backend)
     // TODO: Некорректно работает
     .use(LanguageDetector)
     .use(initReactI18next)
@@ -18,8 +18,7 @@ i18n
 
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
-        }
+        },
     });
-
 
 export default i18n;
