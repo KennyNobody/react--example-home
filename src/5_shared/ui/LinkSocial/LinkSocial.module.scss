@@ -1,0 +1,30 @@
+.link {
+    display: block;
+    border: 1px solid;
+    width: fit-content;
+    padding: 12px 30px;
+    border-radius: 30px;
+    transition: 0.3s all;
+
+    &--theme-light {
+        border-color: var(--dark-primary);
+
+        svg {
+            fill: var(--dark-primary);
+        }
+    }
+    &--theme-dark {
+        border-color: var(--light-primary);
+
+        svg {
+            fill: var(--light-primary);
+        }
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+        transition: 0.3s fill;
+    }
+}

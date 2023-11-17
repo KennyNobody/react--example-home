@@ -5,13 +5,23 @@ import path from "path";
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
-    const tsLoader = {
+    const tsLoader: webpack.RuleSetRule = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
     };
 
-    const styleLoader = {
+    const svgLoader: webpack.RuleSetRule = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    }
+
+    const imageLoader: webpack.RuleSetRule = {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+    }
+
+    const styleLoader: webpack.RuleSetRule = {
         test: /\.s[c]ss$/i,
         use: [
             options.mode === BuildMode.DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -30,6 +40,8 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     return [
         tsLoader,
+        svgLoader,
+        imageLoader,
         styleLoader
     ]
 }

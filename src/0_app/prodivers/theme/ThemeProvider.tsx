@@ -20,7 +20,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
     const defaultProps = useMemo(() => ({
         theme: theme,
-            setTheme: setTheme
+        setTheme: setTheme
     }), [theme]);
 
     return (

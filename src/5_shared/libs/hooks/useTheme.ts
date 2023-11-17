@@ -4,6 +4,7 @@ import {AppTheme, LOCAL_STORAGE_THEME_KEY, ThemeContext} from "../../config/Them
 interface useThemeResult {
     theme: AppTheme;
     toggleTheme: () => void;
+    setThemeManual: (theme: AppTheme) => void;
 }
 
 export function useTheme(): useThemeResult {
@@ -11,11 +12,21 @@ export function useTheme(): useThemeResult {
 
     const toggleTheme = () => {
         const actualTheme: AppTheme = theme === AppTheme.DARK ? AppTheme.LIGHT : AppTheme.DARK;
-        if (setTheme) setTheme(actualTheme);
-        localStorage.setItem(LOCAL_STORAGE_THEME_KEY, actualTheme);
+        if (setTheme) {
+            setTheme(actualTheme);
+            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, actualTheme);
+        }
+    }
+
+    const setThemeManual = (theme: AppTheme) => {
+        if (setTheme) {
+            setTheme(theme);
+            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+        }
+
     }
 
     return <useThemeResult>{
-        theme, toggleTheme
+        theme, toggleTheme, setThemeManual
     }
 }

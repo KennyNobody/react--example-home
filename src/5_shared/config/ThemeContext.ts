@@ -8,6 +8,7 @@ export enum AppTheme {
 export interface ThemeContextProps {
     theme?: AppTheme;
     setTheme?: (theme: AppTheme) => void;
+    setThemeManual?: (theme: AppTheme) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({});
