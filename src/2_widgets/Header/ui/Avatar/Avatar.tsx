@@ -9,7 +9,6 @@ export const Avatar = (props: AvatarProps) => {
     const { className } = props;
 
     return (
-        <div className={classNames(cls.block, className)}>
-н        </div>
+        <div className={classNames(cls.block, className)} />
     );
 };
