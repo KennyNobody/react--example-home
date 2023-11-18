@@ -36,10 +36,22 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
+    const babelLoader: webpack.RuleSetRule = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+            },
+        },
+    };
+
     return [
-        tsLoader,
-        svgLoader,
         imageLoader,
+        svgLoader,
+        babelLoader,
+        tsLoader,
         styleLoader,
     ];
 }

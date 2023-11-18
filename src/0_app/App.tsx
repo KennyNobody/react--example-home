@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import classNames from 'classnames';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { Footer } from '2_widgets/Footer';
