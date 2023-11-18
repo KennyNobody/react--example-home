@@ -1,7 +1,8 @@
 {
     "env": {
-        "browser": true,
-        "es2021": true
+      "jest": true,
+      "es2021": true,
+      "browser": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -25,6 +26,10 @@
       "react/function-component-definition": [0],
 
       "indent": [1, 4],
+      "max-len": [1, {
+        "code": 150,
+        "ignoreComments": true
+      }],
       "no-unused-vars": [0],
       "no-underscore-dangle": [0],
       "import/prefer-default-export": [0],
@@ -32,6 +37,7 @@
       "import/no-extraneous-dependencies": [0],
       "@typescript-eslint/naming-convention": [0],
       "jsx-a11y/label-has-associated-control": [0]
+
     },
     "globals": {
         "__IS_DEV__": true

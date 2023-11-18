@@ -11,7 +11,7 @@
     "lint:ts:fix": "eslint \"**/*{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"\n\n",
     "lint:scss:fix": "npx stylelint \"**/*.scss\"\n\n --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config ./config/jest/jest.config.ts"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/KennyNobody/react--example-home#readme",
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/jest": "^29.5.8",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
@@ -46,6 +47,8 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "mini-css-extract-plugin": "^2.7.6",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
