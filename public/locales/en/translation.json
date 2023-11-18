@@ -1,5 +1,7 @@
 {
   "headerDescription": "I photograph life, people, cats and other things. I do front-end development, write notes about cinema, art and games. Fan of Lego and custom guitars. Proud owner of a Roland AX-1 keytar.",
 
-  "footerAuthor": "Developed by: Egor Badulin"
+  "footerAuthor": "Developed by: Egor Badulin",
+
+  "reloadPage": "Reload page"
 }

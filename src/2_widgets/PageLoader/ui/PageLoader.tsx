@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import { Loader } from '5_shared/ui/Loader/Loader';
-import cls from './LoaderPage.module.scss';
+import cls from './PageLoader.module.scss';
 
-interface LoaderProps {
+interface PageLoaderProps {
     className?: string
 }
 
-export const LoaderPage = (props: LoaderProps) => {
+export const PageLoader = (props: PageLoaderProps) => {
     const { className } = props;
 
     return (
