@@ -22,4 +22,8 @@
         "module": "CommonJS"
       }
     },
+    "include": [
+      "./config/",
+      "./src/"
+    ]
 }
