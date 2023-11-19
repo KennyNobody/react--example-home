@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container/Container';

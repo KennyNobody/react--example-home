@@ -24,6 +24,7 @@
     },
     "include": [
       "./config/",
-      "./src/"
+      "./src/",
+      "./webpack.config.ts"
     ]
 }
