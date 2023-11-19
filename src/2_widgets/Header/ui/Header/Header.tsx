@@ -17,7 +17,7 @@ export function Header(props: HeaderProps) {
     const { className } = props;
 
     return (
-        <div className={classNames(cls.block, className)}>
+        <div className={classNames(cls.block, className)} data-testid="header">
             <Container>
                 <div className={classNames(grid.grid)}>
                     <div className={classNames(grid['grid__col-2'])}>
