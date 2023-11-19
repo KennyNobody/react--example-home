@@ -1,5 +1,13 @@
 .block {
     padding: 36px 0;
+
+    &--main {
+
+    }
+
+    &--regular {
+
+    }
 }
 
 .avatar {
@@ -9,4 +17,8 @@
 
 .name {
     margin-right: 32px;
+
+    &--main {
+        flex-grow: 1;
+    }
 }
