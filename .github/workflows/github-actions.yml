@@ -1,6 +1,11 @@
 name: GitHub Actions React Home Example
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    branches-ignore:
+      - dev
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
