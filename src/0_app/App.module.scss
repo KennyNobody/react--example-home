@@ -2,6 +2,7 @@
     height: 100%;
     display: flex;
     min-height: 100vh;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
 
@@ -16,6 +17,10 @@
     }
 }
 
-.main {
-    flex-grow: 1;
+.header {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    position: absolute;
 }

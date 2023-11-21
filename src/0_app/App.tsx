@@ -1,13 +1,14 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { Footer } from '2_widgets/Footer';
 import { Header } from '2_widgets/Header';
 import { HeaderMode } from '2_widgets/Header/ui/Header/Header';
-import { useLocation } from 'react-router-dom';
+import { Main } from '5_shared/ui/Main/Main';
 import { RoutePath } from '5_shared/config/router/routerConfig';
-import { AppRouter } from './prodivers/router';
 import cls from './App.module.scss';
+import { AppRouter } from './prodivers/router';
 
 function App() {
     const { theme } = useTheme();
@@ -30,9 +31,9 @@ function App() {
                     className={classNames(cls.header)}
                     mode={routeType ? HeaderMode.MAIN : HeaderMode.REGULAR}
                 />
-                <main className={classNames(cls.main)}>
+                <Main className={classNames(cls.main)}>
                     <AppRouter />
-                </main>
+                </Main>
                 <Footer
                     className={cls.footer}
                 />

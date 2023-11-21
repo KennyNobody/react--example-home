@@ -1,7 +1,14 @@
 .block {
-    width: 55px;
-    height: 55px;
+    width: 54px;
+    height: 54px;
     display: block;
+    flex-shrink: 0;
     border-radius: 55px;
+    transition: 0.3s all;
     background-color: white;
+
+    &--main {
+        width: 64px;
+        height: 64px;
+    }
 }

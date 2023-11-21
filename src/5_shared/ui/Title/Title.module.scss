@@ -1,0 +1,16 @@
+.block {
+    line-height: 1.2;
+    font-weight: 450;
+    text-decoration: none;
+    transition: 0.3s opacity;
+    color: var(--light-primary);
+
+    &--main {
+        font-size: 107px;
+
+    }
+
+    &--regular {
+        font-size: 90px;
+    }
+}

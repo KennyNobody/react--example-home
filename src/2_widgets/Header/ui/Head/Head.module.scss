@@ -1,26 +1,24 @@
 .block {
+    padding: 0;
     display: flex;
     align-items: center;
     border-radius: 15px;
 
-    &--main {
-        padding: 16px;
-    }
-
     &--regular {
+        padding: 16px;
         justify-content: space-between;
 
         &.block--theme-light,
         &.block--theme-dark {
             background-color: inherit;
         }
-    }
 
-    &--theme-light {
-        background-color: var(--light-accent);
-    }
+        &.block--theme-light {
+            background-color: var(--light-accent);
+        }
 
-    &--theme-dark {
-        background-color: var(--dark-accent);
+        &.block--theme-dark {
+            background-color: var(--dark-accent);
+        }
     }
 }

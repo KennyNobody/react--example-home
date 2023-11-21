@@ -1,4 +1,9 @@
 .name {
-    font-size: 43px;
-    line-height: 1.15;
+    font-size: 28px;
+    line-height: 1.5;
+
+    &--main {
+        font-size: 43px;
+        line-height: 1.15;
+    }
 }

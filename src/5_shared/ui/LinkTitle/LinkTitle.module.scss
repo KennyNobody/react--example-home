@@ -1,0 +1,11 @@
+.block {
+    font-size: 90px;
+    font-weight: 450;
+    text-decoration: none;
+    transition: 0.3s opacity;
+    color: var(--light-primary);
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
