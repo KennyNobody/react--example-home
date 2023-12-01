@@ -16,7 +16,8 @@
     "project": "./tsconfig.json"
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     "react/jsx-indent": [
@@ -72,7 +73,9 @@
     "jsx-a11y/label-has-associated-control": [
       0
     ],
-    "linebreak-style": [1, "windows"]
+    "linebreak-style": [1, "windows"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "globals": {
     "__IS_DEV__": true

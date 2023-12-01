@@ -1,15 +1,15 @@
+import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
 import grid from '5_shared/css/grid.module.scss';
-import { Container } from '5_shared/ui/Container/Container';
+import { Container } from '5_shared/ui/Container';
 import { LanguageSwitcher } from '3_features/LanguageSwitcher';
-import { Avatar } from '2_widgets/Header/ui/Avatar/Avatar';
-import { Head } from '2_widgets/Header/ui/Head/Head';
-import { Name } from '2_widgets/Header/ui/Name/Name';
 import { Nav } from '../Nav/Nav';
-import { Description } from '../Description/Description';
+import { Head } from '../Head/Head';
+import { Name } from '../Name/Name';
 import cls from './Header.module.scss';
+import { Avatar } from '../Avatar/Avatar';
+import { Description } from '../Description/Description';
 
 export enum HeaderMode {
     MAIN = 'main',
