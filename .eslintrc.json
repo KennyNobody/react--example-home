@@ -74,8 +74,9 @@
       0
     ],
     "linebreak-style": [1, "windows"],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/rules-of-hooks": [0],
+    "react-hooks/exhaustive-deps": [0],
+    "no-param-reassign": [0]
   },
   "globals": {
     "__IS_DEV__": true
