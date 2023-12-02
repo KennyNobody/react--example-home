@@ -9,6 +9,5 @@ interface StyleDecoratorProps {
 export const RouterDecorator = ({ children }: StyleDecoratorProps) => (
     <BrowserRouter>
         { children }
-
     </BrowserRouter>
 );
