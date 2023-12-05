@@ -1,6 +1,6 @@
 import webpack, { RuleSetRule } from 'webpack';
 import path from 'path';
-import { BuildPaths } from '../build/types/config';
+import {BuildMode, BuildPaths} from '../build/types/config';
 import { buildStyleLoader } from '../build/loaders/buildStyleLoader';
 
 export default ({ config }: { config: webpack.Configuration }) => {
@@ -30,6 +30,14 @@ export default ({ config }: { config: webpack.Configuration }) => {
     });
 
     config?.module?.rules?.push(buildStyleLoader(true));
+
+    if (config.plugins) {
+        // eslint-disable-next-line no-new
+        new webpack.DefinePlugin({
+            __API__: JSON.stringify(''),
+            __IS_DEV__: JSON.stringify(true),
+        });
+    }
 
     return config;
 };
