@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import cls from './Description.module.scss';
@@ -6,7 +7,7 @@ interface DescriptionProps {
     className?: string
 }
 
-export function Description(props: DescriptionProps) {
+export const Description = memo((props: DescriptionProps) => {
     const { className } = props;
 
     const { t } = useTranslation();
@@ -18,4 +19,4 @@ export function Description(props: DescriptionProps) {
             </p>
         </div>
     );
-}
+});

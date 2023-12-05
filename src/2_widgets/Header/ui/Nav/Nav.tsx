@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import { LinkNav } from '5_shared/ui/LinkNav/LinkNav';
 import cls from './Nav.module.scss';
@@ -7,7 +7,7 @@ interface NavProps {
     className?: string;
 }
 
-export const Nav = (props: NavProps) => {
+export const Nav = memo((props: NavProps) => {
     const { className } = props;
 
     return (
@@ -17,4 +17,4 @@ export const Nav = (props: NavProps) => {
             <LinkNav to="/list123/">Заметки</LinkNav>
         </nav>
     );
-};
+});

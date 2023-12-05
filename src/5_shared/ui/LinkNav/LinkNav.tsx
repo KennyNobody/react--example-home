@@ -1,6 +1,6 @@
 import classNames from 'classnames';
+import { memo, ReactNode } from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import { ReactNode } from 'react';
 import cls from './LinkNav.module.scss';
 
 interface LinkAppProps extends NavLinkProps {
@@ -8,7 +8,7 @@ interface LinkAppProps extends NavLinkProps {
     children: ReactNode;
 }
 
-export const LinkNav = (props: LinkAppProps) => {
+export const LinkNav = memo((props: LinkAppProps) => {
     const { className, children, ...otherProps } = props;
 
     return (
@@ -24,4 +24,4 @@ export const LinkNav = (props: LinkAppProps) => {
             { children }
         </NavLink>
     );
-};
+});

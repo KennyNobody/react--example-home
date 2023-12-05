@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import cls from './Title.module.scss';
 
 export enum TitleModeType {
@@ -13,7 +13,7 @@ interface TitleProps {
     children: ReactNode;
 }
 
-export const Title = (props: TitleProps) => {
+export const Title = memo((props: TitleProps) => {
     const { className, mode, children } = props;
 
     const Tag: keyof JSX.IntrinsicElements = mode === TitleModeType.MAIN ? 'h1' : 'h2';
@@ -31,4 +31,4 @@ export const Title = (props: TitleProps) => {
             { children }
         </Tag>
     );
-};
+});

@@ -9,7 +9,7 @@ interface HeadProps {
     children: ReactNode;
 }
 
-export function Head(props: HeadProps) {
+export const Head = (props: HeadProps) => {
     const { className, children, isMain } = props;
     const { theme } = useTheme();
 
@@ -27,4 +27,4 @@ export function Head(props: HeadProps) {
             { children }
         </div>
     );
-}
+};

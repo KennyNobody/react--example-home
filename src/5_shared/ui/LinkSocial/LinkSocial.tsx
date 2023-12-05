@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { LinkHTMLAttributes, ReactElement } from 'react';
+import React, { LinkHTMLAttributes, memo, ReactElement } from 'react';
 import IconVK from '5_shared/assets/icons/vk.svg';
 import IconInst from '5_shared/assets/icons/inst.svg';
 import IconTG from '5_shared/assets/icons/tg.svg';
@@ -31,7 +31,7 @@ const iconsRecord: {} = Object.entries(iconsComponents).reduce((acc, [key, icon]
     return acc;
 }, {}) as Record<IconKey, ReactElement>;
 
-export function LinkSocial(props: LinkSocialProps) {
+export const LinkSocial = memo((props: LinkSocialProps) => {
     const { theme } = useTheme();
     const { className, iconKey, ...otherProps } = props;
 
@@ -45,4 +45,4 @@ export function LinkSocial(props: LinkSocialProps) {
             { iconsRecord[iconKey] }
         </a>
     );
-}
+});

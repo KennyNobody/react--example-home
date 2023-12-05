@@ -1,5 +1,5 @@
-import { LinkHTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
+import { LinkHTMLAttributes, memo, ReactNode } from 'react';
 import cls from './LinkTitle.module.scss';
 
 interface LinkTitleProps extends LinkHTMLAttributes<HTMLAnchorElement> {
@@ -7,7 +7,7 @@ interface LinkTitleProps extends LinkHTMLAttributes<HTMLAnchorElement> {
     children: ReactNode;
 }
 
-export const LinkTitle = (props: LinkTitleProps) => {
+export const LinkTitle = memo((props: LinkTitleProps) => {
     const {
         children,
         className,
@@ -27,4 +27,4 @@ export const LinkTitle = (props: LinkTitleProps) => {
             { children }
         </a>
     );
-};
+});

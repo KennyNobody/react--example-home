@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 import cls from './Name.module.scss';
 
@@ -6,7 +7,7 @@ interface NameProps {
     className?: string;
 }
 
-export function Name(props: NameProps) {
+export const Name = memo((props: NameProps) => {
     const { className, isMain } = props;
 
     const content: string = 'Егор Бадулин / @KennyNobody';
@@ -25,4 +26,4 @@ export function Name(props: NameProps) {
             { content }
         </Tag>
     );
-}
+});
