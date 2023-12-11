@@ -15,5 +15,6 @@ export default (env: BuildEnv) => {
         port: env.port || 3001,
         mode: env.mode || BuildMode.DEV,
         apiUrl: env.apiUrl || 'https://egor-badulin.ru/wp-json/wp/v2/',
+        project: 'frontend',
     });
 };
