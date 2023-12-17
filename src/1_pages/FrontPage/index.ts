@@ -1,3 +1,3 @@
 export {
     FrontPageAsync as FrontPage,
-} from './ui/FrontPage.async';
+} from './ui/FrontPage/FrontPage.async';

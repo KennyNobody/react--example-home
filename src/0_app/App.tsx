@@ -5,7 +5,6 @@ import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { Footer } from '2_widgets/Footer';
 import { Header } from '2_widgets/Header';
 import { HeaderMode } from '2_widgets/Header/ui/Header/Header';
-import { Main } from '5_shared/ui/Main/Main';
 import { RoutePath } from '5_shared/config/router/routerConfig';
 import cls from './App.module.scss';
 import { AppRouter } from './prodivers/router';
@@ -31,9 +30,7 @@ function App() {
                     className={classNames(cls.header)}
                     mode={routeType ? HeaderMode.MAIN : HeaderMode.REGULAR}
                 />
-                <Main className={classNames(cls.main)}>
-                    <AppRouter />
-                </Main>
+                <AppRouter />
                 <Footer
                     className={cls.footer}
                 />

@@ -74,6 +74,7 @@
       0
     ],
     "linebreak-style": [1, "windows"],
+    "react/no-array-index-key": [0],
     "react-hooks/rules-of-hooks": [0],
     "react-hooks/exhaustive-deps": [0],
     "no-param-reassign": [0]
