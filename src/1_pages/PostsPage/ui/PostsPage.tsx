@@ -1,6 +1,6 @@
-import cls from './ListPage.module.scss';
+import cls from './PostsPage.module.scss';
 
-function ListPage() {
+function PostsPage() {
     return (
         <div className={cls.page}>
             List page
@@ -8,4 +8,4 @@ function ListPage() {
     );
 }
 
-export default ListPage;
+export default PostsPage;

@@ -1,17 +1,20 @@
 import { RouteProps } from 'react-router-dom';
 import { FrontPage } from '1_pages/FrontPage';
-import { ListPage } from '1_pages/ListPage';
+import { PostsPage } from '1_pages/PostsPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
+import {PostsDetailsPage} from "1_pages/PostsDetailsPage";
 
 export enum AppRouter {
     MAIN = 'main',
-    LIST = 'list',
+    POSTS = 'posts',
+    POSTS_DETAIL = 'posts_detail',
     NOT_FOUND = 'not_found',
 }
 
 export const RoutePath: Record<AppRouter, string> = {
     [AppRouter.MAIN]: '/',
-    [AppRouter.LIST]: '/list/',
+    [AppRouter.POSTS]: '/posts/',
+    [AppRouter.POSTS_DETAIL]: '/posts/', // + slug
     [AppRouter.NOT_FOUND]: '*',
 };
 
@@ -21,8 +24,12 @@ export const routeConfig: RouteProps[] = [
         element: <FrontPage />,
     },
     {
-        path: RoutePath.list,
-        element: <ListPage />,
+        path: RoutePath.posts,
+        element: <PostsPage />,
+    },
+    {
+        path: `${RoutePath.posts_detail}:slug`,
+        element: <PostsDetailsPage />,
     },
     {
         path: RoutePath.not_found,
