@@ -19,7 +19,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
 
     const article = (
         <div className={classNames(cls.article, className)}>
-            Пост
+            { data?.title?.rendered }
         </div>
     );
 

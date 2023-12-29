@@ -6,12 +6,14 @@ import { NotFoundPage } from '1_pages/NotFoundPage';
 export enum AppRouter {
     MAIN = 'main',
     LIST = 'list',
+    DETAIL = 'post',
     NOT_FOUND = 'not_found',
 }
 
 export const RoutePath: Record<AppRouter, string> = {
     [AppRouter.MAIN]: '/',
     [AppRouter.LIST]: '/list/',
+    [AppRouter.DETAIL]: '/list/',
     [AppRouter.NOT_FOUND]: '*',
 };
 
