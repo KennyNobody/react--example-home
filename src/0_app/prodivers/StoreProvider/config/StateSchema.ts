@@ -1,6 +1,9 @@
 import { AxiosInstance } from 'axios';
+import { DetailPostSchema } from '4_entities/Posts';
 
-export interface StateSchema {}
+export interface StateSchema {
+    detailPost?: DetailPostSchema;
+}
 
 export interface ThunkExtraArg {
     api: AxiosInstance;

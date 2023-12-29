@@ -1,12 +1,13 @@
 import { RouteProps } from 'react-router-dom';
 import { FrontPage } from '1_pages/FrontPage';
-import { ListPage } from '1_pages/ListPage';
+import { PostsPage } from '1_pages/PostsPage';
+import { DetailPage } from '1_pages/DetailPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
 
 export enum AppRouter {
     MAIN = 'main',
     LIST = 'list',
-    DETAIL = 'post',
+    DETAIL = 'detail',
     NOT_FOUND = 'not_found',
 }
 
@@ -24,7 +25,11 @@ export const routeConfig: RouteProps[] = [
     },
     {
         path: RoutePath.list,
-        element: <ListPage />,
+        element: <PostsPage />,
+    },
+    {
+        path: `${RoutePath.detail}:slug`,
+        element: <DetailPage />,
     },
     {
         path: RoutePath.not_found,
