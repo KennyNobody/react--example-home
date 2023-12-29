@@ -3,6 +3,7 @@ export {
 } from './ui/StoreProvider';
 
 export {
+    AppDispatch,
     createReduxStore,
 } from './config/store';
 

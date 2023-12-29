@@ -9,3 +9,9 @@ export {
     detailPostReducer,
     detailPostActions,
 } from './model/slices/detailPostSlice';
+
+export {
+    getDetailPostData,
+    getDetailPostErrors,
+    getDetailPostIsLoading,
+} from './model/selectors/detailPost';
