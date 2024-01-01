@@ -1,0 +1,11 @@
+.article {
+    height: 512px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--dark-accent);
+
+    &--skeleton {
+        background-color: #000066;
+    }
+}

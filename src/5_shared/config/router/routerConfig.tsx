@@ -11,7 +11,7 @@ export enum AppRouter {
     NOT_FOUND = 'not_found',
 }
 
-export const RoutePath: Record<AppRouter, string> = {
+export const RouterPath: Record<AppRouter, string> = {
     [AppRouter.MAIN]: '/',
     [AppRouter.LIST]: '/list/',
     [AppRouter.DETAIL]: '/list/',
@@ -20,19 +20,19 @@ export const RoutePath: Record<AppRouter, string> = {
 
 export const routeConfig: RouteProps[] = [
     {
-        path: RoutePath.main,
+        path: RouterPath.main,
         element: <FrontPage />,
     },
     {
-        path: RoutePath.list,
+        path: RouterPath.list,
         element: <PostsPage />,
     },
     {
-        path: `${RoutePath.detail}:slug`,
+        path: `${RouterPath.detail}:slug`,
         element: <DetailPage />,
     },
     {
-        path: RoutePath.not_found,
+        path: RouterPath.not_found,
         element: <NotFoundPage />,
     },
 ];

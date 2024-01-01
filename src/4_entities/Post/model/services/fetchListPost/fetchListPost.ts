@@ -2,9 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { ArticlePostType } from '../../types/ArticlePost';
 
-export const fetchPostBySlug = createAsyncThunk<ArticlePostType[], string, ThunkConfig<string>>(
-    'posts/fetchPostBySlug',
-    async (slug, thunkApi) => {
+export const fetchListPost = createAsyncThunk<
+ArticlePostType[],
+void,
+ThunkConfig<string>
+>(
+    'post/fetchListPost',
+    async (_, thunkApi) => {
         const {
             extra,
             rejectWithValue,
@@ -12,7 +16,7 @@ export const fetchPostBySlug = createAsyncThunk<ArticlePostType[], string, Thunk
 
         try {
             const response = await extra.api.get<ArticlePostType[]>(
-                `/posts?slug=${slug}/`,
+                '/posts/',
             );
 
             if (!response.data) {

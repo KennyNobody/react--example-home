@@ -5,17 +5,17 @@ import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { Footer } from '2_widgets/Footer';
 import { Header } from '2_widgets/Header';
 import { HeaderMode } from '2_widgets/Header/ui/Header/Header';
-import { RoutePath } from '5_shared/config/router/routerConfig';
+import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './App.module.scss';
 import { AppRouter } from './prodivers/router';
 
 function App() {
     const { theme } = useTheme();
     const location = useLocation();
-    const [routeType, setRouteTypePage] = useState<boolean>(location.pathname === RoutePath.main);
+    const [routeType, setRouteTypePage] = useState<boolean>(location.pathname === RouterPath.main);
 
     useEffect(() => {
-        setRouteTypePage(location.pathname === RoutePath.main);
+        setRouteTypePage(location.pathname === RouterPath.main);
     }, [location]);
 
     // Раскомментировать, чтобы протестировать сообщение об ошибке

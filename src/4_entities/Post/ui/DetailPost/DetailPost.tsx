@@ -3,6 +3,8 @@ import {
     useEffect,
 } from 'react';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { Editor } from '5_shared/ui/Editor';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
     ReducersList,
@@ -11,10 +13,8 @@ import {
 import cls from './DetailPost.module.scss';
 import { detailPostReducer } from '../../model/slices/detailPostSlice';
 import { fetchPostBySlug } from '../../model/services/fetchPostBySlug/fetchPostBySlug';
-import {useSelector} from "react-redux";
-import {getDetailPostData, getDetailPostIsLoading} from "4_entities/Posts";
-import {ArticlePostType} from "4_entities/Posts/model/types/ArticlePost";
-import {Editor} from "5_shared/ui/Editor";
+import { ArticlePostType } from '../../model/types/ArticlePost';
+import { getDetailPostData, getDetailPostIsLoading } from '../../model/selectors/detailPost';
 
 interface DetailPostProps {
     className?: string;

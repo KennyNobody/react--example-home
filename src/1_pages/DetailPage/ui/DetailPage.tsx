@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { DetailPost } from '4_entities/Posts';
+import { DetailPost } from '4_entities/Post';
 import cls from './DetailPage.module.scss';
 
 function DetailPage() {

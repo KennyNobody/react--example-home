@@ -2,12 +2,17 @@ import {
     Action,
     Reducer,
     EnhancedStore,
-    ReducersMapObject, CombinedState,
+    CombinedState,
+    ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { DetailPostSchema } from '4_entities/Posts';
+import {
+    ListPostSchema,
+    DetailPostSchema,
+} from '4_entities/Post';
 
 export interface StateSchema {
+    listPost?: ListPostSchema;
     detailPost?: DetailPostSchema;
 }
 
