@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { ArticlePostType } from '../../types/ArticlePost';
@@ -8,7 +9,7 @@ interface FetchListPostProps {
 }
 
 export const fetchListPost = createAsyncThunk<
-ArticlePostType[],
+string,
 FetchListPostProps,
 ThunkConfig<string>
 >(
@@ -43,8 +44,7 @@ ThunkConfig<string>
                 throw new Error();
             }
 
-            console.log(response);
-            return response.data;
+            return JSON.stringify(response);
         } catch (e) {
             console.log(e);
             return rejectWithValue('error');

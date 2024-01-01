@@ -7,7 +7,7 @@ interface ArticlesProps {
     className?: string;
     children: ReactNode;
     hasMore?: boolean;
-    onClickEvent: () => void;
+    onClickEvent?: () => void;
 }
 
 export const Articles = (props: ArticlesProps) => {

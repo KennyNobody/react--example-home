@@ -3,7 +3,9 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
+import { AxiosResponse } from 'axios';
 import { StateSchema } from '0_app/prodivers/StoreProvider';
+import { ServerResponseHeaders } from '5_shared/types/requestData';
 import {
     ArticlePostType,
 } from '../types/ArticlePost';
@@ -46,10 +48,16 @@ const articlesPageSlice = createSlice({
             })
             .addCase(fetchListPost.fulfilled, (
                 state,
-                action: PayloadAction<ArticlePostType[]>,
+                action: PayloadAction<string>,
             ) => {
                 state.isLoading = false;
-                listPostAdapter.setAll(state, action.payload);
+
+                const data: AxiosResponse<ArticlePostType[]> = JSON.parse(action.payload);
+                listPostAdapter.addMany(state, data.data);
+
+                if (data.headers[ServerResponseHeaders.TOTAL_PAGES] <= state.page) {
+                    state.hasMore = false;
+                }
             })
             .addCase(fetchListPost.rejected, (state, action) => {
                 state.isLoading = false;

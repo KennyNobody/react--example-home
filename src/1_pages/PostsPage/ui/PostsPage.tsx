@@ -6,7 +6,7 @@ function PostsPage() {
     return (
         <div className={cls.page}>
             <Container>
-                <ListPosts />
+                <ListPosts isActive />
             </Container>
         </div>
     );
