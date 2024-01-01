@@ -30,12 +30,16 @@ const initialState: ListPostSchema = {
     page: 1,
     perPage: 8,
     hasMore: true,
+    _inited: false,
 };
 
 const articlesPageSlice = createSlice({
     name: 'listPostSlice',
     initialState: listPostAdapter.getInitialState<ListPostSchema>(initialState),
     reducers: {
+        initState: (state) => {
+            state._inited = true;
+        },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
         },

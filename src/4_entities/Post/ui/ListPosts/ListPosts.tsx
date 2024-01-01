@@ -22,7 +22,7 @@ import {
 } from '../../model/slices/listPostSlice';
 import { GridPosts } from '../GridPosts/GridPosts';
 import { ArticlePostType } from '../../model/types/ArticlePost';
-import { fetchListPost } from '../../model/services/fetchListPost/fetchListPost';
+import { initListPostPage } from '../../model/services/initListPostPage/initListPostPage';
 import { fetchNextListPostPage } from '../../model/services/fetchNextListPostPage/fetchNextListPostPage';
 
 interface ListPostsProps {
@@ -46,7 +46,7 @@ export const ListPosts = (props: ListPostsProps) => {
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
-        dispatch(fetchListPost({}));
+        dispatch(initListPostPage());
     }, []);
 
     const loadNextPage = useCallback(() => {
@@ -63,7 +63,7 @@ export const ListPosts = (props: ListPostsProps) => {
     return (
         <DynamicModuleLoader
             reducers={reducers}
-            removeAfterUnmount
+            removeAfterUnmount={false}
         >
             <div
                 className={
