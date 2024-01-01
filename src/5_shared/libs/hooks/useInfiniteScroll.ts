@@ -12,8 +12,9 @@ export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOpt
 
     useEffect(() => {
         let observer: IntersectionObserver | null = null;
+        const triggerElement = triggerRef.current;
 
-        if (callback && triggerRef) {
+        if (callback && triggerElement) {
             const options = {
                 root: document,
                 rootMargin: '0px',
@@ -24,12 +25,12 @@ export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOpt
                 if (el.isIntersecting) callback();
             }, options);
 
-            observer.observe(triggerRef.current);
+            observer.observe(triggerElement);
         }
 
         return () => {
-            if (observer && triggerRef?.current) {
-                observer?.unobserve(triggerRef.current);
+            if (observer) {
+                observer?.unobserve(triggerElement);
             }
         };
     }, [callback, triggerRef]);

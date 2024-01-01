@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { ArticlePostType } from '../../types/ArticlePost';
@@ -43,6 +42,8 @@ ThunkConfig<string>
             if (!response.data) {
                 throw new Error();
             }
+
+            console.log(response);
 
             return JSON.stringify(response);
         } catch (e) {

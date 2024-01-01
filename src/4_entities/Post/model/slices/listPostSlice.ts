@@ -52,11 +52,16 @@ const articlesPageSlice = createSlice({
             ) => {
                 state.isLoading = false;
 
-                const data: AxiosResponse<ArticlePostType[]> = JSON.parse(action.payload);
-                listPostAdapter.addMany(state, data.data);
+                let response: AxiosResponse<ArticlePostType[]>;
 
-                if (data.headers[ServerResponseHeaders.TOTAL_PAGES] <= state.page) {
-                    state.hasMore = false;
+                if (action?.payload) {
+                    response = JSON.parse(action.payload);
+
+                    listPostAdapter.addMany(state, response.data);
+
+                    if (response.headers[ServerResponseHeaders.TOTAL_PAGES] <= state.page) {
+                        state.hasMore = false;
+                    }
                 }
             })
             .addCase(fetchListPost.rejected, (state, action) => {

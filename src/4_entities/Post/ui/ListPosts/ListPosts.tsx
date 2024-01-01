@@ -13,13 +13,17 @@ import {
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
 import cls from './ListPosts.module.scss';
 import {
-    getListPost, listPostActions,
+    getListPostPage,
+    getListPostIsLoading,
+} from '../../model/selectors/listPost';
+import {
+    getListPost,
     listPostReducer,
 } from '../../model/slices/listPostSlice';
 import { GridPosts } from '../GridPosts/GridPosts';
 import { ArticlePostType } from '../../model/types/ArticlePost';
 import { fetchListPost } from '../../model/services/fetchListPost/fetchListPost';
-import { getListPostHasMore, getListPostIsLoading, getListPostPage } from '../../model/selectors/listPost';
+import { fetchNextListPostPage } from '../../model/services/fetchNextListPostPage/fetchNextListPostPage';
 
 interface ListPostsProps {
     isActive?: boolean;
@@ -39,7 +43,6 @@ export const ListPosts = (props: ListPostsProps) => {
     const data: ArticlePostType[] = useSelector(getListPost.selectAll);
     const isLoading: boolean | undefined = useSelector(getListPostIsLoading);
     const page: number = useSelector(getListPostPage) || 1;
-    const hasMore: boolean | undefined = useSelector(getListPostHasMore);
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
@@ -47,13 +50,8 @@ export const ListPosts = (props: ListPostsProps) => {
     }, []);
 
     const loadNextPage = useCallback(() => {
-        if (hasMore && !isLoading) {
-            dispatch(listPostActions.setPage(page + 1));
-            dispatch(fetchListPost({
-                page: page + 1,
-            }));
-        }
-    }, [dispatch, hasMore, isLoading, page]);
+        dispatch(fetchNextListPostPage());
+    }, [dispatch]);
 
     if (isActive) {
         useInfiniteScroll({
