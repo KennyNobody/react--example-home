@@ -25,12 +25,19 @@ const initialState: ListPostSchema = {
     errors: undefined,
     ids: [],
     entities: {},
+    page: 1,
+    perPage: 8,
+    hasMore: true,
 };
 
 const articlesPageSlice = createSlice({
     name: 'listPostSlice',
     initialState: listPostAdapter.getInitialState<ListPostSchema>(initialState),
-    reducers: {},
+    reducers: {
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchListPost.pending, (state) => {

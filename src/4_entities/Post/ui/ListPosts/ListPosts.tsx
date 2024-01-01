@@ -32,7 +32,7 @@ export const ListPosts = (props: ListPostsProps) => {
     const isLoading: boolean | undefined = useSelector(getListPostIsLoading);
 
     useEffect(() => {
-        dispatch(fetchListPost());
+        dispatch(fetchListPost({}));
     }, []);
 
     const loadPosts = (): void => {
