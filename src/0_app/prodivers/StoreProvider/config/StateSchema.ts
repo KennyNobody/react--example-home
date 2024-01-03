@@ -10,10 +10,13 @@ import {
     ListPostSchema,
     DetailPostSchema,
 } from '4_entities/Post';
+import { ListCategorySchema } from '4_entities/Category';
 
 export interface StateSchema {
     listPost?: ListPostSchema;
     detailPost?: DetailPostSchema;
+
+    listCategory?: ListCategorySchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

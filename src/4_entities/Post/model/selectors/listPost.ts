@@ -6,3 +6,5 @@ export const getListPostPerPage = (state: StateSchema) => state?.listPost?.perPa
 export const getListPostPage = (state: StateSchema) => state?.listPost?.page;
 export const getListPostHasMore = (state: StateSchema) => state?.listPost?.hasMore;
 export const getListPostInited = (state: StateSchema) => state?.listPost?._inited;
+
+export const getListSelectedCategories = (state: StateSchema) => state?.listPost?.categories;

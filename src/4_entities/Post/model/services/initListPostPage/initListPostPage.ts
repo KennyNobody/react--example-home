@@ -8,11 +8,11 @@ import { fetchListPost } from '../fetchListPost/fetchListPost';
 
 export const initListPostPage = createAsyncThunk<
 void,
-void,
+URLSearchParams,
 ThunkConfig<string>
 >(
     'post/fetchNextListPostPage',
-    async (props, thunkApi) => {
+    async (searchParams, thunkApi) => {
         const {
             dispatch,
             getState,
@@ -21,6 +21,18 @@ ThunkConfig<string>
         const isInited: boolean | undefined = getListPostInited(getState());
 
         if (!isInited) {
+            searchParams.forEach((value, key) => {
+
+                if (key === 'perPage' && Number(value)) {
+                    dispatch(listPostActions.setPerPage(Number(value)));
+                } else if (key === 'page' && Number(value)) {
+                    dispatch(listPostActions.setPage(Number(value)));
+                } else if (key === 'categories') {
+                    dispatch(listPostActions.setCategoriesByString(value));
+                }
+            });
+
+
             dispatch(listPostActions.initState());
             dispatch(fetchListPost({}));
         }

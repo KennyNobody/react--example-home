@@ -31,3 +31,16 @@ export {
 export {
     ListPosts,
 } from './ui/ListPosts/ListPosts';
+
+export {
+    listPostActions,
+    listPostReducer,
+} from './model/slices/listPostSlice';
+
+export {
+    getListSelectedCategories,
+} from './model/selectors/listPost';
+
+export {
+    fetchListPost,
+} from './model/services/fetchListPost/fetchListPost';

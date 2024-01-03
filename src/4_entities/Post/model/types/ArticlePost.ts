@@ -1,4 +1,4 @@
-import { StringContent } from '5_shared/types/StringContent';
+import { StringContent } from '5_shared/types/stringContent';
 
 interface ArticlePostType {
     id: number;

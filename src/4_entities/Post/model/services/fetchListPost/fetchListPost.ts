@@ -1,10 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
+import { RequestParams } from '5_shared/types/requestData';
+import { setQueryParams } from '5_shared/libs/helpers/editQueryParams';
+import {
+    getListPostPage,
+    getListPostPerPage,
+    getListSelectedCategories,
+} from '../../selectors/listPost';
 import { ArticlePostType } from '../../types/ArticlePost';
-import { getListPostPerPage } from '../../selectors/listPost';
 
 interface FetchListPostProps {
-    page?: number;
+    replaceData?: boolean;
+    setHasMore?: boolean;
 }
 
 export const fetchListPost = createAsyncThunk<
@@ -20,17 +27,24 @@ ThunkConfig<string>
             rejectWithValue,
         } = thunkApi;
 
-        const {
-            page = 1,
-        } = props;
-
+        const page: number | undefined = getListPostPage(getState());
         const perPage: number | undefined = getListPostPerPage(getState());
+        const activeCategories: number[] | undefined = getListSelectedCategories(getState());
 
         try {
-            const params = {
-                page,
-                perPage,
-            };
+            const params: RequestParams = {};
+
+            if (page) {
+                params.page = page;
+            }
+
+            if (perPage) {
+                params.perPage = perPage;
+            }
+
+            if (activeCategories?.length) {
+                params.categories = activeCategories.join(',');
+            }
 
             const response = await extra.api.get<ArticlePostType[]>(
                 '/posts/',
@@ -44,6 +58,8 @@ ThunkConfig<string>
             }
 
             console.log(response);
+
+            setQueryParams(params);
 
             return JSON.stringify(response);
         } catch (e) {

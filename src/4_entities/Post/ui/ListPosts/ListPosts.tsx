@@ -24,6 +24,7 @@ import { GridPosts } from '../GridPosts/GridPosts';
 import { ArticlePostType } from '../../model/types/ArticlePost';
 import { initListPostPage } from '../../model/services/initListPostPage/initListPostPage';
 import { fetchNextListPostPage } from '../../model/services/fetchNextListPostPage/fetchNextListPostPage';
+import {useSearchParams} from "react-router-dom";
 
 interface ListPostsProps {
     isActive?: boolean;
@@ -39,6 +40,7 @@ export const ListPosts = (props: ListPostsProps) => {
         isActive,
         className,
     } = props;
+    const [searchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const data: ArticlePostType[] = useSelector(getListPost.selectAll);
     const isLoading: boolean | undefined = useSelector(getListPostIsLoading);
@@ -46,7 +48,7 @@ export const ListPosts = (props: ListPostsProps) => {
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
-        dispatch(initListPostPage());
+        dispatch(initListPostPage(searchParams));
     }, []);
 
     const loadNextPage = useCallback(() => {

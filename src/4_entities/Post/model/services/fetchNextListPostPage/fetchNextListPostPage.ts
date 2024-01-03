@@ -26,9 +26,7 @@ ThunkConfig<string>
 
         if (hasMore && !isLoading && page) {
             dispatch(listPostActions.setPage(page + 1));
-            dispatch(fetchListPost({
-                page: page + 1,
-            }));
+            dispatch(fetchListPost({}));
         }
     },
 );

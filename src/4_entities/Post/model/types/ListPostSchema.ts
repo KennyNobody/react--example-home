@@ -7,5 +7,6 @@ export interface ListPostSchema extends EntityState<ArticlePostType> {
     page: number;
     perPage?: number;
     hasMore: boolean;
+    categories: number[];
     _inited: boolean;
 }
