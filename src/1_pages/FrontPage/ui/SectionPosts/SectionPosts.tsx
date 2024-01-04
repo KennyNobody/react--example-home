@@ -9,6 +9,8 @@ import { Toolbar } from '5_shared/ui/Toolbar';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import cls from './SectionPosts.module.scss';
+import {Link} from "react-router-dom";
+import {RouterPath} from "5_shared/config/router/routerConfig";
 
 interface SectionPostsProps {
     className?: string
@@ -39,11 +41,11 @@ export const SectionPosts = (props: SectionPostsProps) => {
                     <div className={classNames(grid['grid__col-2'])} />
                     <div className={classNames(grid['grid__col-2'])}>
                         <Toolbar>
-                            <a
-                                href="/#/"
+                            <Link
+                                to={RouterPath.list}
                             >
                                 Все заметки
-                            </a>
+                            </Link>
                         </Toolbar>
                     </div>
                 </div>

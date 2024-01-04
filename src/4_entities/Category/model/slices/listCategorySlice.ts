@@ -18,7 +18,7 @@ const listCategoryAdapter = createEntityAdapter<ArticleCategoryType>({
 });
 
 export const getListCategory = listCategoryAdapter.getSelectors<StateSchema>(
-    (state) => state.listCategory || listCategoryAdapter.getInitialState(),
+    (state) => state.category?.list || listCategoryAdapter.getInitialState(),
 );
 
 const initialState: ListCategorySchema = {

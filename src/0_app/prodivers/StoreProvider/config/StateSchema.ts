@@ -8,14 +8,14 @@ import {
 import { AxiosInstance } from 'axios';
 import {
     PostSchema,
-    ListPostSchema,
-    DetailPostSchema,
 } from '4_entities/Post';
-import { ListCategorySchema } from '4_entities/Category';
+import {
+    CategorySchema,
+} from '4_entities/Category';
 
 export interface StateSchema {
     post?: PostSchema;
-    listCategory?: ListCategorySchema;
+    category?: CategorySchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

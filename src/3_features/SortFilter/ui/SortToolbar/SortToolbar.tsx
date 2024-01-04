@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 import {
     ListCategory,
     getListCategory,
+    categoryReducer,
     initListCategory,
-    listCategoryReducer,
     ArticleCategoryType,
     getListCategoryIsLoading,
 } from '4_entities/Category';
@@ -30,7 +30,7 @@ interface SortToolbarProps {
 }
 
 const reducers: ReducersList = {
-    listCategory: listCategoryReducer,
+    category: categoryReducer,
 };
 
 export const SortToolbar = (props: SortToolbarProps) => {

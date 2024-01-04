@@ -7,6 +7,14 @@ export {
 } from './model/types/ListCategorySchema';
 
 export {
+    CategorySchema,
+} from './model/types';
+
+export {
+    categoryReducer,
+} from './model/slices';
+
+export {
     ListCategory,
 } from './ui/ListCategory/ListCategory';
 
