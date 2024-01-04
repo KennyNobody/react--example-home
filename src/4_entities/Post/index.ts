@@ -44,3 +44,7 @@ export {
 export {
     fetchListPost,
 } from './model/services/fetchListPost/fetchListPost';
+
+export {
+    PostSchema,
+} from './model/types';

@@ -7,15 +7,14 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import {
+    PostSchema,
     ListPostSchema,
     DetailPostSchema,
 } from '4_entities/Post';
 import { ListCategorySchema } from '4_entities/Category';
 
 export interface StateSchema {
-    listPost?: ListPostSchema;
-    detailPost?: DetailPostSchema;
-
+    post?: PostSchema;
     listCategory?: ListCategorySchema;
 }
 

@@ -16,7 +16,7 @@ const listPostAdapter = createEntityAdapter<ArticlePostType>({
 });
 
 export const getListPost = listPostAdapter.getSelectors<StateSchema>(
-    (state) => state.listPost || listPostAdapter.getInitialState(),
+    (state) => state.post?.list || listPostAdapter.getInitialState(),
 );
 
 const initialState: ListPostSchema = {

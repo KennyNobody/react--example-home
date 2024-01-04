@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import CopyPlugin from 'copy-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildMode, BuildOptions } from './types/config';
@@ -19,6 +20,14 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
             __API__: JSON.stringify(options.apiUrl),
             __IS_DEV__: JSON.stringify(options.mode === BuildMode.DEV),
             __PROJECT__: JSON.stringify(options.project),
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: paths.locales,
+                    to: paths.buildLocales,
+                },
+            ],
         }),
     ];
 

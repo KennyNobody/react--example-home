@@ -9,16 +9,16 @@ import { SectionPhoto } from '../SectionPhoto/SectionPhoto';
 function FrontPage() {
     return (
         <Main className={cls.page}>
-            <SectionDev
-                className={
-                    classNames(cls.section)
-                }
-            />
-            <SectionPhoto
-                className={
-                    classNames(cls.section)
-                }
-            />
+            {/* <SectionDev */}
+            {/*     className={ */}
+            {/*         classNames(cls.section) */}
+            {/*     } */}
+            {/* /> */}
+            {/* <SectionPhoto */}
+            {/*     className={ */}
+            {/*         classNames(cls.section) */}
+            {/*     } */}
+            {/* /> */}
             <SectionPosts />
         </Main>
     );

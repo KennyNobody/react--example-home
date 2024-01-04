@@ -11,9 +11,9 @@ import {
     DynamicModuleLoader,
 } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import cls from './DetailPost.module.scss';
-import { detailPostReducer } from '../../model/slices/detailPostSlice';
-import { fetchPostBySlug } from '../../model/services/fetchPostBySlug/fetchPostBySlug';
+import { postReducer } from '../../model/slices';
 import { ArticlePostType } from '../../model/types/ArticlePost';
+import { fetchPostBySlug } from '../../model/services/fetchPostBySlug/fetchPostBySlug';
 import { getDetailPostData, getDetailPostIsLoading } from '../../model/selectors/detailPost';
 
 interface DetailPostProps {
@@ -22,7 +22,7 @@ interface DetailPostProps {
 }
 
 const reducers: ReducersList = {
-    detailPost: detailPostReducer,
+    post: postReducer,
 };
 
 export const DetailPost = memo((props: DetailPostProps) => {

@@ -1,10 +1,12 @@
 import {
     useRef,
     useEffect,
-    MutableRefObject, useCallback,
+    useCallback,
+    MutableRefObject,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
     ReducersList,
@@ -18,13 +20,12 @@ import {
 } from '../../model/selectors/listPost';
 import {
     getListPost,
-    listPostReducer,
 } from '../../model/slices/listPostSlice';
+import { postReducer } from '../../model/slices';
 import { GridPosts } from '../GridPosts/GridPosts';
 import { ArticlePostType } from '../../model/types/ArticlePost';
 import { initListPostPage } from '../../model/services/initListPostPage/initListPostPage';
 import { fetchNextListPostPage } from '../../model/services/fetchNextListPostPage/fetchNextListPostPage';
-import {useSearchParams} from "react-router-dom";
 
 interface ListPostsProps {
     isActive?: boolean;
@@ -32,7 +33,7 @@ interface ListPostsProps {
 }
 
 const reducers: ReducersList = {
-    listPost: listPostReducer,
+    post: postReducer,
 };
 
 export const ListPosts = (props: ListPostsProps) => {
