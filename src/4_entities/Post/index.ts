@@ -6,7 +6,6 @@ export type { DetailPostSchema } from './model/types/DetailPostSchema';
 
 export {
     detailPostSlice,
-    detailPostReducer,
     detailPostActions,
 } from './model/slices/detailPostSlice';
 
@@ -29,12 +28,8 @@ export {
 } from './model/types/ListPostSchema';
 
 export {
-    ListPosts,
-} from './ui/ListPosts/ListPosts';
-
-export {
+    getListPost,
     listPostActions,
-    listPostReducer,
 } from './model/slices/listPostSlice';
 
 export {
@@ -48,3 +43,20 @@ export {
 export {
     PostSchema,
 } from './model/types';
+
+export {
+    getListPostPage,
+    getListPostIsLoading,
+} from './model/selectors/listPost';
+
+export {
+    initListPostPage,
+} from './model/services/initListPostPage/initListPostPage';
+
+export {
+    fetchNextListPostPage,
+} from './model/services/fetchNextListPostPage/fetchNextListPostPage';
+
+export {
+    postReducer,
+} from './model/slices';

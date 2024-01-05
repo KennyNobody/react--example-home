@@ -12,8 +12,10 @@ import {
 import {
     CategorySchema,
 } from '4_entities/Category';
+import { rtkApi } from '5_shared/api/rtkApi';
 
 export interface StateSchema {
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     post?: PostSchema;
     category?: CategorySchema;
 }

@@ -7,28 +7,25 @@ import {
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import {
+    GridPosts,
+    getListPost,
+    postReducer,
+    getListPostPage,
+    ArticlePostType,
+    initListPostPage,
+    getListPostIsLoading,
+    fetchNextListPostPage,
+} from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
     ReducersList,
     DynamicModuleLoader,
 } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
-import cls from './ListPosts.module.scss';
-import {
-    getListPostPage,
-    getListPostIsLoading,
-} from '../../model/selectors/listPost';
-import {
-    getListPost,
-} from '../../model/slices/listPostSlice';
-import { postReducer } from '../../model/slices';
-import { GridPosts } from '../GridPosts/GridPosts';
-import { ArticlePostType } from '../../model/types/ArticlePost';
-import { initListPostPage } from '../../model/services/initListPostPage/initListPostPage';
-import { fetchNextListPostPage } from '../../model/services/fetchNextListPostPage/fetchNextListPostPage';
+import cls from './PostInfiniteList.module.scss';
 
 interface ListPostsProps {
-    isActive?: boolean;
     className?: string;
 }
 
@@ -36,9 +33,8 @@ const reducers: ReducersList = {
     post: postReducer,
 };
 
-export const ListPosts = (props: ListPostsProps) => {
+export const PostInfiniteList = (props: ListPostsProps) => {
     const {
-        isActive,
         className,
     } = props;
     const [searchParams] = useSearchParams();
@@ -56,12 +52,10 @@ export const ListPosts = (props: ListPostsProps) => {
         dispatch(fetchNextListPostPage());
     }, [dispatch]);
 
-    if (isActive) {
-        useInfiniteScroll({
-            triggerRef,
-            callback: loadNextPage,
-        });
-    }
+    useInfiniteScroll({
+        triggerRef,
+        callback: loadNextPage,
+    });
 
     return (
         <DynamicModuleLoader
@@ -78,9 +72,7 @@ export const ListPosts = (props: ListPostsProps) => {
                     showSkeleton={page === 1 && isLoading}
                 />
             </div>
-            {
-                isActive && <div ref={triggerRef} />
-            }
+            <div ref={triggerRef} />
         </DynamicModuleLoader>
     );
 };

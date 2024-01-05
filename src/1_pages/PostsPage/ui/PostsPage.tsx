@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { SortToolbar } from '3_features/SortFilter';
-import { ListPosts } from '4_entities/Post';
 import {
     Title,
     TitleModeType,
@@ -9,6 +8,7 @@ import {
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import cls from './PostsPage.module.scss';
+import {PostInfiniteList} from "3_features/PostInfiniteList";
 
 function PostsPage() {
     return (
@@ -32,7 +32,7 @@ function PostsPage() {
                         />
                     </div>
                 </div>
-                <ListPosts isActive />
+                <PostInfiniteList />
             </Container>
         </div>
     );

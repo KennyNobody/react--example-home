@@ -1,16 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import {
     Title,
     TitleModeType,
 } from '5_shared/ui/Title/Title';
-import { ListPosts } from '4_entities/Post';
 import { Toolbar } from '5_shared/ui/Toolbar';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
+import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './SectionPosts.module.scss';
-import {Link} from "react-router-dom";
-import {RouterPath} from "5_shared/config/router/routerConfig";
 
 interface SectionPostsProps {
     className?: string
@@ -36,7 +35,7 @@ export const SectionPosts = (props: SectionPostsProps) => {
                         </Toolbar>
                     </div>
                 </div>
-                <ListPosts />
+                POSTS
                 <div className={classNames(grid.grid)}>
                     <div className={classNames(grid['grid__col-2'])} />
                     <div className={classNames(grid['grid__col-2'])}>
