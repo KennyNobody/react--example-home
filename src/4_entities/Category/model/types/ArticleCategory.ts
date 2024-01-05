@@ -6,5 +6,5 @@ interface ArticleCategoryType {
 }
 
 export {
-    ArticleCategoryType,
+    type ArticleCategoryType,
 };

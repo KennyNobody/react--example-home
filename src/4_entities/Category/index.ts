@@ -1,13 +1,13 @@
 export {
-    ArticleCategoryType,
+    type ArticleCategoryType,
 } from './model/types/ArticleCategory';
 
 export {
-    ListCategorySchema,
+    type ListCategorySchema,
 } from './model/types/ListCategorySchema';
 
 export {
-    CategorySchema,
+    type CategorySchema,
 } from './model/types';
 
 export {

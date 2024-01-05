@@ -4,5 +4,5 @@ interface ReducerSimpleAction {
 }
 
 export {
-    ReducerSimpleAction,
+    type ReducerSimpleAction,
 };

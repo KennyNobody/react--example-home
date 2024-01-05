@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import CopyPlugin from 'copy-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 import { BuildMode, BuildOptions } from './types/config';
 
 export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstance[] {
@@ -28,6 +29,10 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
                     to: paths.buildLocales,
                 },
             ],
+        }),
+        new CircularDependencyPlugin({
+            exclude: /a\.js|node_modules/,
+            failOnError: true,
         }),
     ];
 

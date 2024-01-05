@@ -9,6 +9,7 @@
       "module": "ESNext",
       "moduleResolution": "node",
       "noImplicitAny": false,
+      "isolatedModules": true,
       "outDir": "./dist/",
       "paths": {
         "*": [

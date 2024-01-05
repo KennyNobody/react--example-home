@@ -3,5 +3,5 @@ interface StringContent {
 }
 
 export {
-    StringContent,
+    type StringContent,
 };

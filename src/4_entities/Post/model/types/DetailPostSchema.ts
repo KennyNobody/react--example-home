@@ -7,5 +7,5 @@ interface DetailPostSchema {
 }
 
 export {
-    DetailPostSchema,
+    type DetailPostSchema,
 };

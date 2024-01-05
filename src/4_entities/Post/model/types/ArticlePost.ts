@@ -11,5 +11,5 @@ interface ArticlePostType {
 }
 
 export {
-    ArticlePostType,
+    type ArticlePostType,
 };

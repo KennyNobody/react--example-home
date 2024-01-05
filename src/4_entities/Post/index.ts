@@ -20,11 +20,11 @@ export {
 } from './ui/GridPosts/GridPosts';
 
 export {
-    ArticlePostType,
+    type ArticlePostType,
 } from './model/types/ArticlePost';
 
 export {
-    ListPostSchema,
+    type ListPostSchema,
 } from './model/types/ListPostSchema';
 
 export {
@@ -41,7 +41,7 @@ export {
 } from './model/services/fetchListPost/fetchListPost';
 
 export {
-    PostSchema,
+    type PostSchema,
 } from './model/types';
 
 export {
