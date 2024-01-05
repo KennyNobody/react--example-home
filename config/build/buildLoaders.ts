@@ -1,18 +1,16 @@
 import webpack from 'webpack';
 import { BuildMode, BuildOptions } from './types/config';
 import { buildStyleLoader } from './loaders/buildStyleLoader';
+import {buildBabelLoader} from "./loaders/buildBabelLoader";
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-    const tsLoader: webpack.RuleSetRule = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-    };
-
     const svgLoader: webpack.RuleSetRule = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     };
+
+    const nativeCodeBabelLoader: webpack.RuleSetRule = buildBabelLoader({ ...options, isTSX: false });
+    const tsCodeBabelLoader: webpack.RuleSetRule = buildBabelLoader({ ...options, isTSX: true });
 
     const imageLoader: webpack.RuleSetRule = {
         test: /\.(png|jpg|jpeg|gif)$/i,
@@ -21,22 +19,11 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     const styleLoader: webpack.RuleSetRule = buildStyleLoader(options.mode === BuildMode.DEV);
 
-    const babelLoader: webpack.RuleSetRule = {
-        test: /\.(js|jsx|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-            },
-        },
-    };
-
     return [
         imageLoader,
         svgLoader,
-        babelLoader,
-        tsLoader,
+        nativeCodeBabelLoader,
+        tsCodeBabelLoader,
         styleLoader,
     ];
 }
