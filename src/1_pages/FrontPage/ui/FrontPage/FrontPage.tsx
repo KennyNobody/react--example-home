@@ -9,7 +9,7 @@ import { SectionPhoto } from '../SectionPhoto/SectionPhoto';
 
 function FrontPage() {
     return (
-        <Main className={cls.page}>
+        <Main className={cls.page} data-test>
             <Stack>
                 <SectionDev />
                 <SectionPhoto />
