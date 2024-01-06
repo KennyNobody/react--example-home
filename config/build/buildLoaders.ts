@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import { BuildMode, BuildOptions } from './types/config';
 import { buildStyleLoader } from './loaders/buildStyleLoader';
-import {buildBabelLoader} from "./loaders/buildBabelLoader";
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const svgLoader: webpack.RuleSetRule = {
