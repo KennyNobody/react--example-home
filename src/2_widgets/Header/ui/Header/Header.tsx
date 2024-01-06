@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
-import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import { Nav } from '../Nav/Nav';
 import { Head } from '../Head/Head';
 import { Name } from '../Name/Name';

@@ -9,7 +9,6 @@ import { ServerResponseHeaders } from '5_shared/types/requestData';
 import { ArticlePostType } from '../types/ArticlePost';
 import { ListPostSchema } from '../types/ListPostSchema';
 import { fetchListPost } from '../services/fetchListPost/fetchListPost';
-import {ReducerSimpleAction} from "5_shared/types/baseTypes";
 
 const listPostAdapter = createEntityAdapter<ArticlePostType>({
     selectId: (article) => article.id,
@@ -104,6 +103,7 @@ const listPostSlice = createSlice({
             })
             .addCase(fetchListPost.rejected, (state, action) => {
                 state.isLoading = false;
+                // @ts-ignore
                 state.errors = action.payload;
             });
     },

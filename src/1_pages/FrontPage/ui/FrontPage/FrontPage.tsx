@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Main } from '5_shared/ui/Main';
 import { Stack } from '5_shared/ui/Stack';
 import cls from './FrontPage.module.scss';

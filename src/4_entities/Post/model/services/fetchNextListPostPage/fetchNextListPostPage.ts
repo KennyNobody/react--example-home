@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import {
-    getListPostPerPage,
+    getListPostPage,
     getListPostHasMore,
-    getListPostIsLoading, getListPostPage,
+    getListPostIsLoading,
 } from '../../selectors/listPost';
 import { listPostActions } from '../../slices/listPostSlice';
 import { fetchListPost } from '../fetchListPost/fetchListPost';

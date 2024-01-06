@@ -4,9 +4,9 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { $api } from '5_shared/api/api';
+import { rtkApi } from '5_shared/api/rtkApi';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import {rtkApi} from "5_shared/api/rtkApi";
 
 export function createReduxStore(
     initialState?: StateSchema,

@@ -1,4 +1,4 @@
-import '0_app/styles/index.scss';
+import '@/0_app/styles/index.scss';
 import { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 

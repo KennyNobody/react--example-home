@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { SortToolbar } from '3_features/SortFilter';
+import { PostInfiniteList } from "3_features/PostInfiniteList";
 import {
     Title,
     TitleModeType,
@@ -8,7 +9,6 @@ import {
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import cls from './PostsPage.module.scss';
-import {PostInfiniteList} from "3_features/PostInfiniteList";
 
 function PostsPage() {
     return (
