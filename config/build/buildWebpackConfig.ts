@@ -25,5 +25,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         devtool: mode === BuildMode.DEV ? 'inline-source-map' : undefined,
         devServer: mode === BuildMode.DEV ? buildDevServer(options) : undefined,
         target: project === 'server' ? 'node' : 'web',
+        // externals: {
+        //     express: "require('express')",
+        // },
     };
 }

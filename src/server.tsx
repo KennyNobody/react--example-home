@@ -8,10 +8,11 @@ import express from 'express';
 import App from '0_app/App';
 
 const app = express();
+const staticPath = path.join(__dirname, 'build');
 
 app.get('/', (req, res) => {
     const appContent = ReactDOMServer.renderToString(<App />);
-    const indexFile = path.resolve('./build/index.html');
+    const indexFile = path.join(staticPath, 'index.html');
 
     fs.readFile(indexFile, 'utf8', (err, data) => {
         if (err) {
@@ -19,15 +20,13 @@ app.get('/', (req, res) => {
             return res.status(500).send('Failed to load the app.');
         }
 
-        console.log(appContent);
-
         return res.send(
             data.replace('<div id="root"></div>', `<div id="root">${appContent}</div>`),
         );
     });
 });
 
-app.use(express.static('./build'));
+app.use(express.static(staticPath));
 
 app.listen(8080, () => {
     console.log('Server is listening on port 8080');
