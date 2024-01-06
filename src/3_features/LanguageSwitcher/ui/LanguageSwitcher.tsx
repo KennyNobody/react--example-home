@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import cls from './LanguageSwitcher.module.scss';
@@ -6,7 +7,7 @@ interface LanguageSwitcherProps {
     className?: string
 }
 
-export function LanguageSwitcher(props: LanguageSwitcherProps) {
+export const LanguageSwitcher = memo((props: LanguageSwitcherProps) => {
     const { className } = props;
     const { i18n } = useTranslation();
 
@@ -37,4 +38,4 @@ export function LanguageSwitcher(props: LanguageSwitcherProps) {
             </label>
         </div>
     );
-}
+});
