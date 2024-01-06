@@ -12,10 +12,11 @@ export interface BuildPaths {
     buildLocales: string;
 }
 
-export interface BuildEnv {
-    mode: BuildMode;
-    port: number;
-    apiUrl: string;
+export enum BuildProject {
+    FRONTEND = 'frontend',
+    STORYBOOK = 'storybook',
+    JEST = 'jest',
+    SERVER = 'server',
 }
 
 export interface BuildOptions {
@@ -23,5 +24,12 @@ export interface BuildOptions {
     paths: BuildPaths;
     port: number;
     apiUrl: string;
-    project: 'frontend' | 'storybook' | 'jest';
+    project: BuildProject;
+}
+
+export interface BuildEnv {
+    mode: BuildMode;
+    port: number;
+    apiUrl: string;
+    project: BuildProject;
 }
