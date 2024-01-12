@@ -16,7 +16,6 @@ export enum BuildProject {
     FRONTEND = 'frontend',
     STORYBOOK = 'storybook',
     JEST = 'jest',
-    SERVER = 'server',
 }
 
 export interface BuildOptions {
