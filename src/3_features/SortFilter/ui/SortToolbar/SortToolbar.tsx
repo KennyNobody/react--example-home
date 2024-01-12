@@ -1,16 +1,13 @@
 import {
-    useEffect,
     useCallback,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     ListCategory,
-    getListCategory,
     categoryReducer,
-    initListCategory,
     ArticleCategoryType,
-    getListCategoryIsLoading,
+    useFetchCategoryList,
 } from '4_entities/Category';
 import {
     fetchListPost,
@@ -37,13 +34,12 @@ export const SortToolbar = (props: SortToolbarProps) => {
     const { className } = props;
 
     const dispatch = useAppDispatch();
-    const data: ArticleCategoryType[] = useSelector(getListCategory.selectAll);
     const activeCategories: number[] | undefined = useSelector(getListSelectedCategories);
-    const isLoading: boolean | undefined = useSelector(getListCategoryIsLoading);
 
-    useEffect(() => {
-        dispatch(initListCategory());
-    }, [dispatch]);
+    const {
+        data,
+        isLoading,
+    } = useFetchCategoryList(10);
 
     const fetchData = useCallback(() => {
         dispatch(listPostActions.setPage(1));
@@ -68,7 +64,6 @@ export const SortToolbar = (props: SortToolbarProps) => {
             <div className={classNames(cls.block, className)}>
                 <ListCategory
                     data={data}
-                    showSkeleton={isLoading}
                     selectEvent={changeCategory}
                     selectedItems={activeCategories}
                 />

@@ -5,16 +5,14 @@ import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
 interface ListCategoryProps {
     className?: string;
-    data: ArticleCategoryType[];
-    showSkeleton?: boolean;
-    selectEvent?: (ArticleCategoryType) => void;
     selectedItems?: number[];
+    data: ArticleCategoryType[] | undefined;
+    selectEvent?: (ArticleCategoryType) => void;
 }
 
 export const ListCategory = (props: ListCategoryProps) => {
     const {
         data,
-        showSkeleton,
         className,
         selectEvent,
         selectedItems,
@@ -35,7 +33,9 @@ export const ListCategory = (props: ListCategoryProps) => {
     const content = (
         <>
             {
-                data.map((item: ArticleCategoryType) => (
+                data
+                && data?.length > 0
+                && data.map((item: ArticleCategoryType) => (
                     <ArticleCategory
                         data={item}
                         key={item.id}
@@ -49,7 +49,7 @@ export const ListCategory = (props: ListCategoryProps) => {
 
     return (
         <div className={classNames(cls.nav, className)}>
-            { showSkeleton ? skeleton : content }
+            { data ? content : skeleton }
         </div>
     );
 };

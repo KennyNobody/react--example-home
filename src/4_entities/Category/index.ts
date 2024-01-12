@@ -25,9 +25,6 @@ export {
 } from './model/slices/listCategorySlice';
 
 export {
-    initListCategory,
-} from './model/services/initListCategory/initListCategory';
-
-export {
-    getListCategoryIsLoading,
-} from './model/selectors/listCategory';
+    categoryApi,
+    useFetchCategoryList,
+} from './api/categoryApi';

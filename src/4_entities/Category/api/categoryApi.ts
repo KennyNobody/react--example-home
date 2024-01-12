@@ -2,7 +2,7 @@ import { rtkApi } from '5_shared/api/rtkApi';
 
 const categoryApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        getCategoryList: build.query({
+        fetchCategoryList: build.query({
             query: (limit) => ({
                 url: '/categories/',
                 params: {
@@ -14,8 +14,9 @@ const categoryApi = rtkApi.injectEndpoints({
     overrideExisting: false,
 });
 
-const useGetCategoryList = categoryApi.useGetCategoryListQuery;
+const useFetchCategoryList = categoryApi.useFetchCategoryListQuery;
 
 export {
-    useGetCategoryList,
+    categoryApi,
+    useFetchCategoryList,
 };

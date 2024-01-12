@@ -11,7 +11,7 @@ import {
 import {
     ListCategorySchema,
 } from '../types/ListCategorySchema';
-import { fetchListCategory } from '../services/fetchListCategory/fetchListCategory';
+import { categoryApi } from '../../api/categoryApi';
 
 const listCategoryAdapter = createEntityAdapter<ArticleCategoryType>({
     selectId: (article) => article.id,
@@ -26,40 +26,30 @@ const initialState: ListCategorySchema = {
     errors: undefined,
     ids: [],
     entities: {},
-    _inited: false,
 };
 
 const listCategorySlice = createSlice({
     name: 'listCategorySlice',
     initialState: listCategoryAdapter.getInitialState<ListCategorySchema>(initialState),
-    reducers: {
-        initState: (state) => {
-            state._inited = true;
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
+        const request = categoryApi.endpoints.fetchCategoryList;
+
         builder
-            .addCase(fetchListCategory.pending, (state) => {
+            .addMatcher(request.matchPending, (state) => {
                 state.errors = undefined;
                 state.isLoading = true;
             })
-            .addCase(fetchListCategory.fulfilled, (
+            .addMatcher(request.matchFulfilled, (
                 state,
-                action: PayloadAction<string>,
+                action: PayloadAction<ArticleCategoryType[]>,
             ) => {
                 state.isLoading = false;
-
-                let response: AxiosResponse<ArticleCategoryType[]>;
-
-                if (action?.payload) {
-                    response = JSON.parse(action.payload);
-
-                    listCategoryAdapter.addMany(state, response.data);
-                }
+                listCategoryAdapter.addMany(state, action.payload);
             })
-            .addCase(fetchListCategory.rejected, (state, action) => {
+            .addMatcher(request.matchRejected, (state, action) => {
                 state.isLoading = false;
-                state.errors = action.payload;
+                state.errors = action.error.message;
             });
     },
 });
