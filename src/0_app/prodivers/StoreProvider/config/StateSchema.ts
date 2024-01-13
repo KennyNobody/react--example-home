@@ -9,15 +9,11 @@ import { AxiosInstance } from 'axios';
 import {
     PostSchema,
 } from '4_entities/Post';
-import {
-    CategorySchema,
-} from '4_entities/Category';
 import { rtkApi } from '5_shared/api/rtkApi';
 
 export interface StateSchema {
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     post?: PostSchema;
-    category?: CategorySchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

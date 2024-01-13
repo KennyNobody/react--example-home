@@ -33,6 +33,8 @@ export {
 } from './model/slices/listPostSlice';
 
 export {
+    getListPostPage,
+    getListPostIsLoading,
     getListSelectedCategories,
 } from './model/selectors/listPost';
 
@@ -45,18 +47,14 @@ export {
 } from './model/types';
 
 export {
-    getListPostPage,
-    getListPostIsLoading,
-} from './model/selectors/listPost';
-
-export {
-    initListPostPage,
-} from './model/services/initListPostPage/initListPostPage';
-
-export {
     fetchNextListPostPage,
 } from './model/services/fetchNextListPostPage/fetchNextListPostPage';
 
 export {
     postReducer,
 } from './model/slices';
+
+export {
+    postApi,
+    useFetchPostList,
+} from './api/postApi';

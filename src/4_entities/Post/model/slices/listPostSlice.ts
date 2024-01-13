@@ -3,12 +3,11 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
-import { AxiosResponse } from 'axios';
 import { StateSchema } from '0_app/prodivers/StoreProvider';
-import { ServerResponseHeaders } from '5_shared/types/requestData';
+import { ServerListResponse } from '5_shared/types/requestData';
+import { postApi } from '../../api/postApi';
 import { ArticlePostType } from '../types/ArticlePost';
 import { ListPostSchema } from '../types/ListPostSchema';
-import { fetchListPost } from '../services/fetchListPost/fetchListPost';
 
 const listPostAdapter = createEntityAdapter<ArticlePostType>({
     selectId: (article) => article.id,
@@ -66,42 +65,40 @@ const listPostSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
+        const fetchingInstance = postApi.endpoints.fetchPostList;
+
         builder
-            .addCase(fetchListPost.pending, (state, action) => {
+            .addMatcher(fetchingInstance.matchPending, (state, action) => {
                 state.errors = undefined;
                 state.isLoading = true;
 
-                if (action?.meta?.arg?.replaceData) {
-                    listPostAdapter.removeAll(state);
-                }
+                const { replaceData } = action.meta.arg.originalArgs;
+
+                if (replaceData) listPostAdapter.removeAll(state);
             })
-            .addCase(fetchListPost.fulfilled, (
-                state,
-                action,
-            ) => {
+            .addMatcher(fetchingInstance.matchFulfilled, (state, action) => {
+                // @ts-ignore
+                const headers = action?.meta?.baseQueryMeta?.response?.headers;
+                const { replaceData } = action.meta.arg.originalArgs;
+                const totalPages = headers.get(ServerListResponse.TOTAL_PAGES);
+
+                if (replaceData) {
+                    listPostAdapter.setAll(state, action.payload);
+                } else {
+                    listPostAdapter.addMany(state, action.payload);
+                }
+
+                if (totalPages <= state.page) {
+                    console.log('-------');
+                    console.log('Total: ', totalPages);
+                    console.log('state.page: ', state.page);
+                    console.log('-------');
+                    state.hasMore = false;
+                }
+
                 state.isLoading = false;
-
-                let response: AxiosResponse<ArticlePostType[]>;
-
-                if (action?.payload) {
-                    response = JSON.parse(action.payload);
-
-                    if (action?.meta?.arg?.replaceData) {
-                        listPostAdapter.setAll(state, response.data);
-                    } else {
-                        listPostAdapter.addMany(state, response.data);
-                    }
-
-                    if (action?.meta?.arg?.setHasMore) {
-                        state.hasMore = true;
-                    }
-
-                    if (response.headers[ServerResponseHeaders.TOTAL_PAGES] <= state.page) {
-                        state.hasMore = false;
-                    }
-                }
             })
-            .addCase(fetchListPost.rejected, (state, action) => {
+            .addMatcher(fetchingInstance.matchRejected, (state, action) => {
                 state.isLoading = false;
                 // @ts-ignore
                 state.errors = action.payload;

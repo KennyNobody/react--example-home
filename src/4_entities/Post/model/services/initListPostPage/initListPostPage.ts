@@ -11,7 +11,7 @@ void,
 URLSearchParams,
 ThunkConfig<string>
 >(
-    'post/fetchNextListPostPage',
+    'post/initListPostPage',
     async (searchParams, thunkApi) => {
         const {
             dispatch,
@@ -32,9 +32,8 @@ ThunkConfig<string>
                 }
             });
 
-
             dispatch(listPostActions.initState());
-            dispatch(fetchListPost({}));
+            // dispatch(fetchListPost({}));
         }
     },
 );

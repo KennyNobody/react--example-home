@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     ListCategory,
-    categoryReducer,
     ArticleCategoryType,
     useFetchCategoryList,
 } from '4_entities/Category';
@@ -26,10 +25,6 @@ interface SortToolbarProps {
     className?: string
 }
 
-const reducers: ReducersList = {
-    category: categoryReducer,
-};
-
 export const SortToolbar = (props: SortToolbarProps) => {
     const { className } = props;
 
@@ -41,33 +36,29 @@ export const SortToolbar = (props: SortToolbarProps) => {
         isLoading,
     } = useFetchCategoryList(10);
 
-    const fetchData = useCallback(() => {
-        dispatch(listPostActions.setPage(1));
-        dispatch(fetchListPost({
-            replaceData: true,
-            setHasMore: true,
-        }));
-    }, []);
+    // const fetchData = useCallback(() => {
+    //     dispatch(listPostActions.setPage(1));
+    //     dispatch(fetchListPost({
+    //         replaceData: true,
+    //         setHasMore: true,
+    //     }));
+    // }, []);
 
-    const debouncedFetchData = useDebounce(fetchData, 500);
+    // const debouncedFetchData = useDebounce(fetchData, 500);
 
     const changeCategory = useCallback((item: ArticleCategoryType) => {
         dispatch(listPostActions.toggleCategory(item.id));
-        debouncedFetchData();
+        // debouncedFetchData();
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader
-            reducers={reducers}
-            removeAfterUnmount={false}
-        >
-            <div className={classNames(cls.block, className)}>
-                <ListCategory
-                    data={data}
-                    selectEvent={changeCategory}
-                    selectedItems={activeCategories}
-                />
-            </div>
-        </DynamicModuleLoader>
+        <div className={classNames(cls.block, className)}>
+            <ListCategory
+                data={data}
+                selectEvent={changeCategory}
+                selectedItems={activeCategories}
+                showSkeleton={!data && isLoading}
+            />
+        </div>
     );
 };

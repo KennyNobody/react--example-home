@@ -5,6 +5,6 @@ export const getListPostErrors = (state: StateSchema) => state?.post?.list?.erro
 export const getListPostPerPage = (state: StateSchema) => state?.post?.list?.perPage;
 export const getListPostPage = (state: StateSchema) => state?.post?.list?.page;
 export const getListPostHasMore = (state: StateSchema) => state?.post?.list?.hasMore;
-export const getListPostInited = (state: StateSchema) => state?.post?.list?._inited;
 
 export const getListSelectedCategories = (state: StateSchema) => state?.post?.list?.categories;
+export const getListPostInited = (state: StateSchema) => state?.post?.list?._inited;

@@ -8,14 +8,14 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
+    postApi,
     GridPosts,
     getListPost,
     postReducer,
     getListPostPage,
     ArticlePostType,
-    initListPostPage,
     getListPostIsLoading,
-    fetchNextListPostPage,
+    fetchNextListPostPage, listPostActions, fetchListPost,
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
@@ -24,6 +24,8 @@ import {
 } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
 import cls from './PostInfiniteList.module.scss';
+import {getListPostHasMore, getListPostPerPage} from "4_entities/Post/model/selectors/listPost";
+import {initListPostPage} from "4_entities/Post/model/services/initListPostPage/initListPostPage";
 
 interface ListPostsProps {
     className?: string;
@@ -37,18 +39,27 @@ export const PostInfiniteList = (props: ListPostsProps) => {
     const {
         className,
     } = props;
-    const [searchParams] = useSearchParams();
+
     const dispatch = useAppDispatch();
-    const data: ArticlePostType[] = useSelector(getListPost.selectAll);
-    const isLoading: boolean | undefined = useSelector(getListPostIsLoading);
+    const isLoading: boolean = useSelector(getListPostIsLoading) || false;
+    const hasMore: boolean = useSelector(getListPostHasMore) || true;
     const page: number = useSelector(getListPostPage) || 1;
+    const data: ArticlePostType[] = useSelector(getListPost.selectAll);
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
-        dispatch(initListPostPage(searchParams));
+        // dispatch(postApi.endpoints.fetchPostList.initiate({
+        //     page,
+        //     perPage,
+        //     replaceData: false,
+        // }));
+        dispatch(fetchListPost({}));
     }, []);
 
     const loadNextPage = useCallback(() => {
+        // if (hasMore && !isLoading) {
+        //     // dispatch(listPostActions.setPage(page + 1));
+        // }
         dispatch(fetchNextListPostPage());
     }, [dispatch]);
 
@@ -73,6 +84,9 @@ export const PostInfiniteList = (props: ListPostsProps) => {
                 />
             </div>
             <div ref={triggerRef} />
+            <button onClick={loadNextPage}>
+                123
+            </button>
         </DynamicModuleLoader>
     );
 };

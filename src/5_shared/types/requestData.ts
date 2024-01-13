@@ -1,4 +1,4 @@
-export enum ServerResponseHeaders {
+export enum ServerListResponse {
     TOTAL_PAGES = 'x-wp-totalpages',
     TOTAL_ITEMS = 'x-wp-total',
 }
