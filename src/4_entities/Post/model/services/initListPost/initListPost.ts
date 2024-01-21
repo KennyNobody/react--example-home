@@ -6,12 +6,12 @@ import {
 import { listPostActions } from '../../slices/listPostSlice';
 import { fetchListPost } from '../fetchListPost/fetchListPost';
 
-export const initListPostPage = createAsyncThunk<
+export const initListPost = createAsyncThunk<
 void,
 URLSearchParams,
 ThunkConfig<string>
 >(
-    'post/initListPostPage',
+    'post/initListPost',
     async (searchParams, thunkApi) => {
         const {
             dispatch,
@@ -22,7 +22,6 @@ ThunkConfig<string>
 
         if (!isInited) {
             searchParams.forEach((value, key) => {
-
                 if (key === 'perPage' && Number(value)) {
                     dispatch(listPostActions.setPerPage(Number(value)));
                 } else if (key === 'page' && Number(value)) {
@@ -33,7 +32,7 @@ ThunkConfig<string>
             });
 
             dispatch(listPostActions.initState());
-            // dispatch(fetchListPost({}));
+            dispatch(fetchListPost({}));
         }
     },
 );

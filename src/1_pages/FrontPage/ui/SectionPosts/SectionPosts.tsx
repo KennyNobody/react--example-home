@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { PostStaticList } from '3_features/PostStaticList';
 import {
     Title,
     TitleModeType,
@@ -35,7 +36,7 @@ export const SectionPosts = (props: SectionPostsProps) => {
                         </Toolbar>
                     </div>
                 </div>
-                POSTS
+                <PostStaticList />
                 <div className={classNames(grid.grid)}>
                     <div className={classNames(grid['grid__col-2'])} />
                     <div className={classNames(grid['grid__col-2'])}>

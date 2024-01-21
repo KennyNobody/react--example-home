@@ -2,13 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { RequestParams } from '5_shared/types/requestData';
 import { setQueryParams } from '5_shared/libs/helpers/editQueryParams';
-import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
     getListPostPage,
     getListPostPerPage,
     getListSelectedCategories,
 } from '../../selectors/listPost';
-import { ArticlePostType } from '../../types/ArticlePost';
 import { postApi } from '../../../api/postApi';
 
 interface FetchListPostProps {
@@ -16,7 +14,7 @@ interface FetchListPostProps {
     setHasMore?: boolean;
 }
 
-export const fetchListPost = createAsyncThunk<string, FetchListPostProps, ThunkConfig<string>>(
+export const fetchListPost = createAsyncThunk<void, FetchListPostProps, ThunkConfig<string>>(
     'post/fetchListPost',
     async (props, thunkApi) => {
         const {
@@ -28,13 +26,17 @@ export const fetchListPost = createAsyncThunk<string, FetchListPostProps, ThunkC
         const perPage: number | undefined = getListPostPerPage(getState());
         const activeCategories: number[] | undefined = getListSelectedCategories(getState());
 
+        const params: RequestParams = {};
+
+        if (page) params.page = page;
+        if (perPage) params.per_page = perPage;
+        if (activeCategories?.length) params.categories = activeCategories.join(',');
+
         dispatch(postApi.endpoints.fetchPostList.initiate({
-            page,
-            perPage,
-            categories: activeCategories,
+            queryParams: params,
             replaceData: props.replaceData || false,
         }));
 
-        return '123';
+        setQueryParams(params);
     },
 );

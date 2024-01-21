@@ -11,7 +11,7 @@ import {
 import {
     fetchListPost,
     listPostActions,
-    getListSelectedCategories,
+    getListSelectedCategories, initListPost,
 } from '4_entities/Post';
 import { useDebounce } from '5_shared/libs/hooks/useDebounce';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
@@ -36,19 +36,19 @@ export const SortToolbar = (props: SortToolbarProps) => {
         isLoading,
     } = useFetchCategoryList(10);
 
-    // const fetchData = useCallback(() => {
-    //     dispatch(listPostActions.setPage(1));
-    //     dispatch(fetchListPost({
-    //         replaceData: true,
-    //         setHasMore: true,
-    //     }));
-    // }, []);
+    const fetchData = () => {
+        // dispatch(listPostActions.resetState());
+        dispatch(fetchListPost({
+            replaceData: true,
+        }));
+    };
 
-    // const debouncedFetchData = useDebounce(fetchData, 500);
+    const debouncedFetchData = useDebounce(fetchData, 500);
 
     const changeCategory = useCallback((item: ArticleCategoryType) => {
         dispatch(listPostActions.toggleCategory(item.id));
-        // debouncedFetchData();
+        console.log('ОПОП');
+        debouncedFetchData();
     }, [dispatch]);
 
     return (

@@ -51,6 +51,10 @@ export {
 } from './model/services/fetchNextListPostPage/fetchNextListPostPage';
 
 export {
+    fetchListStaticPost,
+} from './model/services/fetchListStaticPost/fetchListStaticPost';
+
+export {
     postReducer,
 } from './model/slices';
 
@@ -58,3 +62,7 @@ export {
     postApi,
     useFetchPostList,
 } from './api/postApi';
+
+export {
+    initListPost,
+} from './model/services/initListPost/initListPost';

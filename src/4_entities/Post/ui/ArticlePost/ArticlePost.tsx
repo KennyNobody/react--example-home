@@ -29,7 +29,18 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 )
             }
         >
-            { data?.title?.rendered }
+            {
+                data?.title?.rendered
+                && (
+                    <h3
+                        className={
+                            classNames(cls.title)
+                        }
+                    >
+                        { data?.title?.rendered }
+                    </h3>
+                )
+            }
         </Link>
     );
 

@@ -4,5 +4,5 @@ export enum ServerListResponse {
 }
 
 export interface RequestParams {
-    [key: string]: string | number;
+    [key: string]: string | number | boolean;
 }

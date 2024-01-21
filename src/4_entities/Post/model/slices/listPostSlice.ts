@@ -63,6 +63,7 @@ const listPostSlice = createSlice({
                 state.categories = arr.filter((num) => num !== action.payload);
             }
         },
+        resetState: () => initialState,
     },
     extraReducers: (builder) => {
         const fetchingInstance = postApi.endpoints.fetchPostList;
@@ -75,6 +76,7 @@ const listPostSlice = createSlice({
                 const { replaceData } = action.meta.arg.originalArgs;
 
                 if (replaceData) listPostAdapter.removeAll(state);
+                console.log(1);
             })
             .addMatcher(fetchingInstance.matchFulfilled, (state, action) => {
                 // @ts-ignore
@@ -88,20 +90,15 @@ const listPostSlice = createSlice({
                     listPostAdapter.addMany(state, action.payload);
                 }
 
-                if (totalPages <= state.page) {
-                    console.log('-------');
-                    console.log('Total: ', totalPages);
-                    console.log('state.page: ', state.page);
-                    console.log('-------');
-                    state.hasMore = false;
-                }
+                if (totalPages <= state.page) state.hasMore = false;
 
                 state.isLoading = false;
+                console.log(2);
             })
-            .addMatcher(fetchingInstance.matchRejected, (state, action) => {
+            .addMatcher(fetchingInstance.matchRejected, (state, action: PayloadAction<any>) => {
                 state.isLoading = false;
-                // @ts-ignore
-                state.errors = action.payload;
+                state.errors = action?.payload?.data?.message;
+                console.log(3);
             });
     },
 });
