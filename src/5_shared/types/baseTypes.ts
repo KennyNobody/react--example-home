@@ -1,7 +1,7 @@
 export enum ContentKeyType {
     DEV = 'dev',
-    PHOTO = 'PHOTO',
-    NOTEBOOK = 'notebook',
+    PHOTO = 'photo',
+    POST = 'post',
 }
 
 export interface BaseResponseType {

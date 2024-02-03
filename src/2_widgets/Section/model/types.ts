@@ -1,3 +1,5 @@
+import { ContentKeyType } from '5_shared/types/baseTypes';
+
 export interface SectionType {
     id: number,
     title: string | null,
@@ -6,4 +8,5 @@ export interface SectionType {
     linkTitle: string | null,
     captionLinkPath: string | null,
     captionLinkTitle: string | null,
+    contentKey: ContentKeyType | null,
 }

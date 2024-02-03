@@ -1,18 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { PostStaticList } from '3_features/PostStaticList';
-import {
-    Title,
-    TitleModeType,
-} from '5_shared/ui/Title/Title';
+import { Title, TitleModeType } from '5_shared/ui/Title/Title';
 import { Toolbar } from '5_shared/ui/Toolbar';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import { RouterPath } from '5_shared/config/router/routerConfig';
+import { LinkTitle } from '5_shared/ui/LinkTitle/LinkTitle';
+import { ContentKeyType } from '5_shared/types/baseTypes';
+import { PostListStatic } from '3_features/PostListStatic';
 import cls from './Section.module.scss';
 import { SectionType } from '../model/types';
-import { LinkTitle } from '5_shared/ui/LinkTitle/LinkTitle';
+
+const SectionFeatures: Record<ContentKeyType, React.ReactNode> = {
+    [ContentKeyType.DEV]: <>DEVListFeature</>,
+    [ContentKeyType.PHOTO]: <>PHOTOListFeature</>,
+    [ContentKeyType.POST]: <PostListStatic />,
+};
 
 interface SectionProps {
     className?: string;
@@ -63,7 +67,7 @@ export const Section = (props: SectionProps) => {
                         </Toolbar>
                     </div>
                 </div>
-                КОНТЕНТ
+                { data?.contentKey && SectionFeatures[data?.contentKey] }
                 <div className={classNames(grid.grid)}>
                     <div className={classNames(grid['grid__col-2'])} />
                     <div className={classNames(grid['grid__col-2'])}>
