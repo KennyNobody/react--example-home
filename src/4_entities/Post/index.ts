@@ -27,14 +27,10 @@ export {
     type ListPostSchema,
 } from './model/types/ListPostSchema';
 
-export {
-    getListPost,
-    listPostActions,
-} from './model/slices/listPostSlice';
+export { listPostActions } from './model/slices/listPostSlice';
 
 export {
     getListPostPage,
-    getListPostIsLoading,
     getListSelectedCategories,
 } from './model/selectors/listPost';
 

@@ -6,10 +6,8 @@ import { useSelector } from 'react-redux';
 import {
     GridPosts,
     postReducer,
-    getListPost,
     ArticlePostType,
-    fetchListStaticPost,
-    getListPostIsLoading,
+    fetchListStaticPost, useFetchPostList,
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
@@ -32,8 +30,10 @@ export const PostStaticList = (props: ListPostsProps) => {
     } = props;
 
     const dispatch = useAppDispatch();
-    const isLoading: boolean = useSelector(getListPostIsLoading) || false;
-    const data: ArticlePostType[] = useSelector(getListPost.selectAll);
+    const {
+        data,
+        isLoading,
+    } = useFetchPostList({});
 
     useEffect(() => {
         dispatch(fetchListStaticPost());
@@ -49,11 +49,11 @@ export const PostStaticList = (props: ListPostsProps) => {
                 }
             >
                 {
-                    data
+                    data?.length
                     && (
                         <GridPosts
-                            data={data.splice(0, 8)}
                             showSkeleton={isLoading}
+                            data={data?.length > 8 ? data.splice(0, 8) : data}
                         />
                     )
                 }

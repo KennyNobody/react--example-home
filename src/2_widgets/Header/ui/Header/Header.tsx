@@ -10,6 +10,7 @@ import { Name } from '../Name/Name';
 import cls from './Header.module.scss';
 import { Avatar } from '../Avatar/Avatar';
 import { Description } from '../Description/Description';
+import {AppData, AppResponseType} from "0_app/types/MainResponseType";
 
 export enum HeaderMode {
     MAIN = 'main',
@@ -19,10 +20,15 @@ export enum HeaderMode {
 interface HeaderProps {
     className?: string;
     mode: HeaderMode;
+    data: AppData,
 }
 
 export function Header(props: HeaderProps) {
-    const { className, mode } = props;
+    const {
+        mode,
+        data,
+        className,
+    } = props;
 
     return (
         <div
@@ -45,20 +51,27 @@ export function Header(props: HeaderProps) {
                                 isMain={mode === HeaderMode.MAIN}
                                 className={classNames(cls.avatar)}
                             />
-                            <Name
-                                isMain={mode === HeaderMode.MAIN}
-                                className={
-                                    classNames(
-                                        cls.name,
-                                        { [cls['name--main']]: mode !== HeaderMode.MAIN },
-                                    )
-                                }
-                            />
+                            {
+                                data?.name
+                                && (
+                                    <Name
+                                        name={data.name}
+                                        nickname={data.nickname}
+                                        isMain={mode === HeaderMode.MAIN}
+                                        className={
+                                            classNames(
+                                                cls.name,
+                                                { [cls['name--main']]: mode !== HeaderMode.MAIN },
+                                            )
+                                        }
+                                    />
+                                )
+                            }
                             <LanguageSwitcher />
                         </Head>
                     </div>
                     <div className={classNames(grid['grid__col-2'])}>
-                        { mode === HeaderMode.MAIN && <Description />}
+                        { mode === HeaderMode.MAIN && <Description data={data} />}
                         { mode === HeaderMode.REGULAR && <Nav />}
                         <Link to="/">Главная</Link>
                         <Link to="/list/">Список</Link>

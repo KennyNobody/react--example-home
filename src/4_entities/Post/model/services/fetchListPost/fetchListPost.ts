@@ -10,8 +10,8 @@ import {
 import { postApi } from '../../../api/postApi';
 
 interface FetchListPostProps {
-    replaceData?: boolean;
     setHasMore?: boolean;
+    resetState?: boolean;
 }
 
 export const fetchListPost = createAsyncThunk<void, FetchListPostProps, ThunkConfig<string>>(
@@ -32,9 +32,8 @@ export const fetchListPost = createAsyncThunk<void, FetchListPostProps, ThunkCon
         if (perPage) params.per_page = perPage;
         if (activeCategories?.length) params.categories = activeCategories.join(',');
 
-        dispatch(postApi.endpoints.fetchPostList.initiate({
-            queryParams: params,
-            replaceData: props.replaceData || false,
+        dispatch(postApi.endpoints.fetchPostList.initiate(params, {
+            forceRefetch: true,
         }));
 
         setQueryParams(params);

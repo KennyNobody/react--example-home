@@ -1,15 +1,16 @@
 import { rtkApi } from '5_shared/api/rtkApi';
-import { RtkQueryParams } from '5_shared/types/baseTypes';
+import { RequestParams } from '5_shared/types/requestData';
 
 const postApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         fetchPostList: build.query({
-            query: (options: RtkQueryParams) => {
+            query: (params: RequestParams) => {
                 return {
                     url: '/posts/',
-                    params: options.queryParams,
+                    params,
                 };
             },
+            providesTags: ['post'],
         }),
     }),
     overrideExisting: false,

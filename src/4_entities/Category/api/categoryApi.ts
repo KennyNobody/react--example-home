@@ -9,6 +9,7 @@ const categoryApi = rtkApi.injectEndpoints({
                     _limit: limit,
                 },
             }),
+            providesTags: ['category'],
         }),
     }),
     overrideExisting: false,

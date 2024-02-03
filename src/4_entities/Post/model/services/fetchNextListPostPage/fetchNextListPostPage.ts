@@ -3,7 +3,6 @@ import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import {
     getListPostPage,
     getListPostHasMore,
-    getListPostIsLoading,
 } from '../../selectors/listPost';
 import { listPostActions } from '../../slices/listPostSlice';
 import { fetchListPost } from '../fetchListPost/fetchListPost';
@@ -21,10 +20,9 @@ ThunkConfig<string>
         } = thunkApi;
 
         const page: number | undefined = getListPostPage(getState());
-        const isLoading: boolean | undefined = getListPostIsLoading(getState());
         const hasMore: boolean | undefined = getListPostHasMore(getState());
 
-        if (hasMore && !isLoading && page) {
+        if (hasMore && page) {
             dispatch(listPostActions.setPage(page + 1));
             dispatch(fetchListPost({}));
         }

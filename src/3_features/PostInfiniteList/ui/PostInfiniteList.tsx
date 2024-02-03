@@ -9,13 +9,11 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
     GridPosts,
-    getListPost,
     postReducer,
     initListPost,
     getListPostPage,
     ArticlePostType,
-    getListPostIsLoading,
-    fetchNextListPostPage,
+    fetchNextListPostPage, useFetchPostList,
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
@@ -40,19 +38,16 @@ export const PostInfiniteList = (props: ListPostsProps) => {
 
     const [urlParams] = useSearchParams();
     const dispatch = useAppDispatch();
-    const isLoading: boolean = useSelector(getListPostIsLoading) || false;
+    const {
+        data,
+        isLoading,
+    } = useFetchPostList({});
     const page: number = useSelector(getListPostPage) || 1;
-    const data: ArticlePostType[] = useSelector(getListPost.selectAll);
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
         dispatch(initListPost(urlParams));
     }, []);
-
-    useEffect(() => {
-        console.log('Вот дата');
-        console.log(data);
-    }, [data]);
 
     const loadNextPage = useCallback(() => {
         dispatch(fetchNextListPostPage());
@@ -78,7 +73,7 @@ export const PostInfiniteList = (props: ListPostsProps) => {
                     showSkeleton={page === 1 && isLoading}
                 />
             </div>
-            {/* <div ref={triggerRef} /> */}
+            <div ref={triggerRef} />
         </DynamicModuleLoader>
     );
 };

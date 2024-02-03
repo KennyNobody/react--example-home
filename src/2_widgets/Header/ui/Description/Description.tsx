@@ -1,21 +1,23 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
+import { AppData } from '0_app/types/MainResponseType';
 import cls from './Description.module.scss';
 
 interface DescriptionProps {
-    className?: string
+    data: AppData;
+    className?: string;
 }
 
 export const Description = memo((props: DescriptionProps) => {
-    const { className } = props;
-
-    const { t } = useTranslation();
+    const {
+        data,
+        className,
+    } = props;
 
     return (
         <div className={classNames(cls.block, className)}>
             <p>
-                { t('headerDescription') }
+                { data?.description }
             </p>
         </div>
     );

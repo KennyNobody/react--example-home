@@ -1,16 +1,23 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import cls from './Name.module.scss';
+import {AppData} from "0_app/types/MainResponseType";
 
 interface NameProps {
     isMain: boolean;
     className?: string;
+    name: string | null;
+    nickname?: string | null;
 }
 
 export const Name = memo((props: NameProps) => {
-    const { className, isMain } = props;
+    const {
+        name,
+        nickname,
+        isMain,
+        className,
+    } = props;
 
-    const content: string = 'Егор Бадулин / @KennyNobody';
     const Tag: keyof JSX.IntrinsicElements = isMain ? 'h1' : 'p';
 
     return (
@@ -23,7 +30,8 @@ export const Name = memo((props: NameProps) => {
                 )
             }
         >
-            { content }
+            { name || '...' }
+            { nickname ? ` / ${nickname}` : null}
         </Tag>
     );
 });

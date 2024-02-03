@@ -1,20 +1,31 @@
 import React from 'react';
 import { Main } from '5_shared/ui/Main';
 import { Stack } from '5_shared/ui/Stack';
+import { useFetchPageFront } from '1_pages/FrontPage/api/frontPagetApi';
+import { Section, SectionType } from '2_widgets/Section';
 import cls from './FrontPage.module.scss';
-import { SectionDev } from '../SectionDev/SectionDev';
-import { SectionPosts } from '../SectionPosts/SectionPosts';
-import { SectionPhoto } from '../SectionPhoto/SectionPhoto';
 
 function FrontPage() {
+    const {
+        data,
+        isLoading,
+    } = useFetchPageFront(null);
+
     return (
         <Main className={cls.page} data-test>
             <Stack>
-                <SectionDev />
-                <SectionPhoto />
-                <SectionPosts />
+                {
+                    data?.data?.section?.length
+                    && (
+                        data?.data?.section.map((item: SectionType) => (
+                            <Section
+                                key={item.id}
+                                data={item}
+                            />
+                        ))
+                    )
+                }
             </Stack>
-
         </Main>
     );
 }

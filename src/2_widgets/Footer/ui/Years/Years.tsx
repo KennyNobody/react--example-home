@@ -2,15 +2,21 @@ import classNames from 'classnames';
 import cls from './Years.module.scss';
 
 interface YearsProps {
-    className?: string
+    data: string;
+    className?: string;
 }
 
 export function Years(props: YearsProps) {
-    const { className } = props;
+    const {
+        data,
+        className,
+    } = props;
+
+    if (!data) return null;
 
     return (
         <p className={classNames(cls.block, className)}>
-            2019 — 2023
+            { data }
         </p>
     );
 }

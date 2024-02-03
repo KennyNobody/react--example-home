@@ -1,16 +1,25 @@
-import { RequestParams } from '5_shared/types/requestData';
-
-interface ReducerSimpleAction {
-    key: string;
-    value: string | number;
+export enum ContentKeyType {
+    DEV = 'dev',
+    PHOTO = 'PHOTO',
+    NOTEBOOK = 'notebook',
 }
 
-interface RtkQueryParams {
-    queryParams: RequestParams,
-    replaceData?: boolean;
+export interface BaseResponseType {
+    data: any;
+    meta: any;
 }
 
-export {
-    type RtkQueryParams,
-    type ReducerSimpleAction,
-};
+export interface PageResponseType {
+    data: {
+        title: string,
+        slug: string,
+        createdAt: string,
+        updatedAt: string,
+        publishedAt: string,
+        locale: string,
+        localizations: {
+            data: [any],
+        }
+    };
+    meta: any;
+}

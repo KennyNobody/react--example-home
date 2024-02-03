@@ -6,7 +6,7 @@ import { ArticlePostType } from '../../model/types/ArticlePost';
 
 interface GridPostsProps {
     className?: string;
-    data: ArticlePostType[];
+    data?: ArticlePostType[];
     showSkeleton?: boolean;
 }
 
@@ -18,33 +18,26 @@ export const GridPosts = (props: GridPostsProps) => {
     } = props;
 
     const skeleton = (
-        <>
-            {
-                new Array(12).fill(null).map((item, index) => (
-                    <div
-                        key={index}
-                        className={classNames(grid['grid__col-1'])}
-                    >
-                        <ArticlePost />
-                    </div>
-                ))
-            }
-        </>
+        new Array(12).fill(null).map((item, index) => (
+            <div
+                key={index}
+                className={classNames(grid['grid__col-1'])}
+            >
+                <ArticlePost />
+            </div>
+        ))
     );
 
     const content = (
-        <>
-            {
-                data.map((item, index) => (
-                    <div
-                        key={index}
-                        className={classNames(grid['grid__col-1'])}
-                    >
-                        <ArticlePost data={item} />
-                    </div>
-                ))
-            }
-        </>
+        data?.length
+        && data.map((item, index) => (
+            <div
+                key={index}
+                className={classNames(grid['grid__col-1'])}
+            >
+                <ArticlePost data={item} />
+            </div>
+        ))
     );
 
     return (

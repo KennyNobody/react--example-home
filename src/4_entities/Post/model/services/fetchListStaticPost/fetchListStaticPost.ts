@@ -12,9 +12,6 @@ export const fetchListStaticPost = createAsyncThunk<void, void, ThunkConfig<stri
             per_page: 8,
         };
 
-        dispatch(postApi.endpoints.fetchPostList.initiate({
-            queryParams: params,
-            replaceData: true,
-        }));
+        dispatch(postApi.endpoints.fetchPostList.initiate(params));
     },
 );

@@ -21,32 +21,24 @@ export const ListCategory = (props: ListCategoryProps) => {
     } = props;
 
     const skeleton = (
-        <>
-            {
-                new Array(9).fill(null).map((_, index: number) => (
-                    <ArticleCategory
-                        key={index}
-                    />
-                ))
-            }
-        </>
+        new Array(9).fill(null).map((_, index: number) => (
+            <ArticleCategory
+                key={index}
+            />
+        ))
     );
 
     const content = (
-        <>
-            {
-                data
-                && data?.length > 0
-                && data.map((item: ArticleCategoryType) => (
-                    <ArticleCategory
-                        data={item}
-                        key={item.id}
-                        clickEvent={selectEvent}
-                        isActive={selectedItems?.includes(item.id)}
-                    />
-                ))
-            }
-        </>
+        data
+        && data?.length > 0
+        && data.map((item: ArticleCategoryType) => (
+            <ArticleCategory
+                data={item}
+                key={item.id}
+                clickEvent={selectEvent}
+                isActive={selectedItems?.includes(item.id)}
+            />
+        ))
     );
 
     return (

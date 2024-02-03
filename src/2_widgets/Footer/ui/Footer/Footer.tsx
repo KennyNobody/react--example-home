@@ -8,13 +8,18 @@ import { IconKey, LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
 import cls from './Footer.module.scss';
 import { Years } from '../Years/Years';
 import { Author } from '../Author/Author';
+import {AppData} from "0_app/types/MainResponseType";
 
 interface FooterProps {
+    data: AppData;
     className?: string;
 }
 
 export function Footer(props: FooterProps) {
-    const { className } = props;
+    const {
+        data,
+        className,
+    } = props;
 
     return (
         <div className={classNames(cls.block, className)}>
@@ -22,8 +27,8 @@ export function Footer(props: FooterProps) {
                 <div className={classNames(grid.grid)}>
                     <div className={classNames(grid['grid__col-2'])}>
                         <div className={classNames(cls.info)}>
-                            <Years />
-                            <Author />
+                            { data?.years && <Years data={data?.years} /> }
+                            { data?.author && <Author data={data?.author} /> }
                         </div>
                     </div>
                     <div className={classNames(grid['grid__col-2'])}>
