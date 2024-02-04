@@ -3,6 +3,7 @@ import cls from './ArticleCategory.module.scss';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
 interface ArticleCategoryProps {
+    name?: string;
     className?: string;
     isActive?: boolean;
     data?: ArticleCategoryType;
@@ -11,6 +12,7 @@ interface ArticleCategoryProps {
 
 export const ArticleCategory = (props: ArticleCategoryProps) => {
     const {
+        name,
         data,
         className,
         isActive,
@@ -26,9 +28,7 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
     };
 
     const article = (
-        <button
-            type="button"
-            onClick={onClickEvent}
+        <label
             className={
                 classNames(
                     cls.link,
@@ -39,8 +39,14 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
                 )
             }
         >
-            {data?.name}
-        </button>
+            <input
+                name={name}
+                type="radio"
+                value={data?.id}
+                onChange={onClickEvent}
+            />
+            {data?.title}
+        </label>
     );
 
     return data ? article : skeleton;

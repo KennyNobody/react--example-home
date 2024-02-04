@@ -1,8 +1,16 @@
-export enum ServerListResponse {
-    TOTAL_PAGES = 'x-wp-totalpages',
-    TOTAL_ITEMS = 'x-wp-total',
+enum PaginationParams {
+    PAGE = 'pagination[page]',
+    SIZE = 'pagination[pageSize]',
+    CAT = 'filters[category][id][$eq]',
 }
 
-export interface RequestParams {
-    [key: string]: string | number | boolean;
+type RequestParamsKey = string | PaginationParams;
+
+interface RequestParams {
+    [key: RequestParamsKey]: string | number | boolean;
 }
+
+export {
+    PaginationParams,
+    type RequestParams,
+};

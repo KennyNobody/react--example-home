@@ -1,12 +1,12 @@
-import { ContentKeyType } from '5_shared/types/baseTypes';
+import { ContentKeyType } from '5_shared/types/CommonTypes';
 
 export interface SectionType {
-    id: number,
-    title: string | null,
-    years: string | null,
-    linkPath: string | null,
-    linkTitle: string | null,
-    captionLinkPath: string | null,
-    captionLinkTitle: string | null,
-    contentKey: ContentKeyType | null,
+    id: number;
+    title: string | null;
+    years: string | null;
+    linkPath: string | null;
+    linkTitle: string | null;
+    captionLinkPath: string | null;
+    captionLinkTitle: string | null;
+    contentKey: ContentKeyType | null;
 }

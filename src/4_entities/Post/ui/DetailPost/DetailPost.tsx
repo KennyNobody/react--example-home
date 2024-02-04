@@ -11,19 +11,19 @@ import {
     DynamicModuleLoader,
 } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import cls from './DetailPost.module.scss';
-import { postReducer } from '../../model/slices';
-import { ArticlePostType } from '../../model/types/ArticlePost';
-import { fetchPostBySlug } from '../../model/services/fetchPostBySlug/fetchPostBySlug';
-import { getDetailPostData, getDetailPostIsLoading } from '../../model/selectors/detailPost';
+// import { postReducer } from '../../model/slices';
+// import { ArticlePostType } from '../../model/types/ArticlePost';
+// import { fetchPostBySlug } from '../../model/services/fetchPostBySlug/fetchPostBySlug';
+// import { getDetailPostData, getDetailPostIsLoading } from '../../model/selectors/detailPost';
 
 interface DetailPostProps {
     className?: string;
     slug?: string;
 }
 
-const reducers: ReducersList = {
-    post: postReducer,
-};
+// const reducers: ReducersList = {
+//     post: postReducer,
+// };
 
 export const DetailPost = memo((props: DetailPostProps) => {
     const {
@@ -32,34 +32,35 @@ export const DetailPost = memo((props: DetailPostProps) => {
     } = props;
 
     const dispatch = useAppDispatch();
-    const data: ArticlePostType | undefined = useSelector(getDetailPostData);
-    const isLoading: boolean | undefined = useSelector(getDetailPostIsLoading);
+    // const data: ArticlePostType | undefined = useSelector(getDetailPostData);
+    // const isLoading: boolean | undefined = useSelector(getDetailPostIsLoading);
 
-    useEffect(() => {
-        if (slug) {
-            dispatch(fetchPostBySlug(slug));
-        }
-    }, [slug]);
+    // useEffect(() => {
+    //     if (slug) {
+    //         dispatch(fetchPostBySlug(slug));
+    //     }
+    // }, [slug]);
 
     return (
-        <DynamicModuleLoader
-            reducers={reducers}
-            removeAfterUnmount
-        >
+        // <DynamicModuleLoader
+        //     reducers={}
+        //     removeAfterUnmount
+        // >
             <div className={classNames(cls.block, className)}>
-                {
-                    data?.title?.rendered
-                    && (
-                        <h2>
-                            { data?.title?.rendered }
-                        </h2>
-                    )
-                }
-                {
-                    data?.content?.rendered && <Editor data={data?.content?.rendered} />
-                }
+                DetailPost
+                {/*{*/}
+                {/*    data?.title*/}
+                {/*    && (*/}
+                {/*        <h2>*/}
+                {/*            { data.title }*/}
+                {/*        </h2>*/}
+                {/*    )*/}
+                {/*}*/}
+                {/*{*/}
+                {/*    data?.content && <Editor data={data?.content} />*/}
+                {/*}*/}
 
             </div>
-        </DynamicModuleLoader>
+        // </DynamicModuleLoader>
     );
 });

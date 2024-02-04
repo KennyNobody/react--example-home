@@ -1,6 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import { FrontPage } from '1_pages/FrontPage';
-import { PostsPage } from '1_pages/PostsPage';
+import { ListPage } from '1_pages/ListPage';
 import { DetailPage } from '1_pages/DetailPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
 
@@ -25,7 +25,7 @@ export const routeConfig: RouteProps[] = [
     },
     {
         path: RouterPath.list,
-        element: <PostsPage />,
+        element: <ListPage />,
     },
     {
         path: `${RouterPath.detail}:slug`,

@@ -30,14 +30,14 @@ export const ArticlePost = (props: ArticlePostProps) => {
             }
         >
             {
-                data?.title?.rendered
+                data?.title
                 && (
                     <h3
                         className={
                             classNames(cls.title)
                         }
                     >
-                        { data?.title?.rendered }
+                        { data.title }
                     </h3>
                 )
             }

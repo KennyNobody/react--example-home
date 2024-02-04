@@ -1,4 +1,4 @@
-import { BaseResponseType } from '5_shared/types/baseTypes';
+import { BaseResponseType } from '5_shared/types/CommonTypes';
 
 export interface AppData {
     name: string | null,

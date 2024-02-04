@@ -1,5 +1,5 @@
-export {
-    type ArticleCategoryType,
+export type {
+    ArticleCategoryType,
 } from './model/types/ArticleCategory';
 
 export {

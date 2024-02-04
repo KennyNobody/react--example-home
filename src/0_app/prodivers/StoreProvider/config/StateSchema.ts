@@ -6,14 +6,14 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import {
-    PostSchema,
-} from '4_entities/Post';
 import { rtkApi } from '5_shared/api/rtkApi';
+import { PostListSchema } from '3_features/PostList';
+import { SortFilterSchema } from '3_features/SortFilter';
 
 export interface StateSchema {
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
-    post?: PostSchema;
+    postList?: PostListSchema;
+    sortFilter?: SortFilterSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

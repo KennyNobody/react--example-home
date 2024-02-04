@@ -6,7 +6,7 @@ import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 interface ListCategoryProps {
     className?: string;
     showSkeleton: boolean;
-    selectedItems?: number[];
+    selectedItem: number | undefined;
     data: ArticleCategoryType[] | undefined;
     selectEvent?: (ArticleCategoryType) => void;
 }
@@ -17,7 +17,7 @@ export const ListCategory = (props: ListCategoryProps) => {
         className,
         selectEvent,
         showSkeleton,
-        selectedItems,
+        selectedItem,
     } = props;
 
     const skeleton = (
@@ -35,15 +35,16 @@ export const ListCategory = (props: ListCategoryProps) => {
             <ArticleCategory
                 data={item}
                 key={item.id}
+                name="category"
                 clickEvent={selectEvent}
-                isActive={selectedItems?.includes(item.id)}
+                isActive={selectedItem === item.id}
             />
         ))
     );
 
     return (
-        <div className={classNames(cls.nav, className)}>
+        <form className={classNames(cls.nav, className)}>
             { showSkeleton ? skeleton : content }
-        </div>
+        </form>
     );
 };

@@ -1,8 +1,14 @@
 interface ArticleCategoryType {
-    id: number,
-    count: number,
-    name: string,
-    slug: string,
+    id: number;
+    title: string;
+    slug: string;
+    locale: string;
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt?: Date;
+    localizations?: {
+        data: ArticleCategoryType[]
+    };
 }
 
 export {
