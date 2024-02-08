@@ -13,7 +13,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         entry: paths.entry,
         output: {
             clean: true,
-            publicPath: '/',
+            publicPath: './',
             path: paths.build,
             filename: 'bundle.[contenthash].js',
         },
