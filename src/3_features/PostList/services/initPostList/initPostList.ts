@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { LazyQueryTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
-import { PaginationParams, RequestParams } from '5_shared/types/requestData';
+import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
 import { postListActions } from '../../slices/postListSlice';
 import { getPostListPerPage } from '../../selectors/postList';
 
@@ -18,14 +18,16 @@ export const initPostList = createAsyncThunk<void, LazyQueryTrigger<any>, ThunkC
         const params: RequestParams = {
             [PaginationParams.PAGE]: 1,
             [PaginationParams.SIZE]: perPage,
+            sort: 'publishedAt:DESC',
+            replace: false,
         };
 
-        await getData(params, true).then((data: any) => {
-            const page = data?.data?.meta?.pagination.page;
-            const pageCount = data?.data?.meta?.pagination.pageCount;
-
-            if (page) dispatch(postListActions.setPage(page));
-            if (pageCount) dispatch(postListActions.setLength(pageCount));
+        await getData(params, true).then((response) => {
+            // @ts-ignore
+            const { data, meta } = response.data;
+            dispatch(postListActions.setData(data));
+            // @ts-ignore
+            dispatch(postListActions.setPagination(meta.pagination));
         });
     },
 );

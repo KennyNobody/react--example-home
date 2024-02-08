@@ -8,11 +8,10 @@ export interface useInfiniteScrollOptions {
     triggerRef: MutableRefObject<HTMLElement>;
 }
 
-export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOptions) {
-
+export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOptions): void {
     useEffect(() => {
         let observer: IntersectionObserver | null = null;
-        const triggerElement = triggerRef.current;
+        const triggerElement: HTMLElement = triggerRef.current;
 
         if (callback && triggerElement) {
             const options = {
@@ -21,17 +20,15 @@ export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOpt
                 threshold: 1.0,
             };
 
-            observer = new IntersectionObserver(([el]) => {
+            observer = new IntersectionObserver(([el]: IntersectionObserverEntry[]): void => {
                 if (el.isIntersecting) callback();
             }, options);
 
             observer.observe(triggerElement);
         }
 
-        return () => {
-            if (observer) {
-                observer?.unobserve(triggerElement);
-            }
+        return (): void => {
+            if (observer) observer?.unobserve(triggerElement);
         };
     }, [callback, triggerRef]);
 }

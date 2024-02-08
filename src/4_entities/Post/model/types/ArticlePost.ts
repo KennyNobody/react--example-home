@@ -3,6 +3,7 @@ import { ArticleTagType } from '4_entities/Tag';
 import { ArticleCategoryType } from '4_entities/Category';
 
 interface ArticlePostType {
+    id: number;
     title: string;
     slug: string;
     content?: any;

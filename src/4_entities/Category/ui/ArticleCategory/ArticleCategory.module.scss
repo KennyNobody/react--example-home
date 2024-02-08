@@ -1,5 +1,6 @@
 .link {
     display: flex;
+    cursor: pointer;
     padding: 0 22px;
     font-size: 28px;
     background: none;
@@ -21,7 +22,8 @@
     }
 
     &--active {
-        background-color: red;
+        color: var(--bg-dark);
+        background-color: var(--light-primary);
     }
 
     &--skeleton {
@@ -52,4 +54,9 @@
             width: 200px;
         }
     }
+}
+
+.input {
+    display: none;
+    visibility: hidden;
 }

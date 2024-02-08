@@ -1,5 +1,5 @@
 import queryString, { ParsedQuery } from 'query-string';
-import { RequestParams } from '5_shared/types/requestData';
+import { RequestParams } from '5_shared/types/RequestData';
 
 export function getQueryParams(): RequestParams {
     const params: string = window.location.search;

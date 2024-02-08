@@ -9,11 +9,15 @@ const initialState: SortFilterSchema = {
 };
 
 const sortFilterSlice = createSlice({
-    name: 'postListSlice',
+    name: 'sortFilterSlice',
     initialState,
     reducers: {
-        toggleCategory: (state, action: PayloadAction<number>) => {
-            state.category = action.payload;
+        toggleCategory: (state, action: PayloadAction<number | undefined>) => {
+            if (state.category === action.payload) {
+                state.category = undefined;
+            } else {
+                state.category = action.payload;
+            }
         },
     },
 });

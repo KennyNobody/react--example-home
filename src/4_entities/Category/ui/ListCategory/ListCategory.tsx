@@ -21,7 +21,7 @@ export const ListCategory = (props: ListCategoryProps) => {
     } = props;
 
     const skeleton = (
-        new Array(9).fill(null).map((_, index: number) => (
+        new Array(5).fill(null).map((_, index: number) => (
             <ArticleCategory
                 key={index}
             />

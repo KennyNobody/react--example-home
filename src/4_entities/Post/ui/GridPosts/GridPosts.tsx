@@ -29,8 +29,9 @@ export const GridPosts = (props: GridPostsProps) => {
     );
 
     const content = (
-        data?.length
-        && data.map((item, index) => (
+        data
+        && data?.length > 0
+        && data.map((item: ArticlePostType, index: number) => (
             <div
                 key={index}
                 className={classNames(grid['grid__col-1'])}

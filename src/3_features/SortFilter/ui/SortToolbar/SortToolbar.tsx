@@ -43,13 +43,14 @@ export const SortToolbar = (props: SortToolbarProps) => {
     const fetchData = () => {
         dispatch(fetchPostListPage({
             getData,
+            replace: true,
         }));
     };
 
     const debouncedFetchData = useDebounce(fetchData, 500);
 
-    const changeCategory = useCallback((item: ArticleCategoryType) => {
-        dispatch(sortFilterActions.toggleCategory(item.id));
+    const changeCategory = useCallback((item: ArticleCategoryType | undefined): void => {
+        dispatch(sortFilterActions.toggleCategory(item?.id || undefined));
         debouncedFetchData();
     }, [dispatch]);
 

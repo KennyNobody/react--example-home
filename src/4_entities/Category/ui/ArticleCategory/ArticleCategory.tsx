@@ -7,7 +7,7 @@ interface ArticleCategoryProps {
     className?: string;
     isActive?: boolean;
     data?: ArticleCategoryType;
-    clickEvent?: (ArticleCategoryType) => void;
+    clickEvent?: (arg0: ArticleCategoryType | undefined) => void;
 }
 
 export const ArticleCategory = (props: ArticleCategoryProps) => {
@@ -23,8 +23,12 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
         <div className={classNames(cls.link, cls['link--skeleton'], className)} />
     );
 
-    const onClickEvent = () => {
+    const selectEvent = (): void => {
         if (clickEvent) clickEvent(data);
+    };
+
+    const unselectEvent = (): void => {
+        if (clickEvent && isActive) clickEvent(undefined);
     };
 
     const article = (
@@ -43,7 +47,10 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
                 name={name}
                 type="radio"
                 value={data?.id}
-                onChange={onClickEvent}
+                checked={isActive}
+                onClick={unselectEvent}
+                onChange={selectEvent}
+                className={classNames(cls.input)}
             />
             {data?.title}
         </label>
