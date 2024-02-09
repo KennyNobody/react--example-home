@@ -48,6 +48,7 @@ const postListSlice = createSlice({
         },
         setPagination: (state, action) => {
             const pagination = action.payload;
+            console.log('Подставляем данные пагинации:');
             console.log(pagination);
 
             state.page = pagination.page;

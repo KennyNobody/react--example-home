@@ -13,7 +13,7 @@ import { PostListMode } from '../types/PostList';
 import { FetchingPostListDirection, fetchPostListPage } from '../services/fetchPostListPage/fetchPostListPage';
 import { getPostList, postListReducer } from '../slices/postListSlice';
 import { initPostList } from '../services/initPostList/initPostList';
-import {getPostListCount, getPostListLoading, getPostListPage} from "3_features/PostList/selectors/postList";
+import { getPostListCount, getPostListLoading, getPostListPage } from '../selectors/postList';
 
 interface ListPostsProps {
     className?: string;
@@ -35,21 +35,20 @@ export const PostList = (props: ListPostsProps) => {
     const dispatch = useAppDispatch();
     const data: ArticlePostType[] = useSelector(getPostList.selectAll);
     const isLoading: boolean | undefined = useSelector(getPostListLoading);
-    const pageIndex: number | undefined = useSelector(getPostListPage);
-    const pageTotal: number | undefined = useSelector(getPostListCount);
+    const pageIndex: number | undefined = useSelector(getPostListPage) || 1;
+    const pageTotal: number | undefined = useSelector(getPostListCount) || 0;
 
     const [getData] = useLazyFetchPostList({});
 
-    const loadNextPage = useCallback(() => {
-        if (pageIndex && pageTotal && pageTotal < pageIndex && !isLoading) {
+    const loadNextPage = () => {
+        if (!isLoading && (pageTotal > pageIndex)) {
             dispatch(fetchPostListPage({
                 getData,
                 replace: false,
                 direction: FetchingPostListDirection.NEXT,
             }));
         }
-
-    }, [dispatch]);
+    };
 
     useEffect(() => {
         dispatch(initPostList(getData));
@@ -70,12 +69,10 @@ export const PostList = (props: ListPostsProps) => {
                     classNames(cls.block, className)
                 }
             >
-                {
-                    <GridPosts
-                        data={data}
-                        showSkeleton={isLoading}
-                    />
-                }
+                <GridPosts
+                    data={data}
+                    showSkeleton={pageIndex === 1 && isLoading}
+                />
                 {mode === PostListMode.DYNAMIC && <div ref={triggerRef} />}
             </div>
         </DynamicModuleLoader>
