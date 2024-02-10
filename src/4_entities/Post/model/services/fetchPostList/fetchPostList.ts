@@ -8,7 +8,7 @@ import {
     getPostListCount,
     getPostListPerPage,
 } from '../../selectors/postList';
-import {postListActions} from "3_features/PostList/slices/postListSlice";
+import { postListActions } from '../../slices/postListSlice';
 
 export enum FetchingPostListDirection {
     PREV,
@@ -21,7 +21,7 @@ interface FetchPostListPageProps {
     direction?: FetchingPostListDirection;
 }
 
-export const fetchPostListPage = createAsyncThunk<void, FetchPostListPageProps, ThunkConfig<string>>(
+export const fetchPostList = createAsyncThunk<void, FetchPostListPageProps, ThunkConfig<string>>(
     'postList/initPostList',
     async (props, thunkAPI) => {
         const { getState, dispatch } = thunkAPI;
@@ -49,6 +49,7 @@ export const fetchPostListPage = createAsyncThunk<void, FetchPostListPageProps, 
             [PaginationParams.SIZE]: perPage,
             [PaginationParams.PAGE]: replace ? 1 : pageNumber,
             sort: 'publishedAt:DESC',
+            populate: '*',
             replace,
         };
 
@@ -61,7 +62,7 @@ export const fetchPostListPage = createAsyncThunk<void, FetchPostListPageProps, 
             const { data, meta } = response.data;
             const dataMethod = replace
                 ? postListActions.replaceData
-                : postListActions.setData;
+                : postListActions.addData;
             // @ts-ignore
             dispatch(dataMethod(data));
             // @ts-ignore

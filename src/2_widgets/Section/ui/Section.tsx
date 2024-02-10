@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import {
-    PostList,
-    PostListMode,
-} from '3_features/PostList';
+    ListPost,
+    ListPostMode,
+} from '3_features/ListPost';
 import { Toolbar } from '5_shared/ui/Toolbar';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
@@ -18,7 +18,7 @@ import { SectionType } from '../model/types';
 const SectionFeatures: Record<ContentKeyType, React.ReactNode> = {
     [ContentKeyType.DEV]: <>DEVListFeature</>,
     [ContentKeyType.PHOTO]: <>PHOTOListFeature</>,
-    [ContentKeyType.POST]: <PostList mode={PostListMode.STATIC} />,
+    [ContentKeyType.POST]: <ListPost mode={ListPostMode.STATIC} />,
 };
 
 interface SectionProps {

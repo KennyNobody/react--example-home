@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { SortToolbar } from '3_features/SortFilter';
-import { PostList, PostListMode } from '3_features/PostList';
+import { ListPost, ListPostMode } from '3_features/ListPost';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import { Title, TitleModeType } from '5_shared/ui/Title/Title';
@@ -29,7 +29,7 @@ function ListPage() {
                         />
                     </div>
                 </div>
-                <PostList mode={PostListMode.DYNAMIC} />
+                <ListPost mode={ListPostMode.DYNAMIC} />
             </Container>
         </div>
     );

@@ -5,7 +5,7 @@ import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
 import { postListActions } from '../../slices/postListSlice';
 import { getPostListPerPage } from '../../selectors/postList';
 
-export const initPostList = createAsyncThunk<void, LazyQueryTrigger<any>, ThunkConfig<string>>(
+export const initPost = createAsyncThunk<void, LazyQueryTrigger<any>, ThunkConfig<string>>(
     'postList/initPostList',
     async (getData, thunkAPI) => {
         const {
@@ -20,12 +20,13 @@ export const initPostList = createAsyncThunk<void, LazyQueryTrigger<any>, ThunkC
             [PaginationParams.SIZE]: perPage,
             sort: 'publishedAt:DESC',
             replace: false,
+            populate: '*',
         };
 
         await getData(params, true).then((response) => {
             // @ts-ignore
             const { data, meta } = response.data;
-            dispatch(postListActions.setData(data));
+            dispatch(postListActions.addData(data));
             // @ts-ignore
             dispatch(postListActions.setPagination(meta.pagination));
         });

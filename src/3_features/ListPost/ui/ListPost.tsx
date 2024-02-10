@@ -1,23 +1,33 @@
 import {
-    MutableRefObject, useCallback, useEffect, useRef,
+    useRef,
+    useEffect,
+    MutableRefObject,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import { ArticlePostType, GridPosts, useLazyFetchPostList } from '4_entities/Post';
+import {
+    GridPosts,
+    initPost,
+    getPostListPage,
+    getPostListCount,
+    fetchPostList,
+    getPostListLoading,
+    PostArticleType,
+    FetchingPostListDirection,
+    getPostList,
+    postListReducer,
+    useLazyFetchPostList,
+} from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { sortFilterReducer } from '3_features/SortFilter/slices/sortFilterSlice';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
-import cls from './PostList.module.scss';
-import { PostListMode } from '../types/PostList';
-import { FetchingPostListDirection, fetchPostListPage } from '../services/fetchPostListPage/fetchPostListPage';
-import { getPostList, postListReducer } from '../slices/postListSlice';
-import { initPostList } from '../services/initPostList/initPostList';
-import { getPostListCount, getPostListLoading, getPostListPage } from '../selectors/postList';
+import cls from './ListPost.module.scss';
+import { ListPostMode } from '../types/ListPost';
 
 interface ListPostsProps {
     className?: string;
-    mode: PostListMode;
+    mode: ListPostMode;
 }
 
 const reducers: ReducersList = {
@@ -25,7 +35,7 @@ const reducers: ReducersList = {
     sortFilter: sortFilterReducer,
 };
 
-export const PostList = (props: ListPostsProps) => {
+export const ListPost = (props: ListPostsProps) => {
     const {
         mode,
         className,
@@ -33,16 +43,16 @@ export const PostList = (props: ListPostsProps) => {
 
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
-    const data: ArticlePostType[] = useSelector(getPostList.selectAll);
-    const isLoading: boolean | undefined = useSelector(getPostListLoading);
-    const pageIndex: number | undefined = useSelector(getPostListPage) || 1;
-    const pageTotal: number | undefined = useSelector(getPostListCount) || 0;
+    const pageIndex: number = useSelector(getPostListPage) || 1;
+    const pageTotal: number = useSelector(getPostListCount) || 0;
+    const data: PostArticleType[] = useSelector(getPostList.selectAll);
+    const isLoading: boolean = useSelector(getPostListLoading) || false;
 
     const [getData] = useLazyFetchPostList({});
 
     const loadNextPage = () => {
         if (!isLoading && (pageTotal > pageIndex)) {
-            dispatch(fetchPostListPage({
+            dispatch(fetchPostList({
                 getData,
                 replace: false,
                 direction: FetchingPostListDirection.NEXT,
@@ -51,7 +61,7 @@ export const PostList = (props: ListPostsProps) => {
     };
 
     useEffect(() => {
-        dispatch(initPostList(getData));
+        dispatch(initPost(getData));
     }, []);
 
     useInfiniteScroll({
@@ -71,9 +81,9 @@ export const PostList = (props: ListPostsProps) => {
             >
                 <GridPosts
                     data={data}
-                    showSkeleton={pageIndex === 1 && isLoading}
+                    showSkeleton={isLoading && !data?.length}
                 />
-                {mode === PostListMode.DYNAMIC && <div ref={triggerRef} />}
+                {mode === ListPostMode.DYNAMIC && <div ref={triggerRef} />}
             </div>
         </DynamicModuleLoader>
     );

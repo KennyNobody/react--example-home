@@ -1,4 +1,4 @@
-import { ArticlePostType } from '4_entities/Post';
+import { PostArticleType } from '4_entities/Post';
 
 interface ArticleTagType {
     id: number;
@@ -12,7 +12,7 @@ interface ArticleTagType {
         data: ArticleTagType[];
     };
     posts?: {
-        data: ArticlePostType[];
+        data: PostArticleType[];
     };
 }
 

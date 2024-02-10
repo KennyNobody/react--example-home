@@ -2,7 +2,7 @@ import { Media } from '4_entities/Media';
 import { ArticleTagType } from '4_entities/Tag';
 import { ArticleCategoryType } from '4_entities/Category';
 
-interface ArticlePostType {
+interface PostArticleType {
     id: number;
     title: string;
     slug: string;
@@ -23,11 +23,11 @@ interface ArticlePostType {
     // localizations?: {
     //     data: ArticlePostType[];
     // };
-    // category?: {
-    //     data: ArticleCategoryType;
-    // };
+    category?: {
+        data: ArticleCategoryType;
+    };
 }
 
 export type {
-    ArticlePostType,
+    PostArticleType,
 };

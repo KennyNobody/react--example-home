@@ -6,12 +6,37 @@ export {
     GridPosts,
 } from './ui/GridPosts/GridPosts';
 
-export {
-    type ArticlePostType,
-} from './model/types/ArticlePost';
+export type {
+    PostArticleType,
+} from './model/types/PostArticle';
 
 export {
     postApi,
     useFetchPostList,
     useLazyFetchPostList,
 } from './api/postApi';
+
+export {
+    getPostList,
+    postListReducer,
+    postListActions,
+} from './model/slices/postListSlice';
+
+export {
+    fetchPostList,
+    FetchingPostListDirection,
+} from '4_entities/Post/model/services/fetchPostList/fetchPostList';
+
+export {
+    initPost,
+} from './model/services/initPostList/initPost';
+
+export {
+    getPostListCount,
+    getPostListLoading,
+    getPostListPage,
+} from './model/selectors/postList';
+
+export type {
+    PostListSchema,
+} from './model/types/PostListSchema';

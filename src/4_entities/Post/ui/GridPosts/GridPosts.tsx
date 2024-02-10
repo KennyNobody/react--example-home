@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import grid from '5_shared/css/grid.module.scss';
 import cls from './GridPosts.module.scss';
 import { ArticlePost } from '../ArticlePost/ArticlePost';
-import { ArticlePostType } from '../../model/types/ArticlePost';
+import { PostArticleType } from '../../model/types/PostArticle';
 
 interface GridPostsProps {
     className?: string;
-    data?: ArticlePostType[];
+    data?: PostArticleType[];
     showSkeleton?: boolean;
 }
 
@@ -31,7 +31,7 @@ export const GridPosts = (props: GridPostsProps) => {
     const content = (
         data
         && data?.length > 0
-        && data.map((item: ArticlePostType, index: number) => (
+        && data.map((item: PostArticleType, index: number) => (
             <div
                 key={index}
                 className={classNames(grid['grid__col-1'])}

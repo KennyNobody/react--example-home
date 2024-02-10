@@ -6,9 +6,9 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { rtkApi } from '5_shared/api/rtkApi';
-import { PostListSchema } from '3_features/PostList';
 import { SortFilterSchema } from '3_features/SortFilter';
+import { PostListSchema } from '4_entities/Post';
+import { rtkApi } from '5_shared/api/rtkApi';
 
 export interface StateSchema {
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;

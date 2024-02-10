@@ -13,9 +13,11 @@ import { sortFilterActions, sortFilterReducer } from '3_features/SortFilter/slic
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { getSortFilterCategory } from '3_features/SortFilter/selectors/sortFilter';
-import { fetchPostListPage } from '3_features/PostList/services/fetchPostListPage/fetchPostListPage';
-import { useLazyFetchPostList } from '4_entities/Post';
-import { postListReducer } from '3_features/PostList/slices/postListSlice';
+import {
+    postListReducer,
+    fetchPostList,
+    useLazyFetchPostList,
+} from '4_entities/Post';
 import cls from './SortToolbar.module.scss';
 
 interface SortToolbarProps {
@@ -41,7 +43,7 @@ export const SortToolbar = (props: SortToolbarProps) => {
     const [getData] = useLazyFetchPostList({});
 
     const fetchData = () => {
-        dispatch(fetchPostListPage({
+        dispatch(fetchPostList({
             getData,
             replace: true,
         }));

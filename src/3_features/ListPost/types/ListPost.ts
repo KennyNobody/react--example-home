@@ -1,8 +1,8 @@
-enum PostListMode {
+enum ListPostMode {
     STATIC,
     DYNAMIC,
 }
 
 export {
-    PostListMode,
+    ListPostMode,
 };

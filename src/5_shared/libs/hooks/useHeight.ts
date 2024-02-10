@@ -11,10 +11,7 @@ const useHeight = (elementRef: RefObject<HTMLElement>, proportion: number) => {
         const updateHeight = () => {
             const width = elementRef?.current?.offsetWidth;
 
-            if (width) {
-                const newHeight = width * proportion;
-                setHeight(newHeight);
-            }
+            if (width) setHeight(width * proportion);
         };
 
         updateHeight();
