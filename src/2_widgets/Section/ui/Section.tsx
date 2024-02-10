@@ -76,7 +76,7 @@ export const Section = (props: SectionProps) => {
                     <div className={classNames(grid['grid__col-2'])}>
                         <Toolbar>
                             <Link
-                                to={RouterPath.list}
+                                to={RouterPath.posts}
                             >
                                 Все заметки
                             </Link>

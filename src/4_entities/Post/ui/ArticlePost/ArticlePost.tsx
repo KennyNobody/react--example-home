@@ -43,7 +43,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
             style={{
                 height: `${heightEl}px`, width: '100%',
             }}
-            to={`${RouterPath.detail}${data?.slug}`}
+            to={`${RouterPath.post_detail}${data?.slug}`}
             className={
                 classNames(
                     cls.article,

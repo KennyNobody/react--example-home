@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import classNames from 'classnames';
 import { LinkNav } from '5_shared/ui/LinkNav/LinkNav';
 import cls from './Nav.module.scss';
+import {RouterPath} from "5_shared/config/router/routerConfig";
 
 interface NavProps {
     className?: string;
@@ -12,9 +13,9 @@ export const Nav = memo((props: NavProps) => {
 
     return (
         <nav className={classNames(cls.block, className)}>
-            <LinkNav to="/list/">Разработка</LinkNav>
-            <LinkNav to="/list12/">Фото-проекты</LinkNav>
-            <LinkNav to="/list123/">Заметки</LinkNav>
+            <LinkNav to={RouterPath.dev}>Разработка</LinkNav>
+            <LinkNav to={RouterPath.photo}>Фото-проекты</LinkNav>
+            <LinkNav to={RouterPath.posts}>Заметки</LinkNav>
         </nav>
     );
 });
