@@ -1,7 +1,11 @@
-import {
-    useCallback,
-} from 'react';
+import { useCallback } from 'react';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import {
+    postListReducer,
+    fetchPostList,
+    useLazyFetchPostList,
+} from '4_entities/Post';
 import {
     ListCategory,
     ArticleCategoryType,
@@ -9,16 +13,10 @@ import {
 } from '4_entities/Category';
 import { useDebounce } from '5_shared/libs/hooks/useDebounce';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
-import { sortFilterActions, sortFilterReducer } from '3_features/SortFilter/slices/sortFilterSlice';
+import { sortFilterActions, sortFilterReducer } from '3_features/PostFilter/slices/sortFilterSlice';
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
-import { getSortFilterCategory } from '3_features/SortFilter/selectors/sortFilter';
-import {
-    postListReducer,
-    fetchPostList,
-    useLazyFetchPostList,
-} from '4_entities/Post';
-import cls from './SortToolbar.module.scss';
+import { getSortFilterCategory } from '3_features/PostFilter/selectors/sortFilter';
+import cls from './PostFilter.module.scss';
 
 interface SortToolbarProps {
     className?: string

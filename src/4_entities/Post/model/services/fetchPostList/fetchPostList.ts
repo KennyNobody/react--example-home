@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { LazyQueryTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
-import { getSortFilterCategory } from '3_features/SortFilter/selectors/sortFilter';
+import { getSortFilterCategory } from '3_features/PostFilter/selectors/sortFilter';
 import {
     getPostListPage,
     getPostListCount,

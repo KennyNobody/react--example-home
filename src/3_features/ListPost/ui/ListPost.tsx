@@ -20,7 +20,7 @@ import {
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
-import { sortFilterReducer } from '3_features/SortFilter/slices/sortFilterSlice';
+import { sortFilterReducer } from '3_features/PostFilter/slices/sortFilterSlice';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
 import cls from './ListPost.module.scss';
 import { ListPostMode } from '../types/ListPost';

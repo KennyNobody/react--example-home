@@ -6,7 +6,7 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { SortFilterSchema } from '3_features/SortFilter';
+import { SortFilterSchema } from '3_features/PostFilter';
 import { PostListSchema } from '4_entities/Post';
 import { rtkApi } from '5_shared/api/rtkApi';
 

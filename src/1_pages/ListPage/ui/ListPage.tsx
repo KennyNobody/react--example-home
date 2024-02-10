@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { SortToolbar } from '3_features/SortFilter';
+import { SortToolbar } from '3_features/PostFilter';
 import { ListPost, ListPostMode } from '3_features/ListPost';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
