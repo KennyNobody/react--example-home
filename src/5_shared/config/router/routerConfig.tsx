@@ -3,18 +3,27 @@ import { FrontPage } from '1_pages/FrontPage';
 import { ListPage } from '1_pages/ListPage';
 import { DetailPage } from '1_pages/DetailPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
+import { ContentKeyType } from '5_shared/types/CommonTypes';
 
 export enum AppRouter {
     MAIN = 'main',
-    LIST = 'list',
-    DETAIL = 'detail',
+    POSTS = 'posts',
+    POST_DETAIL = 'post_detail',
+    DEV = 'dev',
+    DEV_DETAIL = 'dev_detail',
+    PHOTO = 'photo',
+    PHOTO_DETAIL = 'photo_detail',
     NOT_FOUND = 'not_found',
 }
 
 export const RouterPath: Record<AppRouter, string> = {
     [AppRouter.MAIN]: '/',
-    [AppRouter.LIST]: '/list/',
-    [AppRouter.DETAIL]: '/list/',
+    [AppRouter.POSTS]: '/posts/',
+    [AppRouter.POST_DETAIL]: '/posts/',
+    [AppRouter.DEV]: '/dev/',
+    [AppRouter.DEV_DETAIL]: '/web/',
+    [AppRouter.PHOTO]: '/photo/',
+    [AppRouter.PHOTO_DETAIL]: '/photo/',
     [AppRouter.NOT_FOUND]: '*',
 };
 
@@ -24,11 +33,27 @@ export const routeConfig: RouteProps[] = [
         element: <FrontPage />,
     },
     {
-        path: RouterPath.list,
-        element: <ListPage />,
+        path: RouterPath.posts,
+        element: <ListPage mode={ContentKeyType.POST} />,
     },
     {
-        path: `${RouterPath.detail}:slug`,
+        path: `${RouterPath.post_detail}:slug`,
+        element: <DetailPage />,
+    },
+    {
+        path: RouterPath.dev,
+        element: <ListPage mode={ContentKeyType.DEV} />,
+    },
+    {
+        path: `${RouterPath.dev_detail}:slug`,
+        element: <DetailPage />,
+    },
+    {
+        path: RouterPath.photo,
+        element: <ListPage mode={ContentKeyType.PHOTO} />,
+    },
+    {
+        path: `${RouterPath.photo_detail}:slug`,
         element: <DetailPage />,
     },
     {

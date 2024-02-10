@@ -6,8 +6,13 @@ import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import { Title, TitleModeType } from '5_shared/ui/Title/Title';
 import cls from './ListPage.module.scss';
+import { ContentKeyType } from '5_shared/types/CommonTypes';
 
-function ListPage() {
+interface ListPageProps {
+    mode: ContentKeyType,
+}
+
+function ListPage({mode}: ListPageProps) {
     return (
         <div className={cls.page}>
             <Container>
