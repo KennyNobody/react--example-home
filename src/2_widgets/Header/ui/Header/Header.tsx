@@ -73,8 +73,6 @@ export function Header(props: HeaderProps) {
                     <div className={classNames(grid['grid__col-2'])}>
                         { mode === HeaderMode.MAIN && <Description data={data} />}
                         { mode === HeaderMode.REGULAR && <Nav />}
-                        <Link to="/">Главная</Link>
-                        <Link to="/list/">Список</Link>
                     </div>
                 </div>
             </Container>

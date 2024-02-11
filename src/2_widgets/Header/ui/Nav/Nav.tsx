@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import classNames from 'classnames';
 import { LinkNav } from '5_shared/ui/LinkNav/LinkNav';
+import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './Nav.module.scss';
-import {RouterPath} from "5_shared/config/router/routerConfig";
 
 interface NavProps {
     className?: string;

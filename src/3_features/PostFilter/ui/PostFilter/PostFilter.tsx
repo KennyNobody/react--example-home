@@ -47,7 +47,8 @@ export const SortToolbar = (props: SortToolbarProps) => {
         }));
     };
 
-    const debouncedFetchData = useDebounce(fetchData, 500);
+    // Todo: Возможно, стоит совсем убрать, пока пусть будет 0
+    const debouncedFetchData = useDebounce(fetchData, 0);
 
     const changeCategory = useCallback((item: ArticleCategoryType | undefined): void => {
         dispatch(sortFilterActions.toggleCategory(item?.id || undefined));

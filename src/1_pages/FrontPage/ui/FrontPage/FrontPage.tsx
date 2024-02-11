@@ -19,8 +19,9 @@ function FrontPage() {
                     && (
                         data?.data?.section.map((item: SectionType) => (
                             <Section
-                                key={item.id}
+                                isPreview
                                 data={item}
+                                key={item.id}
                             />
                         ))
                     )
