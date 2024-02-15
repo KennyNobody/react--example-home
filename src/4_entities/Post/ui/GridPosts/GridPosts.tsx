@@ -3,11 +3,13 @@ import grid from '5_shared/css/grid.module.scss';
 import cls from './GridPosts.module.scss';
 import { ArticlePost } from '../ArticlePost/ArticlePost';
 import { PostArticleType } from '../../model/types/PostArticle';
+import {End} from "5_shared/ui/End";
 
 interface GridPostsProps {
     className?: string;
     data?: PostArticleType[];
     showSkeleton?: boolean;
+    showEnd: boolean;
 }
 
 export const GridPosts = (props: GridPostsProps) => {
@@ -15,6 +17,7 @@ export const GridPosts = (props: GridPostsProps) => {
         data,
         showSkeleton,
         className,
+        showEnd,
     } = props;
 
     const skeleton = (
@@ -42,8 +45,11 @@ export const GridPosts = (props: GridPostsProps) => {
     );
 
     return (
-        <div className={classNames(grid.grid, cls.grid, className)}>
-            { showSkeleton ? skeleton : content }
+        <div className={classNames(cls.block)}>
+            <div className={classNames(grid.grid, cls.grid, className)}>
+                { showSkeleton ? skeleton : content }
+            </div>
+            {showEnd && <End />}
         </div>
     );
 };

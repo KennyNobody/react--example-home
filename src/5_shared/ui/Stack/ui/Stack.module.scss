@@ -1,5 +1,12 @@
 .block {
-    gap: 140px;
     display: flex;
     flex-direction: column;
+
+    &--large {
+        gap: 140px;
+    }
+
+    &--middle {
+        gap: 65px;
+    }
 }

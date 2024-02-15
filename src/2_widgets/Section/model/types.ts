@@ -8,5 +8,5 @@ export interface SectionType {
     linkTitle: string | null;
     captionLinkPath: string | null;
     captionLinkTitle: string | null;
-    contentKey: ContentKeyType | null;
+    contentKey: ContentKeyType;
 }

@@ -1,6 +1,8 @@
+import { memo } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './Avatar.module.scss';
-import {memo} from "react";
 
 interface AvatarProps {
     isMain: boolean;
@@ -8,7 +10,8 @@ interface AvatarProps {
 }
 
 export const Avatar = memo(({ isMain, className }: AvatarProps) => (
-    <div
+    <Link
+        to={RouterPath.main}
         className={
             classNames(
                 cls.block,

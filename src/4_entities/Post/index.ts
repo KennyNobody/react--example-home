@@ -23,9 +23,9 @@ export {
 } from './model/slices/postListSlice';
 
 export {
-    fetchPostList,
+    fetchNextPostList,
     FetchingPostListDirection,
-} from '4_entities/Post/model/services/fetchPostList/fetchPostList';
+} from '4_entities/Post/model/services/fetchNextPostList/fetchNextPostList';
 
 export {
     initPost,

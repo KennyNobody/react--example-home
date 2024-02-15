@@ -1,6 +1,6 @@
 export {
     SortToolbar,
-} from './ui/SortToolbar/SortToolbar';
+} from './ui/PostFilter/PostFilter';
 
 export type {
     SortFilterSchema,

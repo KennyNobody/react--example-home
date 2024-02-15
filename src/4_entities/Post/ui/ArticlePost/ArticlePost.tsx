@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import {useMemo, useRef} from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import useHeight from '5_shared/libs/hooks/useHeight';
@@ -20,7 +20,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
     const elRef = useRef(null);
     const heightEl = useHeight(elRef, 1.15);
 
-    const skeleton = (
+    const skeleton = useMemo(() => (
         <div
             ref={elRef}
             style={{
@@ -35,36 +35,25 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 )
             }
         />
-    );
+    ), [heightEl, className]);
 
-    const article = (
+    const article = useMemo(() => (
         <Link
             ref={elRef}
             style={{
-                height: `${heightEl}px`, width: '100%',
+                width: '100%',
+                height: `${heightEl}px`,
             }}
             to={`${RouterPath.post_detail}${data?.slug}`}
-            className={
-                classNames(
-                    cls.article,
-                    className,
-                )
-            }
+            className={classNames(cls.article, className)}
         >
-            {
-                data?.title
-                && (
-                    <h3
-                        className={
-                            classNames(cls.title)
-                        }
-                    >
-                        { data.title }
-                    </h3>
-                )
-            }
+            {data?.title && (
+                <h3 className={classNames(cls.title)}>
+                    {data.title}
+                </h3>
+            )}
         </Link>
-    );
+    ), [heightEl, className, data]);
 
     return data ? article : skeleton;
 };

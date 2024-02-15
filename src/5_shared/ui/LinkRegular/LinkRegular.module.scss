@@ -1,0 +1,8 @@
+.block {
+    font-size: 28px;
+    color: var(--light-primary);
+
+    &:hover {
+        text-decoration: none;
+    }
+}

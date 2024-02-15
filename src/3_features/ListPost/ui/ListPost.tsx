@@ -10,7 +10,7 @@ import {
     initPost,
     getPostListPage,
     getPostListCount,
-    fetchPostList,
+    fetchNextPostList,
     getPostListLoading,
     PostArticleType,
     FetchingPostListDirection,
@@ -20,7 +20,7 @@ import {
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
-import { sortFilterReducer } from '3_features/SortFilter/slices/sortFilterSlice';
+import { sortFilterReducer } from '3_features/PostFilter/slices/sortFilterSlice';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
 import cls from './ListPost.module.scss';
 import { ListPostMode } from '../types/ListPost';
@@ -52,7 +52,7 @@ export const ListPost = (props: ListPostsProps) => {
 
     const loadNextPage = () => {
         if (!isLoading && (pageTotal > pageIndex)) {
-            dispatch(fetchPostList({
+            dispatch(fetchNextPostList({
                 getData,
                 replace: false,
                 direction: FetchingPostListDirection.NEXT,
@@ -82,6 +82,7 @@ export const ListPost = (props: ListPostsProps) => {
                 <GridPosts
                     data={data}
                     showSkeleton={isLoading && !data?.length}
+                    showEnd={!isLoading && pageIndex === pageTotal}
                 />
                 {mode === ListPostMode.DYNAMIC && <div ref={triggerRef} />}
             </div>
