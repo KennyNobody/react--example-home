@@ -1,9 +1,8 @@
 import { RouteProps } from 'react-router-dom';
 import { FrontPage } from '1_pages/FrontPage';
-import { ListPage } from '1_pages/ListPage';
+import { PostListPage } from '1_pages/PostListPage';
 import { DetailPage } from '1_pages/DetailPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
-import { ContentKeyType } from '5_shared/types/CommonTypes';
 
 export enum AppRouter {
     MAIN = 'main',
@@ -34,24 +33,24 @@ export const routeConfig: RouteProps[] = [
     },
     {
         path: RouterPath.posts,
-        element: <ListPage mode={ContentKeyType.POST} />,
+        element: <PostListPage />,
     },
     {
         path: `${RouterPath.post_detail}:slug`,
         element: <DetailPage />,
     },
-    {
-        path: RouterPath.dev,
-        element: <ListPage mode={ContentKeyType.DEV} />,
-    },
+    // {
+    //     path: RouterPath.dev,
+    //     element: <ListPage mode={ContentKeyType.DEV} />,
+    // },
     {
         path: `${RouterPath.dev_detail}:slug`,
         element: <DetailPage />,
     },
-    {
-        path: RouterPath.photo,
-        element: <ListPage mode={ContentKeyType.PHOTO} />,
-    },
+    // {
+    //     path: RouterPath.photo,
+    //     element: <ListPage mode={ContentKeyType.PHOTO} />,
+    // },
     {
         path: `${RouterPath.photo_detail}:slug`,
         element: <DetailPage />,

@@ -8,7 +8,10 @@ interface MainProps {
 }
 
 export const Main = (props: MainProps) => {
-    const { className, children } = props;
+    const {
+        children,
+        className,
+    } = props;
 
     return (
         <main className={classNames(cls.block, className)}>

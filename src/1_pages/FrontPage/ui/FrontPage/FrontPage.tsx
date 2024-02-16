@@ -1,25 +1,9 @@
 import React from 'react';
-import { Main } from '5_shared/ui/Main';
-import { Stack } from '5_shared/ui/Stack';
+import classNames from 'classnames';
 import { useFetchPageFront } from '1_pages/FrontPage/api/frontPagetApi';
-import { SectionType } from '2_widgets/Section';
-import { SectionPost } from '2_widgets/SectionPosts';
-import { StackSizeType } from '5_shared/ui/Stack/ui/Stack';
-import { SectionDev } from '2_widgets/SectionDev';
-import { ContentKeyType } from '5_shared/types/CommonTypes';
+import { Main } from '5_shared/ui/Main/Main';
+import { SectionsStack } from '5_shared/ui/SectionsStack/SectionsStack';
 import cls from './FrontPage.module.scss';
-
-const getSection = (data: SectionType) => {
-    const { contentKey } = data;
-
-    const ListComponents: Record<ContentKeyType, React.ReactNode> = {
-        [ContentKeyType.DEV]: <SectionDev data={data} isPreview />,
-        [ContentKeyType.PHOTO]: <div>PHOTOListFeature</div>,
-        [ContentKeyType.POST]: <SectionPost data={data} isPreview />,
-    };
-
-    return ListComponents[contentKey] || null;
-};
 
 function FrontPage() {
     const {
@@ -28,15 +12,11 @@ function FrontPage() {
     } = useFetchPageFront(null);
 
     return (
-        <Main className={cls.page} data-test>
-            <Stack size={StackSizeType.LARGE}>
-                {
-                    data?.data?.section?.length
-                    && (
-                        data?.data?.section.map((item: SectionType) => getSection(item))
-                    )
-                }
-            </Stack>
+        <Main className={classNames(cls.main)}>
+            <SectionsStack
+                isLoading={isLoading}
+                data={data?.data?.section}
+            />
         </Main>
     );
 }
