@@ -27,7 +27,7 @@ import { ListPostMode } from '../types/ListPost';
 
 interface ListPostsProps {
     className?: string;
-    mode: ListPostMode;
+    isPreview?: boolean;
 }
 
 const reducers: ReducersList = {
@@ -37,7 +37,7 @@ const reducers: ReducersList = {
 
 export const ListPost = (props: ListPostsProps) => {
     const {
-        mode,
+        isPreview,
         className,
     } = props;
 
@@ -84,7 +84,7 @@ export const ListPost = (props: ListPostsProps) => {
                     showSkeleton={isLoading && !data?.length}
                     showEnd={!isLoading && pageIndex === pageTotal}
                 />
-                {mode === ListPostMode.DYNAMIC && <div ref={triggerRef} />}
+                {!isPreview && <div ref={triggerRef} />}
             </div>
         </DynamicModuleLoader>
     );

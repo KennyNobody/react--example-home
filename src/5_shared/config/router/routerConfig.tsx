@@ -3,6 +3,7 @@ import { FrontPage } from '1_pages/FrontPage';
 import { PostListPage } from '1_pages/PostListPage';
 import { DetailPage } from '1_pages/DetailPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
+import { DevListPage } from '1_pages/DevListPage';
 
 export enum AppRouter {
     MAIN = 'main',
@@ -20,7 +21,7 @@ export const RouterPath: Record<AppRouter, string> = {
     [AppRouter.POSTS]: '/posts/',
     [AppRouter.POST_DETAIL]: '/posts/',
     [AppRouter.DEV]: '/dev/',
-    [AppRouter.DEV_DETAIL]: '/web/',
+    [AppRouter.DEV_DETAIL]: '/dev/',
     [AppRouter.PHOTO]: '/photo/',
     [AppRouter.PHOTO_DETAIL]: '/photo/',
     [AppRouter.NOT_FOUND]: '*',
@@ -39,10 +40,10 @@ export const routeConfig: RouteProps[] = [
         path: `${RouterPath.post_detail}:slug`,
         element: <DetailPage />,
     },
-    // {
-    //     path: RouterPath.dev,
-    //     element: <ListPage mode={ContentKeyType.DEV} />,
-    // },
+    {
+        path: RouterPath.dev,
+        element: <DevListPage />,
+    },
     {
         path: `${RouterPath.dev_detail}:slug`,
         element: <DetailPage />,

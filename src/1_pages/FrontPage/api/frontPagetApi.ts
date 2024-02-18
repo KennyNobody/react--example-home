@@ -1,10 +1,10 @@
 import { rtkApi } from '5_shared/api/rtkApi';
 import { Routes } from '5_shared/api/endpoints';
-import { FrontPageType } from '../model/types/FrontPage';
+import { PageIndexResponseType } from '5_shared/types/CommonTypes';
 
 const pageFrontApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        fetchPageFront: build.query<FrontPageType, null>({
+        fetchPageFront: build.query<PageIndexResponseType, null>({
             query: () => ({
                 url: Routes.PAGE_FRONT,
                 params: {

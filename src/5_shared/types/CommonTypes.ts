@@ -1,3 +1,5 @@
+import { SectionType } from '4_entities/Section';
+
 export enum ContentKeyType {
     DEV = 'dev',
     PHOTO = 'photo',
@@ -24,13 +26,6 @@ export interface PageResponseType {
     meta: any;
 }
 
-export interface SectionType {
-    id: number;
-    title: string | null;
-    years: string | null;
-    linkPath: string | null;
-    linkTitle: string | null;
-    captionLinkPath: string | null;
-    captionLinkTitle: string | null;
-    contentKey: ContentKeyType | null;
+export interface PageIndexResponseType extends Omit<PageResponseType, 'data'> {
+    data: PageResponseType['data'] & { section: SectionType[] };
 }

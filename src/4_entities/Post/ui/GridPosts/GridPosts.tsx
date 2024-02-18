@@ -21,7 +21,7 @@ export const GridPosts = (props: GridPostsProps) => {
     } = props;
 
     const skeleton = (
-        new Array(12).fill(null).map((item, index) => (
+        new Array(12).fill(null).map((_, index) => (
             <div
                 key={index}
                 className={classNames(grid['grid__col-1'])}

@@ -11,6 +11,8 @@ interface PostArticleType {
     createdAt: Date;
     updatedAt: Date;
     publishedAt?: Date;
+    previewTitle: string;
+    previewCaption: string;
     preview?: {
         data: Media;
     };

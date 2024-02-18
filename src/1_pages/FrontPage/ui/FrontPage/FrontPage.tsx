@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useFetchPageFront } from '1_pages/FrontPage/api/frontPagetApi';
+import { SectionsStack } from '2_widgets/SectionsStack';
 import { Main } from '5_shared/ui/Main/Main';
-import { SectionsStack } from '5_shared/ui/SectionsStack/SectionsStack';
 import cls from './FrontPage.module.scss';
+import { useFetchPageFront } from '../../api/frontPagetApi';
 
-function FrontPage() {
+const FrontPage = () => {
     const {
         data,
         isLoading,
@@ -14,11 +14,12 @@ function FrontPage() {
     return (
         <Main className={classNames(cls.main)}>
             <SectionsStack
+                isPreview
                 isLoading={isLoading}
                 data={data?.data?.section}
             />
         </Main>
     );
-}
+};
 
 export default FrontPage;

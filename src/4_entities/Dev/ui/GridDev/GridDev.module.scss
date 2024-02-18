@@ -1,0 +1,16 @@
+.block {
+    gap: 65px;
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    width: 100%;
+}

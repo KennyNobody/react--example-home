@@ -1,6 +1,5 @@
-.link {
+.block {
     display: flex;
-    cursor: pointer;
     padding: 0 22px;
     font-size: 28px;
     background: none;
@@ -13,17 +12,8 @@
     justify-content: center;
     color: var(--light-primary);
 
-    @at-root button#{&} {
-        cursor: pointer;
-    }
-
     &:not(.link--skeleton) {
         border: 1px solid var(--light-primary);
-    }
-
-    &--active {
-        color: var(--bg-dark);
-        background-color: var(--light-primary);
     }
 
     &--skeleton {
@@ -54,9 +44,4 @@
             width: 200px;
         }
     }
-}
-
-.input {
-    display: none;
-    visibility: hidden;
 }

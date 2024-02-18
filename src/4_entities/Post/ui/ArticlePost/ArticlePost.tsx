@@ -1,5 +1,5 @@
-import {useMemo, useRef} from 'react';
 import classNames from 'classnames';
+import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import useHeight from '5_shared/libs/hooks/useHeight';
 import { RouterPath } from '5_shared/config/router/routerConfig';
@@ -47,11 +47,20 @@ export const ArticlePost = (props: ArticlePostProps) => {
             to={`${RouterPath.post_detail}${data?.slug}`}
             className={classNames(cls.article, className)}
         >
-            {data?.title && (
-                <h3 className={classNames(cls.title)}>
-                    {data.title}
-                </h3>
-            )}
+            <div className={classNames(cls.main)}>
+                {data?.previewTitle && (
+                    <h3 className={classNames(cls.title)}>
+                        {data.previewTitle}
+                    </h3>
+                )}
+                {
+                    data?.previewCaption && (
+                        <p className={classNames(cls.caption)}>
+                            {data.previewCaption}
+                        </p>
+                    )
+                }
+            </div>
         </Link>
     ), [heightEl, className, data]);
 

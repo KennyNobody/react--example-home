@@ -7,12 +7,14 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { SortFilterSchema } from '3_features/PostFilter';
+import { DevListSchema } from '4_entities/Dev';
 import { PostListSchema } from '4_entities/Post';
 import { rtkApi } from '5_shared/api/rtkApi';
 
 export interface StateSchema {
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     postList?: PostListSchema;
+    devList?: DevListSchema;
     sortFilter?: SortFilterSchema;
 }
 

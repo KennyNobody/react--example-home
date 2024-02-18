@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import cls from './ListCategory.module.scss';
+import { LabelCategory } from '../LabelCategory/LabelCategory';
 import { ArticleCategory } from '../ArticleCategory/ArticleCategory';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
@@ -32,7 +33,7 @@ export const ListCategory = (props: ListCategoryProps) => {
         data
         && data?.length > 0
         && data.map((item: ArticleCategoryType) => (
-            <ArticleCategory
+            <LabelCategory
                 data={item}
                 key={item.id}
                 name="category"
