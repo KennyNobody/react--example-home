@@ -21,12 +21,11 @@ interface DetailPageProps {
 function DetailPage({ mode }: DetailPageProps) {
     const { slug } = useParams<{ slug: string }>();
     const { data, isLoading } = useFetchPostById(slug || 'none');
-    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-    const isSticky = useStickyObserver({ triggerRef });
+    const { ref, isSticky } = useStickyObserver();
 
-    // useEffect(() => {
-    //     console.log('Is sticky', isSticky);
-    // }, [isSticky]);
+    useEffect(() => {
+        console.log('Is sticky', isSticky);
+    }, [isSticky]);
 
     return (
         <Main className={classNames(cls.main)}>
@@ -71,8 +70,8 @@ function DetailPage({ mode }: DetailPageProps) {
             >
                 <Container>
                     <div
-                        ref={triggerRef}
-                        className={classNames(cls.footer)}
+                        ref={ref}
+                        className={classNames(cls.footer, { [cls['footer--fixed']]: isSticky })}
                     >
                         <DateInfo
                             date={data?.publishedAt}
@@ -80,6 +79,7 @@ function DetailPage({ mode }: DetailPageProps) {
                         />
                         <button
                             type="button"
+                            hidden={isSticky}
                             className={classNames(cls.button)}
                         >
                             <Icon

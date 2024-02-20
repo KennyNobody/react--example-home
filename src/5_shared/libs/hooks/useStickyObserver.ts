@@ -1,48 +1,39 @@
 import {
     useState,
     useEffect,
-    MutableRefObject,
+    MutableRefObject, useRef,
 } from 'react';
 
 export interface useStickyObserverOptions {
     triggerRef: MutableRefObject<HTMLElement>;
 }
 
-export function useStickyObserver({ triggerRef }: useStickyObserverOptions): boolean {
-    const [isSticky, setIsSticky] = useState<boolean>(false);
+export function useStickyObserver() {
+    const ref = useRef<HTMLDivElement>(null);
 
-    // useEffect(() => {
-    //     // console.log('Оп');
-    //     console.log(isSticky);
-    // }, [isSticky]);
+    const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
-        let observer: IntersectionObserver | null = null;
-        const triggerElement: HTMLElement = triggerRef.current;
+        let observer: IntersectionObserver;
+
         const options = {
-            root: document,
-            // rootMargin: '0px',
-            threshold: 0,
+            threshold: [1],
+            rootMargin: '-1px 0px 0px 0px',
         };
 
-        const callbackEvent = ([el]: IntersectionObserverEntry[]) => {
-            console.log(el);
-            // setIsSticky(el.boundingClientRect.top === 0);
-            if (el.isIntersecting) {
-                // Вызовите функцию или обработайте данные здесь
-                console.log('Element is intersecting with the viewport!');
-                console.log(el.target); // Это элемент, который пересекается с viewport
-            }
+        const callbackEvent = ([el]: IntersectionObserverEntry[]): void => {
+            setIsSticky(el.intersectionRatio < 1);
         };
 
-        observer = new IntersectionObserver(callbackEvent, options);
+        if (ref.current) {
+            observer = new IntersectionObserver(callbackEvent, options);
+            observer.observe(ref.current);
+        }
 
-        observer.observe(triggerElement);
-
-        return (): void => {
-            if (observer) observer?.unobserve(triggerElement);
+        return () => {
+            if (observer) observer.disconnect();
         };
-    }, [triggerRef]);
+    }, []);
 
-    return isSticky;
+    return { ref, isSticky };
 }
