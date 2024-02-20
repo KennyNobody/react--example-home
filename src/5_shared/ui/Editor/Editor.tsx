@@ -2,8 +2,14 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 import cls from './Editor.module.scss';
 
+export enum EditorMode {
+    REGULAR = 'regular',
+    PREVIEW = 'preview',
+}
+
 interface EditorProps {
     data?: string;
+    mode: EditorMode;
     className?: string;
     children?: ReactNode;
 }
@@ -11,6 +17,7 @@ interface EditorProps {
 export const Editor = (props: EditorProps) => {
     const {
         data,
+        mode,
         children,
         className,
     } = props;
@@ -18,7 +25,7 @@ export const Editor = (props: EditorProps) => {
     if (data) {
         return (
             <div
-                className={classNames(cls.editor, className)}
+                className={classNames(cls.editor, cls[`editor--${mode}`], className)}
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                     __html: data,
@@ -28,7 +35,7 @@ export const Editor = (props: EditorProps) => {
     }
 
     return (
-        <div className={classNames(cls.editor, className)}>
+        <div className={classNames(cls.editor, cls[`editor--${mode}`], className)}>
             { children }
         </div>
     );

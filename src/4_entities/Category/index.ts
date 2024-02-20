@@ -27,3 +27,7 @@ export {
 export {
     CategoryMode,
 } from './model/types/CategoryMode';
+
+export {
+    ListTags,
+} from './ui/ListTags/ListTags';

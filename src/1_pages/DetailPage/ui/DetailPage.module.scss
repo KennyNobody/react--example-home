@@ -1,15 +1,19 @@
 .intro {
+    top: 0;
+    left: 0;
+    right: 0;
     margin: 0 auto;
+    position: fixed;
     background-color: #3653A1;
 }
 
 .intro-content {
+    gap: 60px;
     display: flex;
     height: 100vh;
     flex-direction: column;
     padding: 185px 0 150px;
     background-color: #7f7f7f;
-    justify-content: space-between;
 }
 
 .toolbar {
@@ -22,8 +26,17 @@
     font-weight: 350;
 }
 
+.main {
+    flex-grow: 1;
+}
+
 .footer {
+    top: 0;
+    width: 100%;
     display: flex;
+    min-height: 90px;
+    position: sticky;
+    margin-bottom: 35px;
     align-items: center;
     justify-content: space-between;
 }
@@ -52,4 +65,15 @@
 
 .share {
     width: 30%;
+}
+
+.intro-main {
+    position: relative;
+    margin-top: calc(100vh - 120px);
+}
+
+.intro-editor {
+    padding: 60px 0;
+    border-radius: 28px;
+    background-color: #004444;
 }

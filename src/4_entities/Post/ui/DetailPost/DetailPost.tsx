@@ -1,10 +1,7 @@
 import {
     memo,
-    useEffect,
 } from 'react';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
-import { Editor } from '5_shared/ui/Editor';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import {
     ReducersList,
