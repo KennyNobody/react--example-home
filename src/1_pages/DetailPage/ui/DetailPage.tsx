@@ -13,6 +13,7 @@ import { Editor, EditorMode } from '5_shared/ui/Editor/Editor';
 import { useStickyObserver } from '5_shared/libs/hooks/useStickyObserver';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import cls from './DetailPage.module.scss';
+import {Share} from "3_features/Share";
 
 interface DetailPageProps {
     mode: ContentKeyType;
@@ -29,7 +30,7 @@ function DetailPage({ mode }: DetailPageProps) {
 
     return (
         <Main className={classNames(cls.main)}>
-            <div className={classNames(cls.intro)}>
+            <div className={classNames(cls.intro, { [cls['intro--clear']]: isSticky })}>
                 <Container>
                     <div className={classNames(cls['intro-content'])}>
                         <Toolbar className={classNames(cls.toolbar)}>
@@ -87,7 +88,7 @@ function DetailPage({ mode }: DetailPageProps) {
                             />
                         </button>
                         <div className={classNames(cls.share)}>
-                            Поделиться
+                            <Share />
                         </div>
                     </div>
                     <div className={classNames(cls['intro-editor'])}>

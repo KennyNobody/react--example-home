@@ -4,7 +4,12 @@
     right: 0;
     margin: 0 auto;
     position: fixed;
-    background-color: #3653A1;
+    transition: 0.3s background-color;
+    background-color: var(--dark-accent);
+
+    &--clear {
+        background-color: #3653A100;
+    }
 }
 
 .intro-content {
@@ -13,7 +18,7 @@
     height: 100vh;
     flex-direction: column;
     padding: 185px 0 150px;
-    background-color: #7f7f7f;
+    //background-color: #7f7f7f;
 }
 
 .toolbar {
@@ -42,7 +47,7 @@
     transition: 0.3s background-color;
 
     &--fixed {
-        background-color: blue;
+        background-color: var(--bg-dark);
     }
 }
 
@@ -81,7 +86,7 @@
 
 .intro-main {
     position: relative;
-    margin-top: calc(100vh - 120px);
+    margin-top: calc(100vh - 180px);
 }
 
 .intro-editor {
