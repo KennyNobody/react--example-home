@@ -23,12 +23,14 @@ function DetailPage({ mode }: DetailPageProps) {
     const { data, isLoading } = useFetchPostById(slug || 'none');
     const { ref, isSticky } = useStickyObserver();
 
-    useEffect(() => {
-        console.log('Is sticky', isSticky);
-    }, [isSticky]);
-
     return (
         <Main className={classNames(cls.main)}>
+            <picture
+                hidden={isSticky}
+                className={classNames(cls.picture)}
+            >
+                <img src="https://placeholder.pics/svg/3840x2160/292929" alt="#" />
+            </picture>
             <div className={classNames(cls.intro)}>
                 <Container>
                     <div className={classNames(cls['intro-content'])}>
@@ -46,7 +48,7 @@ function DetailPage({ mode }: DetailPageProps) {
                                 )
                             }
                         </Toolbar>
-                        <div className={classNames(cls.main)}>
+                        <div className={classNames(cls['main-content'])}>
                             <div className={classNames(grid.grid, cls.grid)}>
                                 <div className={classNames(grid['grid__col-2'])}>
                                     <ListTags list={data?.tags?.data} />
@@ -71,7 +73,12 @@ function DetailPage({ mode }: DetailPageProps) {
                 <Container>
                     <div
                         ref={ref}
-                        className={classNames(cls.footer, { [cls['footer--fixed']]: isSticky })}
+                        className={
+                            classNames(
+                                cls.footer,
+                                { [cls['footer--fixed']]: isSticky },
+                            )
+                        }
                     >
                         <DateInfo
                             date={data?.publishedAt}

@@ -16,8 +16,8 @@ export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOpt
         if (callback && triggerElement) {
             const options = {
                 root: document,
-                rootMargin: '0px',
-                threshold: 1.0,
+                rootMargin: '-1px 0px 0px 0px',
+                threshold: [1],
             };
 
             observer = new IntersectionObserver(([el]: IntersectionObserverEntry[]): void => {
@@ -28,7 +28,7 @@ export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOpt
         }
 
         return (): void => {
-            if (observer) observer?.unobserve(triggerElement);
+            if (observer) observer?.disconnect();
         };
     }, [callback, triggerRef]);
 }
