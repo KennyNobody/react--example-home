@@ -2,11 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { LazyQueryTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
-import { getSortFilterCategory } from '3_features/PostFilter/selectors/sortFilter';
 import {
     getDevListPage,
     getDevListCount,
     getDevListPerPage,
+    getDevListCategory,
 } from '../../selectors/devList';
 import { devListActions } from '../../slices/devListSlice';
 
@@ -24,7 +24,7 @@ export const fetchNextDevList = createAsyncThunk<void, FetchDevListProps, ThunkC
 
         const perPage = getDevListPerPage(getState()) || 1;
         const listIndex = getDevListPage(getState()) || 1;
-        // const category = getSortFilterCategory(getState());
+        const category = getDevListCategory(getState());
         const listLength = getDevListCount(getState());
         const pageNumber = listIndex === listLength ? listIndex : listIndex + 1;
 
@@ -36,9 +36,9 @@ export const fetchNextDevList = createAsyncThunk<void, FetchDevListProps, ThunkC
             replace,
         };
 
-        // if (category) {
-        //     params[PaginationParams.CAT] = category;
-        // }
+        if (category) {
+            params[PaginationParams.CAT] = category;
+        }
 
         await props.getData(params, true).then((response) => {
             // @ts-ignore

@@ -4,6 +4,7 @@ import { PostListPage } from '1_pages/PostListPage';
 import { DetailPage } from '1_pages/DetailPage';
 import { NotFoundPage } from '1_pages/NotFoundPage';
 import { DevListPage } from '1_pages/DevListPage';
+import {ContentKeyType} from "5_shared/types/CommonTypes";
 
 export enum AppRouter {
     MAIN = 'main',
@@ -38,7 +39,7 @@ export const routeConfig: RouteProps[] = [
     },
     {
         path: `${RouterPath.post_detail}:slug`,
-        element: <DetailPage />,
+        element: <DetailPage mode={ContentKeyType.POST} />,
     },
     {
         path: RouterPath.dev,
@@ -46,7 +47,7 @@ export const routeConfig: RouteProps[] = [
     },
     {
         path: `${RouterPath.dev_detail}:slug`,
-        element: <DetailPage />,
+        element: <DetailPage mode={ContentKeyType.DEV} />,
     },
     // {
     //     path: RouterPath.photo,
@@ -54,7 +55,7 @@ export const routeConfig: RouteProps[] = [
     // },
     {
         path: `${RouterPath.photo_detail}:slug`,
-        element: <DetailPage />,
+        element: <DetailPage mode={ContentKeyType.PHOTO} />,
     },
     {
         path: RouterPath.not_found,

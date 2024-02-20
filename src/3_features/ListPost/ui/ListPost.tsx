@@ -7,23 +7,20 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     GridPosts,
-    initPost,
+    initPostList,
     getPostListPage,
     getPostListCount,
     fetchNextPostList,
     getPostListLoading,
     PostArticleType,
-    FetchingPostListDirection,
     getPostList,
     postListReducer,
     useLazyFetchPostList,
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
-import { sortFilterReducer } from '3_features/PostFilter/slices/sortFilterSlice';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
 import cls from './ListPost.module.scss';
-import { ListPostMode } from '../types/ListPost';
 
 interface ListPostsProps {
     className?: string;
@@ -32,7 +29,6 @@ interface ListPostsProps {
 
 const reducers: ReducersList = {
     postList: postListReducer,
-    sortFilter: sortFilterReducer,
 };
 
 export const ListPost = (props: ListPostsProps) => {
@@ -55,13 +51,12 @@ export const ListPost = (props: ListPostsProps) => {
             dispatch(fetchNextPostList({
                 getData,
                 replace: false,
-                direction: FetchingPostListDirection.NEXT,
             }));
         }
     };
 
     useEffect(() => {
-        dispatch(initPost(getData));
+        dispatch(initPostList(getData));
     }, []);
 
     useInfiniteScroll({

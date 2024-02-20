@@ -2,14 +2,14 @@ import {
     createSlice,
     PayloadAction,
 } from '@reduxjs/toolkit';
-import { SortFilterSchema } from '../types/SortFilterSchema';
+import { DevFilterSchema } from '../types/DevFilterSchema';
 
-const initialState: SortFilterSchema = {
+const initialState: DevFilterSchema = {
     category: undefined,
 };
 
-const sortFilterSlice = createSlice({
-    name: 'sortFilterSlice',
+const devFilterSlice = createSlice({
+    name: 'devFilterSlice',
     initialState,
     reducers: {
         toggleCategory: (state, action: PayloadAction<number | undefined>) => {
@@ -23,6 +23,6 @@ const sortFilterSlice = createSlice({
 });
 
 export const {
-    reducer: sortFilterReducer,
-    actions: sortFilterActions,
-} = sortFilterSlice;
+    reducer: devFilterReducer,
+    actions: devFilterActions,
+} = devFilterSlice;

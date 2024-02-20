@@ -5,7 +5,7 @@ import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
 import { postListActions } from '../../slices/postListSlice';
 import { getPostListPerPage } from '../../selectors/postList';
 
-export const initPost = createAsyncThunk<void, LazyQueryTrigger<any>, ThunkConfig<string>>(
+export const initPostList = createAsyncThunk<void, LazyQueryTrigger<any>, ThunkConfig<string>>(
     'postList/initPostList',
     async (getData, thunkAPI) => {
         const {

@@ -20,6 +20,7 @@ const initialState: PostListSchema = {
     perPage: 8,
     isLoading: false,
     errors: undefined,
+    category: undefined,
     count: 1,
     ids: [],
     entities: {},
@@ -45,6 +46,13 @@ const postListSlice = createSlice({
             const pagination = action.payload;
             state.page = pagination.page;
             state.count = pagination.pageCount;
+        },
+        toggleCategory: (state, action: PayloadAction<number | undefined>) => {
+            if (state.category === action.payload) {
+                state.category = undefined;
+            } else {
+                state.category = action.payload;
+            }
         },
     },
     extraReducers: (builder) => {

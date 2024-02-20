@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import {
+    ArticleCategory,
+    ArticleCategorySize,
+} from '4_entities/Category';
 import useHeight from '5_shared/libs/hooks/useHeight';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './ArticlePost.module.scss';
@@ -44,7 +48,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 width: '100%',
                 height: `${heightEl}px`,
             }}
-            to={`${RouterPath.post_detail}${data?.slug}`}
+            to={`${RouterPath.post_detail}${data?.id}`}
             className={classNames(cls.article, className)}
         >
             <div className={classNames(cls.main)}>
@@ -61,6 +65,16 @@ export const ArticlePost = (props: ArticlePostProps) => {
                     )
                 }
             </div>
+            {
+                data?.category?.data
+                && (
+                    <ArticleCategory
+                        className={cls.tag}
+                        data={data?.category?.data}
+                        size={ArticleCategorySize.SMALL}
+                    />
+                )
+            }
         </Link>
     ), [heightEl, className, data]);
 

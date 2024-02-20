@@ -1,7 +1,7 @@
-interface SortFilterSchema {
+interface DevFilterSchema {
     category: number | undefined;
 }
 
 export type {
-    SortFilterSchema,
+    DevFilterSchema,
 };

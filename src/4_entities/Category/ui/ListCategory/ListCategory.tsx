@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import cls from './ListCategory.module.scss';
-import { LabelCategory } from '../LabelCategory/LabelCategory';
-import { ArticleCategory } from '../ArticleCategory/ArticleCategory';
-import { ArticleCategoryType } from '../../model/types/ArticleCategory';
+import {LabelCategory} from '../LabelCategory/LabelCategory';
+import {ArticleCategory, ArticleCategorySize} from '../ArticleCategory/ArticleCategory';
+import {ArticleCategoryType} from '../../model/types/ArticleCategory';
 
 interface ListCategoryProps {
     className?: string;
@@ -25,6 +25,7 @@ export const ListCategory = (props: ListCategoryProps) => {
         new Array(5).fill(null).map((_, index: number) => (
             <ArticleCategory
                 key={index}
+                size={ArticleCategorySize.BIG}
             />
         ))
     );

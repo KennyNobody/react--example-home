@@ -9,3 +9,32 @@ export {
 export type {
     DevListSchema,
 } from './model/types/DevListSchema';
+
+export {
+    getDevList,
+    devListReducer,
+    devListActions,
+} from './model/slices/devListSlice';
+
+export {
+    fetchNextDevList,
+} from './model/services/fetchNextDevList/fetchNextDevList';
+
+export {
+    useLazyFetchDevList,
+} from './api/devApi';
+
+export {
+    getDevListPage,
+    getDevListCount,
+    getDevListLoading,
+    getDevListCategory,
+} from './model/selectors/devList';
+
+export {
+    type ArticleDevType,
+} from './model/types/ArticleDev';
+
+export {
+    initDev,
+} from './model/services/initDevList/initDev';

@@ -1,7 +1,8 @@
 export enum Routes {
     MAIN = 'main',
     POSTS_LIST = 'posts',
-    CATEGORIES_LIST = 'categories',
+    POST_CAT_LIST = 'categories',
+    DEV_TAG_LIST = 'tags-dev',
     DEVS_LIST = 'devs',
     PAGE_FRONT = 'page-front',
     PAGE_POST = 'page-post',

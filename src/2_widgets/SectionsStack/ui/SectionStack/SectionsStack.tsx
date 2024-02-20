@@ -1,12 +1,10 @@
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
-import {
-    SectionDev,
-    SectionPost,
-    SectionType,
-} from '4_entities/Section';
 import { ContentKeyType } from '5_shared/types/CommonTypes';
 import { Stack, StackSizeType } from '5_shared/ui/Stack/ui/Stack';
+import { SectionType } from '../../model/Section';
+import { SectionDev } from '../SectionDev/SectionDev';
+import { SectionPost } from '../SectionPost/SectionPost';
 
 interface PageIndexProps {
     className?: string;
@@ -19,9 +17,9 @@ const renderSection = (data: SectionType, isPreview: boolean): ReactNode | null 
     const { contentKey } = data;
 
     const ListComponents: Record<ContentKeyType, React.ReactNode> = {
-        [ContentKeyType.DEV]: <SectionDev data={data} isPreview={isPreview} />,
-        [ContentKeyType.PHOTO]: <div>PHOTOListFeature</div>,
-        [ContentKeyType.POST]: <SectionPost data={data} isPreview={isPreview} />,
+        [ContentKeyType.DEV]: <SectionDev key={data.id} data={data} isPreview={isPreview} />,
+        [ContentKeyType.PHOTO]: null,
+        [ContentKeyType.POST]: <SectionPost key={data.id} data={data} isPreview={isPreview} />,
     };
 
     return ListComponents[contentKey] || null;

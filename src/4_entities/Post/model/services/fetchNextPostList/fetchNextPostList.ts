@@ -2,23 +2,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { LazyQueryTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
-import { getSortFilterCategory } from '3_features/PostFilter/selectors/sortFilter';
 import {
     getPostListPage,
     getPostListCount,
     getPostListPerPage,
+    getPostListCategory,
 } from '../../selectors/postList';
 import { postListActions } from '../../slices/postListSlice';
-
-export enum FetchingPostListDirection {
-    PREV,
-    NEXT,
-}
 
 interface FetchPostListPageProps {
     replace: boolean;
     getData: LazyQueryTrigger<any>,
-    direction?: FetchingPostListDirection;
 }
 
 export const fetchNextPostList = createAsyncThunk<void, FetchPostListPageProps, ThunkConfig<string>>(
@@ -30,7 +24,7 @@ export const fetchNextPostList = createAsyncThunk<void, FetchPostListPageProps, 
 
         const perPage = getPostListPerPage(getState()) || 1;
         const listIndex = getPostListPage(getState()) || 1;
-        const category = getSortFilterCategory(getState());
+        const category = getPostListCategory(getState());
         const listLength = getPostListCount(getState());
         const pageNumber = listIndex === listLength ? listIndex : listIndex + 1;
 

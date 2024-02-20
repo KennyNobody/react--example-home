@@ -8,4 +8,5 @@ export interface PostListSchema extends EntityState<PostArticleType> {
     page: number;
     perPage?: number;
     count: number;
+    category: number | undefined;
 }

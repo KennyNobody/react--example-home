@@ -12,7 +12,7 @@ export type {
 
 export {
     postApi,
-    useFetchPostList,
+    useFetchPostById,
     useLazyFetchPostList,
 } from './api/postApi';
 
@@ -24,17 +24,17 @@ export {
 
 export {
     fetchNextPostList,
-    FetchingPostListDirection,
-} from '4_entities/Post/model/services/fetchNextPostList/fetchNextPostList';
+} from './model/services/fetchNextPostList/fetchNextPostList';
 
 export {
-    initPost,
-} from './model/services/initPostList/initPost';
+    initPostList,
+} from './model/services/initPostList/initPostList';
 
 export {
     getPostListCount,
     getPostListLoading,
     getPostListPage,
+    getPostListCategory,
 } from './model/selectors/postList';
 
 export type {

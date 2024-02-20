@@ -8,4 +8,5 @@ export interface DevListSchema extends EntityState<ArticleDevType> {
     page: number;
     perPage?: number;
     count: number;
+    category: number | undefined;
 }

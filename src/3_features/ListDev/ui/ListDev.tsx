@@ -5,17 +5,25 @@ import {
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-
+import { devFilterReducer } from '3_features/DevFilter';
+import {
+    initDev,
+    GridDev,
+    getDevListPage,
+    getDevListCount,
+    fetchNextDevList,
+    getDevListLoading,
+    ArticleDevType,
+    getDevList,
+    devListReducer,
+    useLazyFetchDevList,
+} from '4_entities/Dev';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
-import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    ReducersList,
+    DynamicModuleLoader,
+} from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
-import { GridDev } from '4_entities/Dev';
-import { devListReducer, getDevList } from '4_entities/Dev/model/slices/devListSlice';
-import { getDevListCount, getDevListLoading, getDevListPage } from '4_entities/Dev/model/selectors/devList';
-import { ArticleDevType } from '4_entities/Dev/model/types/ArticleDev';
-import { useLazyFetchDevList } from '4_entities/Dev/api/devApi';
-import { fetchNextDevList } from '4_entities/Dev/model/services/fetchNextDevList/fetchNextDevList';
-import { initDev } from '4_entities/Dev/model/services/initDevList/initDev';
 import cls from './ListDev.module.scss';
 
 interface ListDevProps {
@@ -25,7 +33,7 @@ interface ListDevProps {
 
 const reducers: ReducersList = {
     devList: devListReducer,
-    // sortFilter: sortFilterReducer,
+    devFilter: devFilterReducer,
 };
 
 export const ListDev = (props: ListDevProps) => {

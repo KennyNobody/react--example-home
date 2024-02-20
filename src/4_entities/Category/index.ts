@@ -4,6 +4,7 @@ export type {
 
 export {
     ArticleCategory,
+    ArticleCategorySize,
 } from './ui/ArticleCategory/ArticleCategory';
 
 export {
@@ -22,3 +23,7 @@ export {
     categoryApi,
     useFetchCategoryList,
 } from './api/categoryApi';
+
+export {
+    CategoryMode,
+} from './model/types/CategoryMode';

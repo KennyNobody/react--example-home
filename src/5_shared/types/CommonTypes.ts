@@ -1,4 +1,4 @@
-import { SectionType } from '4_entities/Section';
+import { SectionType } from '2_widgets/SectionsStack';
 
 export enum ContentKeyType {
     DEV = 'dev',

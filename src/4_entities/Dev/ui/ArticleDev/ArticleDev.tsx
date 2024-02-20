@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { GridCategory } from '4_entities/Category';
 import grid from '5_shared/css/grid.module.scss';
 import Icon from '5_shared/assets/icons/arrow-next.svg';
-import { ArticleDevType } from '4_entities/Dev/model/types/ArticleDev';
+import { RouterPath } from '5_shared/config/router/routerConfig';
+import { ArticleDevType } from '../../model/types/ArticleDev';
 import cls from './ArticleDev.module.scss';
-import {RouterPath} from "5_shared/config/router/routerConfig";
 
 interface ArticleDevProps {
     className?: string;
