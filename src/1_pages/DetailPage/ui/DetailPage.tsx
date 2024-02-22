@@ -14,15 +14,21 @@ import { useStickyObserver } from '5_shared/libs/hooks/useStickyObserver';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import cls from './DetailPage.module.scss';
 import {Share} from "3_features/Share";
+import useTime from "5_shared/libs/hooks/useTime";
+import {useTranslation} from "react-i18next";
 
 interface DetailPageProps {
     mode: ContentKeyType;
 }
 
 function DetailPage({ mode }: DetailPageProps) {
+    const { i18n } = useTranslation();
+    const lang = i18n.language;
+
     const { slug } = useParams<{ slug: string }>();
     const { data, isLoading } = useFetchPostById(slug || 'none');
     const { ref, isSticky } = useStickyObserver();
+    const time = useTime(data?.publishedAt, lang);
 
     return (
         <Main className={classNames(cls.main)}>
@@ -81,10 +87,15 @@ function DetailPage({ mode }: DetailPageProps) {
                             )
                         }
                     >
-                        <DateInfo
-                            date={data?.publishedAt}
-                            className={classNames(cls.time)}
-                        />
+                        {
+                            data?.publishedAt
+                            && (
+                                <DateInfo
+                                    date={time}
+                                    className={classNames(cls.time)}
+                                />
+                            )
+                        }
                         <button
                             type="button"
                             hidden={isSticky}
