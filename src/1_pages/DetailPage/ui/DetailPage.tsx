@@ -87,7 +87,7 @@ function DetailPage({ mode }: DetailPageProps) {
                             )
                         }
                     >
-                        <div className={grid.grid}>
+                        <div className={classNames(grid.grid, cls['footer-grid'])}>
                             <div className={grid['grid__col-1']}>
                                 {
                                     data?.publishedAt
@@ -109,6 +109,12 @@ function DetailPage({ mode }: DetailPageProps) {
                                         className={classNames(cls.icon)}
                                     />
                                 </button>
+                                <div
+                                    hidden={!isSticky}
+                                    className={classNames(cls.caption)}
+                                >
+                                    { data?.title }
+                                </div>
                             </div>
                             <div className={grid['grid__col-1']}>
                                 <div className={classNames(cls['share-column'])}>

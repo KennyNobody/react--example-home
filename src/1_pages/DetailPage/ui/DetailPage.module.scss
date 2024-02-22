@@ -78,19 +78,40 @@
     }
 }
 
+.footer-grid {
+    min-height: 60px;
+    align-items: center;
+}
+
 .button {
     opacity: 1;
+    width: 100%;
     border: none;
     padding: 4px;
     display: flex;
     cursor: pointer;
     background: none;
+    max-height: 100%;
+    overflow: hidden;
     align-items: center;
+    transition: 0.3s all;
     justify-content: center;
-    transition: 0.3s opacity;
 
     &[hidden] {
         opacity: 0;
+        max-height: 0;
+        visibility: hidden;
+    }
+}
+
+.caption {
+    max-height: 100%;
+    overflow: hidden;
+    transition: 0.3s all;
+
+    &[hidden] {
+        opacity: 0;
+        max-height: 0;
         visibility: hidden;
     }
 }
