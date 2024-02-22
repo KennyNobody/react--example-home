@@ -17,8 +17,9 @@ export function useStickyObserver() {
         let observer: IntersectionObserver;
 
         const options = {
-            threshold: [1],
+            root: document,
             rootMargin: '-1px 0px 0px 0px',
+            threshold: [1],
         };
 
         const callbackEvent = ([el]: IntersectionObserverEntry[]): void => {

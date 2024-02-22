@@ -1,14 +1,15 @@
 import classNames from 'classnames';
 import React from 'react';
+import { AppData } from '0_app/types/MainResponseType';
 import { ThemeSwitcher } from '3_features/ThemeSwitcher';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
 import { Controls } from '5_shared/ui/Controls/Controls';
-import { IconKey, LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
+import { IconKey } from '5_shared/ui/IconSocial/IconSocial';
+import { LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
 import cls from './Footer.module.scss';
 import { Years } from '../Years/Years';
 import { Author } from '../Author/Author';
-import {AppData} from "0_app/types/MainResponseType";
 
 interface FooterProps {
     data: AppData;

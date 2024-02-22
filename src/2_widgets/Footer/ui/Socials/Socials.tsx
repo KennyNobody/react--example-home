@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
-import { IconKey, LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
 import { Controls } from '5_shared/ui/Controls/Controls';
+import {IconKey} from '5_shared/ui/IconSocial/IconSocial';
+import { LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
 import cls from './Socials.module.scss';
 
 interface SocialsProps {
@@ -31,7 +32,7 @@ export const Socials = (props: SocialsProps) => {
     ];
 
     return (
-        <Controls className={classNames(className)}>
+        <Controls className={classNames(className, cls.block)}>
             {
                 linksArray.map((item, index) => (
                     <LinkSocial
