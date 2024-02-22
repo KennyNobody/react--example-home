@@ -87,29 +87,38 @@ function DetailPage({ mode }: DetailPageProps) {
                             )
                         }
                     >
-                        {
-                            data?.publishedAt
-                            && (
-                                <DateInfo
-                                    date={time}
-                                    className={classNames(cls.time)}
-                                />
-                            )
-                        }
-                        <button
-                            type="button"
-                            hidden={isSticky}
-                            className={classNames(cls.button)}
-                        >
-                            <Icon
-                                className={classNames(cls.icon)}
-                            />
-                        </button>
-                        <div className={classNames(cls['share-column'])}>
-                            <Share
-                                className={classNames(cls.share)}
-                            />
+                        <div className={grid.grid}>
+                            <div className={grid['grid__col-1']}>
+                                {
+                                    data?.publishedAt
+                                    && (
+                                        <DateInfo
+                                            date={time}
+                                            className={classNames(cls.time)}
+                                        />
+                                    )
+                                }
+                            </div>
+                            <div className={grid['grid__col-2']}>
+                                <button
+                                    type="button"
+                                    hidden={isSticky}
+                                    className={classNames(cls.button)}
+                                >
+                                    <Icon
+                                        className={classNames(cls.icon)}
+                                    />
+                                </button>
+                            </div>
+                            <div className={grid['grid__col-1']}>
+                                <div className={classNames(cls['share-column'])}>
+                                    <Share
+                                        className={classNames(cls.share)}
+                                    />
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <div className={classNames(cls['intro-editor'])}>
                         <div className={classNames(grid.grid)}>
