@@ -3,7 +3,7 @@ import {
     useEffect,
 } from 'react';
 
-const useFormattedDate = (timeStamp: number, lang: string): string => {
+const useFormattedDate = (timeStamp: Date, lang: string): string => {
     const [formattedDate, setFormattedDate] = useState('');
 
     useEffect(() => {

@@ -2,6 +2,10 @@
 @import "./vars/global";
 @import "./vars/colors";
 
+html {
+    scroll-behavior: smooth;
+}
+
 .body {
     line-height: 1.3;
     font-family: var(--font-regular);

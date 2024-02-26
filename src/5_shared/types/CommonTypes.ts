@@ -1,5 +1,15 @@
 import { SectionType } from '2_widgets/SectionsStack';
 
+export enum LangShownType {
+    RU = 'Ру',
+    EN = 'En',
+}
+
+export enum LangEngineType {
+    RU = 'ru',
+    EN = 'en',
+}
+
 export enum ContentKeyType {
     DEV = 'dev',
     PHOTO = 'photo',

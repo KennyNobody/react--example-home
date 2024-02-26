@@ -1,6 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { Toggler } from '5_shared/ui/Toggler/Toggler';
+import { LangEngineType, LangShownType } from '5_shared/types/CommonTypes';
 import cls from './LanguageSwitcher.module.scss';
 
 interface LanguageSwitcherProps {
@@ -14,28 +16,15 @@ export const LanguageSwitcher = memo((props: LanguageSwitcherProps) => {
     const changeLanguage = (e) => {
         const isChecked = e.target.checked;
 
-        i18n.changeLanguage(isChecked ? 'en' : 'ru');
+        i18n.changeLanguage(isChecked ? LangEngineType.EN : LangEngineType.RU);
     };
 
     return (
-        <div className={classNames(cls.LanguageSwitcher, className)}>
-            <label className={classNames(cls.label)}>
-                <div className={classNames(cls.content)}>
-                    <div className={classNames(cls.cell)}>
-                        RU
-                    </div>
-                    <div className={classNames(cls.cell)}>
-                        EN
-                    </div>
-                </div>
-                <input
-                    type="checkbox"
-                    checked={i18n.language === 'en'}
-                    className={classNames(cls.input)}
-                    onChange={changeLanguage}
-                />
-                <div className={classNames(cls.button)} />
-            </label>
-        </div>
+        <Toggler
+            changeEvent={changeLanguage}
+            arr={[LangShownType.RU, LangShownType.EN]}
+            isChecked={i18n.language === LangEngineType.EN}
+            className={classNames(cls.toggler, className)}
+        />
     );
 });

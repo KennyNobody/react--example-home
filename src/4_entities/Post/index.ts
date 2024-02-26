@@ -1,8 +1,4 @@
 export {
-    DetailPost,
-} from './ui/DetailPost/DetailPost';
-
-export {
     GridPosts,
 } from './ui/GridPosts/GridPosts';
 

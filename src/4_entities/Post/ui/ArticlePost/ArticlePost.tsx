@@ -52,15 +52,15 @@ export const ArticlePost = (props: ArticlePostProps) => {
             className={classNames(cls.article, className)}
         >
             <div className={classNames(cls.main)}>
-                {data?.previewTitle && (
+                {data?.main?.previewTitle && (
                     <h3 className={classNames(cls.title)}>
-                        {data.previewTitle}
+                        {data.main.previewTitle}
                     </h3>
                 )}
                 {
-                    data?.previewCaption && (
+                    data?.main?.previewCaption && (
                         <p className={classNames(cls.caption)}>
-                            {data.previewCaption}
+                            {data.main.previewCaption}
                         </p>
                     )
                 }

@@ -1,28 +1,19 @@
-import { Media } from '4_entities/Media';
 import { ArticleTagType } from '4_entities/Tag';
 import { ArticleCategoryType } from '4_entities/Category';
+import { DetailMainType } from '5_shared/types/DetailMainContent';
 
 export interface ArticleDevType {
     id: number;
-    title: string;
     slug: string;
-    content?: any;
+    title: string;
     locale: string;
     createdAt: Date;
     updatedAt: Date;
     publishedAt?: Date;
-    preview?: {
-        data: Media;
-    };
-    gallery?: {
-        data: Media[];
-    };
+    main: DetailMainType;
     tags?: {
         data: ArticleTagType[];
     };
-    // localizations?: {
-    //     data: ArticlePostType[];
-    // };
     category?: {
         data: ArticleCategoryType;
     };

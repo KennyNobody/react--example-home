@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { AppTheme } from '5_shared/config/ThemeContext';
+import { Switcher } from '5_shared/ui/Switcher/Switcher';
 import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
@@ -12,24 +13,14 @@ export function ThemeSwitcher(props: ThemeSwitcherProps) {
     const { theme, setThemeManual } = useTheme();
     const changeTheme = (e) => {
         const isChecked = e.target.checked;
-
-        if (isChecked) {
-            setThemeManual(AppTheme.DARK);
-        } else {
-            setThemeManual(AppTheme.LIGHT);
-        }
+        setThemeManual(isChecked ? AppTheme.DARK : AppTheme.LIGHT);
     };
 
     return (
-        <div className={classNames(cls.block, className)}>
-            <label>
-                <input
-                    type="checkbox"
-                    onChange={changeTheme}
-                    checked={theme === AppTheme.DARK}
-                />
-                Темная тема
-            </label>
-        </div>
+        <Switcher
+            changeEvent={changeTheme}
+            isChecked={theme === AppTheme.DARK}
+            className={classNames(cls.toggler, className)}
+        />
     );
 }
