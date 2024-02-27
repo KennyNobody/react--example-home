@@ -1,4 +1,5 @@
 .editor {
+    font-size: 28px;
     line-height: 1.6;
 
     & > * {
@@ -9,15 +10,69 @@
         margin-bottom: 0;
     }
 
-    &--regular {
-        font-size: 28px;
+    a {
+        color: inherit;
+        text-decoration-color: var(--blue);
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
-    &--preview {
-        font-size: 30px;
+    b, strong {
+        font-weight: 600;
     }
 
+    pre {
+        font-size: 22px;
+        padding: 1em 1.5em;
+        border-radius: 6px;
+        font-family: monospace;
+    }
 
+    ul, ol {
+        list-style-position: inside;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    blockquote {
+        border-left: 5px solid;
+        padding: 0.5em 1em;
+        margin: 1em 0;
+        font-style: italic;
+    }
+
+    &--theme-light {
+        pre {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        blockquote {
+            background-color: #f9f9f9;
+            border-left-color: var(--blue);
+        }
+    }
+
+    &--theme-dark {
+        pre {
+            color: var(--light-primary);
+            background-color: var(--bg-dark);
+        }
+
+        blockquote {
+            color: #f4f4f4;
+            background-color: #333;
+            border-left-color: var(--blue);
+        }
+    }
 }
 
 @media (max-width: 1300px) {

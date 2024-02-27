@@ -3,11 +3,12 @@ import {
     BlocksRenderer,
     type BlocksContent,
 } from '@strapi/blocks-react-renderer';
-import { Editor, EditorMode } from '5_shared/ui/Editor/Editor';
+import { Editor } from '5_shared/ui/Editor/Editor';
 import cls from './DetailEditor.module.scss';
 import { DetailLink } from '../DetailLink/DetailLink';
 import { DetailCode } from '../DetailCode/DetailCode';
 import { DetailList } from '../DetailList/DetailList';
+import { DetailQuote } from '../DetailQuote/DetailQuote';
 import { DetailPicture } from '../DetailPicture/DetailPicture';
 import { DetailHeading } from '../DetailHeading/DetailHeading';
 import { DetailParagraph } from '../DetailParagraph/DetailParagraph';
@@ -25,7 +26,7 @@ export const DetailEditor = (props: DetailEditorProps) => {
 
     return (
         <div className={classNames(cls.block, className)}>
-            <Editor mode={EditorMode.REGULAR}>
+            <Editor className={classNames(cls.editor)}>
                 <BlocksRenderer
                     content={data}
                     blocks={{
@@ -36,6 +37,7 @@ export const DetailEditor = (props: DetailEditorProps) => {
                         link: ({ children, url }) => DetailLink({ children, url }),
                         code: ({ children }) => DetailCode({ children }),
                         list: ({ children, format }) => DetailList({ children, format }),
+                        quote: ({ children }) => DetailQuote({ children }),
                     }}
                 />
             </Editor>

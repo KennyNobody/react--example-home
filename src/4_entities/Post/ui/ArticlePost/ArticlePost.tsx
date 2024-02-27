@@ -23,6 +23,8 @@ export const ArticlePost = (props: ArticlePostProps) => {
 
     const elRef = useRef(null);
     const heightEl = useHeight(elRef, 1.15);
+    const previewUrl = data?.main?.preview?.data?.formats?.medium?.url || '';
+    const altText = data?.main?.preview?.data?.alternativeText || '#';
 
     const skeleton = useMemo(() => (
         <div
@@ -51,6 +53,15 @@ export const ArticlePost = (props: ArticlePostProps) => {
             to={`${RouterPath.post_detail}${data?.id}`}
             className={classNames(cls.article, className)}
         >
+            {
+                data?.main?.showPreview
+                && previewUrl
+                && (
+                    <picture className={classNames(cls.picture)}>
+                        <img src={`${__BASE_URL__}${previewUrl}`} alt={altText} />
+                    </picture>
+                )
+            }
             <div className={classNames(cls.main)}>
                 {data?.main?.previewTitle && (
                     <h3 className={classNames(cls.title)}>

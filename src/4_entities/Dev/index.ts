@@ -21,6 +21,7 @@ export {
 } from './model/services/fetchNextDevList/fetchNextDevList';
 
 export {
+    useFetchDevById,
     useLazyFetchDevList,
 } from './api/devApi';
 

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const rtkApi = createApi({
     reducerPath: 'appApi',
-    tagTypes: ['post', 'category', 'dev', 'postSingle'],
+    tagTypes: ['post', 'category', 'dev', 'postSingle', 'devSingle'],
     baseQuery: fetchBaseQuery(
         {
             baseUrl: `${__BASE_URL__}/api/`,

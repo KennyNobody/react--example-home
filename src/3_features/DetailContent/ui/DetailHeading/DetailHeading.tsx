@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-import classNames from 'classnames';
-import grid from '5_shared/css/grid.module.scss';
+import { EditorWrapper } from '5_shared/ui/EditorWrapper/EditorWrapper';
 
 interface DetailParagraphProps {
     level: 1 | 2 | 3 | 4 | 5 | 6;
@@ -16,12 +15,8 @@ export const DetailHeading = (props: DetailParagraphProps) => {
     const tag = `h${level > 0 && level < 7 ? level : 6}`;
 
     return (
-        <div className={classNames(grid.grid)}>
-            <div className={classNames(grid['grid__col-1'])} />
-            <div className={classNames(grid['grid__col-2'])}>
-                { React.createElement(tag, null, children) }
-            </div>
-            <div className={classNames(grid['grid__col-1'])} />
-        </div>
+        <EditorWrapper>
+            { React.createElement(tag, null, children) }
+        </EditorWrapper>
     );
 };

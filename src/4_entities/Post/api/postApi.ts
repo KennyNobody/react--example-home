@@ -8,7 +8,10 @@ const postApi = rtkApi.injectEndpoints({
         fetchPostList: build.query({
             query: (params) => ({
                 url: Routes.POSTS_LIST,
-                params,
+                params: {
+                    ...params,
+                    populate: 'main.preview',
+                },
             }),
             providesTags: ['post'],
         }),
@@ -16,7 +19,7 @@ const postApi = rtkApi.injectEndpoints({
             query: (id: string) => ({
                 url: `${Routes.POSTS_LIST}/${id}/`,
                 params: {
-                    populate: '*',
+                    populate: 'main.preview',
                 },
             }),
             providesTags: ['postSingle'],

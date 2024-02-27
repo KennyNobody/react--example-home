@@ -1,15 +1,10 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import cls from './Editor.module.scss';
-
-export enum EditorMode {
-    REGULAR = 'regular',
-    PREVIEW = 'preview',
-}
 
 interface EditorProps {
     data?: string;
-    mode: EditorMode;
     className?: string;
     children?: ReactNode;
 }
@@ -17,15 +12,16 @@ interface EditorProps {
 export const Editor = (props: EditorProps) => {
     const {
         data,
-        mode,
         children,
         className,
     } = props;
 
+    const { theme } = useTheme();
+
     if (data) {
         return (
             <div
-                className={classNames(cls.editor, cls[`editor--${mode}`], className)}
+                className={classNames(cls.editor, cls[`editor--${theme}`], className)}
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                     __html: data,
@@ -35,7 +31,7 @@ export const Editor = (props: EditorProps) => {
     }
 
     return (
-        <div className={classNames(cls.editor, cls[`editor--${mode}`], className)}>
+        <div className={classNames(cls.editor, cls[`editor--${theme}`], className)}>
             { children }
         </div>
     );

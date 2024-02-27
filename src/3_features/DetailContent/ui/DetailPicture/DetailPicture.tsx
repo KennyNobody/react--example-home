@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import classNames from 'classnames';
 import { ImageType } from '5_shared/types/Image';
 import cls from './DetailPicture.module.scss';
+import {EditorWrapper} from "5_shared/ui/EditorWrapper/EditorWrapper";
 
 interface DetailParagraphProps {
     image: ImageType;
@@ -11,9 +13,13 @@ export const DetailPicture = (props: DetailParagraphProps) => {
         image,
     } = props;
 
+    useEffect(() => {
+        console.log(image);
+    }, [image]);
+
     // TODO: Добавить srcset
     return (
-        <picture className={classNames(cls.picture)}>
+        <figure className={classNames(cls.figure)}>
             {
                 image?.formats?.large?.url
                 && (
@@ -27,6 +33,27 @@ export const DetailPicture = (props: DetailParagraphProps) => {
                     <img src={`${__BASE_URL__}${image?.formats?.medium?.url}`} alt={image?.alternativeText || '#'} />
                 )
             }
-        </picture>
+            <figcaption className={classNames(cls.figcaption)}>
+                <EditorWrapper>
+                    {
+                        image?.alternativeText
+                        && (
+                            <p className={classNames(cls.text)}>
+                                { image.alternativeText }
+                            </p>
+                        )
+                    }
+                    {
+                        image?.caption
+                        && (
+                            <p className={classNames(cls.caption)}>
+                                { image.caption }
+                            </p>
+                        )
+                    }
+                </EditorWrapper>
+            </figcaption>
+
+        </figure>
     );
 };

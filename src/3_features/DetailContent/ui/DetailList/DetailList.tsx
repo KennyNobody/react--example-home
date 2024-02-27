@@ -1,6 +1,5 @@
-import {ReactNode, useEffect} from 'react';
-import classNames from 'classnames';
-import grid from '5_shared/css/grid.module.scss';
+import React, { ReactNode } from 'react';
+import { EditorWrapper } from '5_shared/ui/EditorWrapper/EditorWrapper';
 
 interface DetailParagraphProps {
     children: ReactNode;
@@ -13,17 +12,11 @@ export const DetailList = (props: DetailParagraphProps) => {
         children,
     } = props;
 
-    useEffect(() => {
-        console.log(format);
-    }, [format]);
+    const listTag = format === 'ordered' ? 'ol' : 'ul';
 
     return (
-        <div className={classNames(grid.grid)}>
-            <div className={classNames(grid['grid__col-1'])} />
-            <div className={classNames(grid['grid__col-2'])}>
-                <p>{ children }</p>
-            </div>
-            <div className={classNames(grid['grid__col-1'])} />
-        </div>
+        <EditorWrapper>
+            { React.createElement(listTag, null, children) }
+        </EditorWrapper>
     );
 };

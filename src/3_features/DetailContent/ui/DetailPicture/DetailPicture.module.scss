@@ -1,9 +1,9 @@
-.picture {
-    width: 100%;
+.figure {
     display: block;
     max-width: 1920px;
     margin-left: auto;
     margin-right: auto;
+    width: fit-content;
 
     img {
         width: auto;
@@ -11,4 +11,17 @@
         margin: 0 auto;
         display: block;
     }
+}
+
+.figcaption {
+    padding-top: 10px;
+}
+
+.text {
+    font-size: 22px;
+}
+
+.caption {
+    font-size: 18px;
+    color: var(--light-secondary);
 }

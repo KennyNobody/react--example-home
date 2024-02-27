@@ -1,5 +1,5 @@
 import {
-    memo,
+    memo, useEffect,
 } from 'react';
 import classNames from 'classnames';
 import { Share } from '3_features/Share';
@@ -13,9 +13,9 @@ import { ArticleDevType } from '4_entities/Dev';
 import { PostArticleType } from '4_entities/Post';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container';
+import { Editor } from '5_shared/ui/Editor/Editor';
 import { DateInfo } from '5_shared/ui/DateInfo/DateInfo';
 import Icon from '5_shared/assets/icons/arrow-scroll.svg';
-import { Editor, EditorMode } from '5_shared/ui/Editor/Editor';
 import { useStickyObserver } from '5_shared/libs/hooks/useStickyObserver';
 import cls from './DetailContent.module.scss';
 import { DetailEditor } from '../DetailEditor/DetailEditor';
@@ -33,6 +33,10 @@ export const DetailContent = memo((props: DetailContentProps) => {
         isLoading,
     } = props;
 
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
+
     const { ref, isSticky } = useStickyObserver();
 
     return (
@@ -41,7 +45,12 @@ export const DetailContent = memo((props: DetailContentProps) => {
                 hidden={isSticky}
                 className={classNames(cls.picture)}
             >
-                <img src="https://placeholder.pics/svg/3840x2160/292929" alt="#" />
+                {
+                    data?.main?.preview?.data?.url
+                    && (
+                        <img src={`${__BASE_URL__}${data?.main?.preview?.data?.url}`} alt="#" />
+                    )
+                }
             </picture>
             <div className={classNames(cls.intro)}>
                 <Container>
@@ -84,7 +93,6 @@ export const DetailContent = memo((props: DetailContentProps) => {
                                         data?.main?.introCaption
                                         && (
                                             <Editor
-                                                mode={EditorMode.PREVIEW}
                                                 data={data.main.introCaption}
                                             />
                                         )

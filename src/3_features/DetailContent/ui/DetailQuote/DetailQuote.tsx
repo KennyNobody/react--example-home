@@ -1,22 +1,18 @@
 import { ReactNode } from 'react';
 import { EditorWrapper } from '5_shared/ui/EditorWrapper/EditorWrapper';
 
-interface DetailCodeProps {
+interface DetailParagraphProps {
     children: ReactNode;
 }
 
-export const DetailCode = (props: DetailCodeProps) => {
+export const DetailQuote = (props: DetailParagraphProps) => {
     const {
         children,
     } = props;
 
     return (
         <EditorWrapper>
-            <pre>
-                <code>
-                    { children }
-                </code>
-            </pre>
+            <blockquote>{ children }</blockquote>
         </EditorWrapper>
     );
 };
