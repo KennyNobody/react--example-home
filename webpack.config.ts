@@ -20,7 +20,7 @@ export default (env: BuildEnv) => {
         paths,
         port: env.port || 3001,
         mode: env.mode || BuildMode.DEV,
-        apiUrl: env.apiUrl || 'https://api.egor-badulin.ru/api/',
+        baseUrl: env.baseUrl || 'https://api.egor-badulin.ru',
         project: env.project || 'frontend',
     });
 };

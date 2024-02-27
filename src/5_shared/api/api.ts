@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const $api = axios.create({
-    baseURL: __API__,
+    baseURL: `${__BASE_URL__}/api/`,
 });

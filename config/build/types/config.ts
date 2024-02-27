@@ -22,13 +22,13 @@ export interface BuildOptions {
     mode: BuildMode;
     paths: BuildPaths;
     port: number;
-    apiUrl: string;
+    baseUrl: string;
     project: BuildProject;
 }
 
 export interface BuildEnv {
     mode: BuildMode;
     port: number;
-    apiUrl: string;
+    baseUrl: string;
     project: BuildProject;
 }

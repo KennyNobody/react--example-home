@@ -19,9 +19,9 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
         }),
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
-            __API__: JSON.stringify(options.apiUrl),
             __IS_DEV__: JSON.stringify(options.mode === BuildMode.DEV),
             __PROJECT__: JSON.stringify(options.project),
+            __BASE_URL__: JSON.stringify(options.baseUrl),
         }),
         new CopyPlugin({
             patterns: [

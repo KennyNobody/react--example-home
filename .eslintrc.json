@@ -50,7 +50,7 @@
   },
   "globals": {
     "__IS_DEV__": true,
-    "__API__": true,
+    "__BASE_URL__": true,
     "__PROJECT__": true
   },
   "overrides": [

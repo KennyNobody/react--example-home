@@ -1,3 +1,5 @@
+import { type BlocksContent } from '@strapi/blocks-react-renderer';
+
 interface DetailMainType {
     id: number;
     showPreview: boolean;
@@ -5,7 +7,7 @@ interface DetailMainType {
     previewCaption: string;
     previewInverted: boolean;
     introCaption: string;
-    content: any;
+    content: BlocksContent;
 }
 
 export {

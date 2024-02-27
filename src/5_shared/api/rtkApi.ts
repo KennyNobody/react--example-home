@@ -5,7 +5,7 @@ const rtkApi = createApi({
     tagTypes: ['post', 'category', 'dev', 'postSingle'],
     baseQuery: fetchBaseQuery(
         {
-            baseUrl: __API__,
+            baseUrl: `${__BASE_URL__}/api/`,
         },
     ),
     endpoints: () => ({}),
