@@ -1,17 +1,18 @@
 import { RouteProps } from 'react-router-dom';
 import { FrontPage } from '1_pages/FrontPage';
-import { PostListPage } from '1_pages/PostListPage';
 import { DetailPage } from '1_pages/DetailPage';
-import { NotFoundPage } from '1_pages/NotFoundPage';
 import { DevListPage } from '1_pages/DevListPage';
-import {ContentKeyType} from "5_shared/types/CommonTypes";
+import { PostListPage } from '1_pages/PostListPage';
+import { NotFoundPage } from '1_pages/NotFoundPage';
+import { PhotoListPage } from '1_pages/PhotoListPage';
+import { ContentKeyType } from '5_shared/types/CommonTypes';
 
 export enum AppRouter {
     MAIN = 'main',
-    POSTS = 'posts',
-    POST_DETAIL = 'post_detail',
     DEV = 'dev',
     DEV_DETAIL = 'dev_detail',
+    POSTS = 'posts',
+    POST_DETAIL = 'post_detail',
     PHOTO = 'photo',
     PHOTO_DETAIL = 'photo_detail',
     NOT_FOUND = 'not_found',
@@ -49,10 +50,10 @@ export const routeConfig: RouteProps[] = [
         path: `${RouterPath.dev_detail}:slug`,
         element: <DetailPage mode={ContentKeyType.DEV} />,
     },
-    // {
-    //     path: RouterPath.photo,
-    //     element: <ListPage mode={ContentKeyType.PHOTO} />,
-    // },
+    {
+        path: RouterPath.photo,
+        element: <PhotoListPage />,
+    },
     {
         path: `${RouterPath.photo_detail}:slug`,
         element: <DetailPage mode={ContentKeyType.PHOTO} />,

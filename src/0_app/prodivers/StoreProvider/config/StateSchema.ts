@@ -6,16 +6,16 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { DevFilterSchema } from '3_features/DevFilter';
 import { DevListSchema } from '4_entities/Dev';
 import { PostListSchema } from '4_entities/Post';
+import { PhotoListSchema } from '4_entities/Photo';
 import { rtkApi } from '5_shared/api/rtkApi';
 
 export interface StateSchema {
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     postList?: PostListSchema;
+    photoList?: PhotoListSchema;
     devList?: DevListSchema;
-    devFilter?: DevFilterSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

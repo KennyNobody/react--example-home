@@ -1,10 +1,11 @@
 import classNames from 'classnames';
-import React, { ReactNode } from 'react';
+import React, {ReactNode, useEffect} from 'react';
 import { ContentKeyType } from '5_shared/types/CommonTypes';
 import { Stack, StackSizeType } from '5_shared/ui/Stack/ui/Stack';
 import { SectionType } from '../../model/Section';
 import { SectionDev } from '../SectionDev/SectionDev';
 import { SectionPost } from '../SectionPost/SectionPost';
+import { SectionPhoto } from '../SectionPhoto/SectionPhoto';
 
 interface PageIndexProps {
     className?: string;
@@ -16,9 +17,11 @@ interface PageIndexProps {
 const renderSection = (data: SectionType, isPreview: boolean): ReactNode | null => {
     const { contentKey } = data;
 
+    console.log('Пришло: ', contentKey);
+
     const ListComponents: Record<ContentKeyType, React.ReactNode> = {
         [ContentKeyType.DEV]: <SectionDev key={data.id} data={data} isPreview={isPreview} />,
-        [ContentKeyType.PHOTO]: null,
+        [ContentKeyType.PHOTO]: <SectionPhoto key={data.id} data={data} isPreview={isPreview} />,
         [ContentKeyType.POST]: <SectionPost key={data.id} data={data} isPreview={isPreview} />,
     };
 

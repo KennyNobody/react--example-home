@@ -2,6 +2,7 @@ enum PaginationParams {
     PAGE = 'pagination[page]',
     SIZE = 'pagination[pageSize]',
     CAT = 'filters[category][id][$eq]',
+    TAG = 'filters[tags][id][$eq]',
 }
 
 type RequestParamsKey = string | PaginationParams;
@@ -14,4 +15,3 @@ export {
     PaginationParams,
     type RequestParams,
 };
-

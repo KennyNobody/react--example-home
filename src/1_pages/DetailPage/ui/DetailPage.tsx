@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { DetailContent } from '3_features/DetailContent';
 import { useFetchDevById } from '4_entities/Dev';
 import { useFetchPostById } from '4_entities/Post';
+import { useFetchPhotoById } from '4_entities/Photo';
 import { Main } from '5_shared/ui/Main/Main';
 import { ContentKeyType } from '5_shared/types/CommonTypes';
 import cls from './DetailPage.module.scss';
@@ -10,7 +11,7 @@ import cls from './DetailPage.module.scss';
 const fetchMethods: Record<ContentKeyType, any> = {
     [ContentKeyType.POST]: useFetchPostById,
     [ContentKeyType.DEV]: useFetchDevById,
-    [ContentKeyType.PHOTO]: null,
+    [ContentKeyType.PHOTO]: useFetchPhotoById,
 };
 
 interface DetailPageProps {

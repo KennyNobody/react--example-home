@@ -43,8 +43,6 @@ export const PostFilter = (props: PostFilterProps) => {
     const [getData] = useLazyFetchPostList({});
 
     const fetchData = () => {
-        console.log('Запрашиваем новый список');
-
         dispatch(fetchNextPostList({
             getData,
             replace: true,

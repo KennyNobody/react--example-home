@@ -3,29 +3,27 @@ import { LazyQueryTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
 import { ThunkConfig } from '0_app/prodivers/StoreProvider';
 import { PaginationParams, RequestParams } from '5_shared/types/RequestData';
 import {
-    getDevListPage,
-    getDevListCount,
-    getDevListPerPage,
-    getDevListCategory,
-} from '../../selectors/devList';
-import { devListActions } from '../../slices/devListSlice';
+    getPhotoListPage,
+    getPhotoListCount,
+    getPhotoListPerPage,
+} from '../../selectors/photoList';
+import { photoListActions } from '../../slices/photoListSlice';
 
-interface FetchDevListProps {
+interface FetchPhotoListPageProps {
     replace: boolean;
     getData: LazyQueryTrigger<any>,
 }
 
-export const fetchNextDevList = createAsyncThunk<void, FetchDevListProps, ThunkConfig<string>>(
-    'devList/fetchNextDevList',
+export const fetchNextPhotoList = createAsyncThunk<void, FetchPhotoListPageProps, ThunkConfig<string>>(
+    'photoList/fetchNextPhotoList',
     async (props, thunkAPI) => {
         const { getState, dispatch } = thunkAPI;
 
         const { replace } = props;
 
-        const perPage = getDevListPerPage(getState()) || 1;
-        const listIndex = getDevListPage(getState()) || 1;
-        const category = getDevListCategory(getState());
-        const listLength = getDevListCount(getState());
+        const perPage = getPhotoListPerPage(getState()) || 1;
+        const listIndex = getPhotoListPage(getState()) || 1;
+        const listLength = getPhotoListCount(getState());
         const pageNumber = listIndex === listLength ? listIndex : listIndex + 1;
 
         const params: RequestParams = {
@@ -36,20 +34,16 @@ export const fetchNextDevList = createAsyncThunk<void, FetchDevListProps, ThunkC
             replace,
         };
 
-        if (category) {
-            params[PaginationParams.TAG] = category;
-        }
-
         await props.getData(params, true).then((response) => {
             // @ts-ignore
             const { data, meta } = response.data;
             const dataMethod = replace
-                ? devListActions.replaceData
-                : devListActions.addData;
+                ? photoListActions.replaceData
+                : photoListActions.addData;
             // @ts-ignore
             dispatch(dataMethod(data));
             // @ts-ignore
-            dispatch(postListActions.setPagination(meta.pagination));
+            dispatch(photoListActions.setPagination(meta.pagination));
         });
     },
 );

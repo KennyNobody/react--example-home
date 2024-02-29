@@ -77,7 +77,7 @@ export const ListPost = (props: ListPostsProps) => {
                 <GridPosts
                     data={data}
                     showSkeleton={isLoading && !data?.length}
-                    showEnd={!isLoading && pageIndex === pageTotal}
+                    showEnd={!isPreview && !isLoading && pageIndex === pageTotal}
                 />
                 {!isPreview && <div ref={triggerRef} />}
             </div>

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { ListDev } from '3_features/ListDev';
-import { DevFilter } from '3_features/DevFilter';
+import { ListPhoto } from '3_features/ListPhoto';
 import { Stack } from '5_shared/ui/Stack';
 import { Toolbar } from '5_shared/ui/Toolbar';
 import grid from '5_shared/css/grid.module.scss';
@@ -12,7 +11,7 @@ import { LinkTitle } from '5_shared/ui/LinkTitle/LinkTitle';
 import { Title, TitleModeType } from '5_shared/ui/Title/Title';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import { LinkRegular } from '5_shared/ui/LinkRegular/LinkRegular';
-import cls from './SectionDev.module.scss';
+import cls from './SectionPhoto.module.scss';
 import { SectionType } from '../../model/Section';
 
 interface SectionProps {
@@ -21,7 +20,7 @@ interface SectionProps {
     data: SectionType | undefined;
 }
 
-export const SectionDev = (props: SectionProps) => {
+export const SectionPhoto = (props: SectionProps) => {
     const {
         data,
         isPreview,
@@ -68,26 +67,8 @@ export const SectionDev = (props: SectionProps) => {
                                 }
                             </Toolbar>
                         </div>
-                        {
-                            !isPreview
-                            && (
-                                <>
-                                    <div className={classNames(grid['grid__col-2'])}>
-                                        <LinkRegular
-                                            to="#"
-                                            text={t('resume')}
-                                        />
-                                    </div>
-                                    <div className={classNames(grid['grid__col-2'])}>
-                                        <DevFilter
-                                            className={classNames(cls.category)}
-                                        />
-                                    </div>
-                                </>
-                            )
-                        }
                     </div>
-                    <ListDev isPreview={isPreview} />
+                    <ListPhoto isPreview={isPreview} />
                     {
                         isPreview
                         && (
@@ -96,13 +77,13 @@ export const SectionDev = (props: SectionProps) => {
                                 <div className={classNames(grid['grid__col-2'])}>
                                     <Toolbar>
                                         <LinkRegular
-                                            to={RouterPath.dev}
+                                            to={RouterPath.photo}
                                             text={t('allProjects')}
                                         />
                                         {/* TODO: Указать ссылку на CV */}
                                         {/* <LinkRegular */}
                                         {/*     to="#" */}
-                                        {/*     text={t('resume')} */}
+                                        {/*     text={t('cv')} */}
                                         {/* /> */}
                                     </Toolbar>
                                 </div>

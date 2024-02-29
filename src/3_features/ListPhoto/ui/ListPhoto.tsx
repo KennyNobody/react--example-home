@@ -6,35 +6,32 @@ import {
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
-    initDev,
-    GridDev,
-    getDevListPage,
-    getDevListCount,
-    fetchNextDevList,
-    getDevListLoading,
-    ArticleDevType,
-    getDevList,
-    devListReducer,
-    useLazyFetchDevList,
-} from '4_entities/Dev';
+    GridPhoto,
+    initPhotoList,
+    getPhotoListPage,
+    getPhotoListCount,
+    fetchNextPhotoList,
+    getPhotoListLoading,
+    ArticlePhotoType,
+    getPhotoList,
+    photoListReducer,
+    useLazyFetchPhotoList,
+} from '4_entities/Photo';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
-import {
-    ReducersList,
-    DynamicModuleLoader,
-} from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
-import cls from './ListDev.module.scss';
+import cls from './ListPhoto.module.scss';
 
-interface ListDevProps {
+interface ListPostsProps {
     className?: string;
     isPreview?: boolean;
 }
 
 const reducers: ReducersList = {
-    devList: devListReducer,
+    photoList: photoListReducer,
 };
 
-export const ListDev = (props: ListDevProps) => {
+export const ListPhoto = (props: ListPostsProps) => {
     const {
         isPreview,
         className,
@@ -42,16 +39,16 @@ export const ListDev = (props: ListDevProps) => {
 
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
-    const pageIndex: number = useSelector(getDevListPage) || 1;
-    const pageTotal: number = useSelector(getDevListCount) || 0;
-    const data: ArticleDevType[] = useSelector(getDevList.selectAll);
-    const isLoading: boolean = useSelector(getDevListLoading) || false;
+    const pageIndex: number = useSelector(getPhotoListPage) || 1;
+    const pageTotal: number = useSelector(getPhotoListCount) || 0;
+    const data: ArticlePhotoType[] = useSelector(getPhotoList.selectAll);
+    const isLoading: boolean = useSelector(getPhotoListLoading) || false;
 
-    const [getData] = useLazyFetchDevList({});
+    const [getData] = useLazyFetchPhotoList({});
 
     const loadNextPage = () => {
         if (!isLoading && (pageTotal > pageIndex)) {
-            dispatch(fetchNextDevList({
+            dispatch(fetchNextPhotoList({
                 getData,
                 replace: false,
             }));
@@ -59,7 +56,7 @@ export const ListDev = (props: ListDevProps) => {
     };
 
     useEffect(() => {
-        dispatch(initDev(getData));
+        dispatch(initPhotoList(getData));
     }, []);
 
     useInfiniteScroll({
@@ -77,10 +74,10 @@ export const ListDev = (props: ListDevProps) => {
                     classNames(cls.block, className)
                 }
             >
-                <GridDev
+                <GridPhoto
                     data={data}
                     showSkeleton={isLoading && !data?.length}
-                    showEnd={!isPreview && !isLoading && !isPreview && pageIndex === pageTotal}
+                    showEnd={!isPreview && !isLoading && pageIndex === pageTotal}
                 />
                 {!isPreview && <div ref={triggerRef} />}
             </div>

@@ -15,7 +15,7 @@ const devApi = rtkApi.injectEndpoints({
             query: (id: string) => ({
                 url: `${Routes.DEVS_LIST}/${id}/`,
                 params: {
-                    populate: 'main.preview',
+                    populate: 'main.preview,tags,category',
                 },
             }),
             providesTags: ['devSingle'],

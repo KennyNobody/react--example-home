@@ -33,10 +33,6 @@ export const DetailContent = memo((props: DetailContentProps) => {
         isLoading,
     } = props;
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     const { ref, isSticky } = useStickyObserver();
 
     return (
