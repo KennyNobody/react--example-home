@@ -1,22 +1,21 @@
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 import cls from './ListTags.module.scss';
-import { ArticleTag } from '../ArticleTag/ArticleTag';
-import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
 interface ListTagsProps {
-    list: ArticleCategoryType[];
+    children: ReactNode;
     className?: string;
 }
 
 export const ListTags = (props: ListTagsProps) => {
     const {
-        list,
+        children,
         className,
     } = props;
 
     return (
         <div className={classNames(cls.block, className)}>
-            { list && list?.map((item) => <ArticleTag data={item} key={item.id} />) }
+            { children }
         </div>
     );
 };

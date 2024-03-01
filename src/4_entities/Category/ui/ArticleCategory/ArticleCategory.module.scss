@@ -8,7 +8,6 @@
     align-items: center;
     text-decoration: none;
     justify-content: center;
-    color: var(--light-primary);
 
     &--small {
         font-size: 24px;
@@ -18,10 +17,6 @@
     &--big {
         font-size: 28px;
         min-height: 52px;
-    }
-
-    &:not(.link--skeleton) {
-        border: 1px solid var(--light-primary);
     }
 
     &--skeleton {
@@ -50,6 +45,22 @@
 
         &:nth-child(9n + 8) {
             width: 200px;
+        }
+    }
+
+    &--theme-light {
+        color: var(--dark-primary);
+
+        &:not(.link--skeleton) {
+            border: 1px solid var(--dark-primary);
+        }
+    }
+
+    &--theme-dark {
+        color: var(--light-primary);
+
+        &:not(.link--skeleton) {
+            border: 1px solid var(--light-primary);
         }
     }
 }

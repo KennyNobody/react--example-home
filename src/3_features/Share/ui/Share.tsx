@@ -10,13 +10,18 @@ import { useTranslation } from 'react-i18next';
 import { Controls } from '5_shared/ui/Controls/Controls';
 import { IconKey, IconSocial } from '5_shared/ui/IconSocial/IconSocial';
 import cls from './Share.module.scss';
+import {AppTheme} from "5_shared/config/ThemeContext";
 
 interface ShareProps {
+    theme: AppTheme;
     className?: string;
 }
 
 export const Share = (props: ShareProps) => {
-    const { className } = props;
+    const {
+        theme,
+        className,
+    } = props;
     const { t } = useTranslation();
 
     return (
@@ -28,41 +33,41 @@ export const Share = (props: ShareProps) => {
                 <VKShareButton
                     url="vk.com"
                     resetButtonStyle={false}
-                    className={classNames(cls.button)}
+                    className={classNames(cls.button, cls[`button--${theme}`])}
                 >
                     <IconSocial
                         iconKey={IconKey.VK}
-                        className={classNames(cls.icon)}
+                        className={classNames(cls.icon, cls[`icon--${theme}`])}
                     />
                 </VKShareButton>
                 <TwitterShareButton
                     url="twitter.com"
                     resetButtonStyle={false}
-                    className={classNames(cls.button)}
+                    className={classNames(cls.button, cls[`button--${theme}`])}
                 >
                     <IconSocial
                         iconKey={IconKey.X}
-                        className={classNames(cls.icon)}
+                        className={classNames(cls.icon, cls[`icon--${theme}`])}
                     />
                 </TwitterShareButton>
                 <FacebookShareButton
                     url="fb.com"
                     resetButtonStyle={false}
-                    className={classNames(cls.button)}
+                    className={classNames(cls.button, cls[`button--${theme}`])}
                 >
                     <IconSocial
                         iconKey={IconKey.FB}
-                        className={classNames(cls.icon)}
+                        className={classNames(cls.icon, cls[`icon--${theme}`])}
                     />
                 </FacebookShareButton>
                 <TelegramShareButton
                     url="tg.com"
                     resetButtonStyle={false}
-                    className={classNames(cls.button)}
+                    className={classNames(cls.button, cls[`button--${theme}`])}
                 >
                     <IconSocial
                         iconKey={IconKey.TG}
-                        className={classNames(cls.icon)}
+                        className={classNames(cls.icon, cls[`icon--${theme}`])}
                     />
                 </TelegramShareButton>
             </Controls>

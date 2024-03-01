@@ -31,3 +31,7 @@ export {
 export {
     ListTags,
 } from './ui/ListTags/ListTags';
+
+export {
+    ArticleTag,
+} from './ui/ArticleTag/ArticleTag';

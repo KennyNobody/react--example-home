@@ -4,6 +4,7 @@ import {
     type BlocksContent,
 } from '@strapi/blocks-react-renderer';
 import { Editor } from '5_shared/ui/Editor/Editor';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import cls from './DetailEditor.module.scss';
 import { DetailLink } from '../DetailLink/DetailLink';
 import { DetailCode } from '../DetailCode/DetailCode';
@@ -24,8 +25,18 @@ export const DetailEditor = (props: DetailEditorProps) => {
         className,
     } = props;
 
+    const { theme } = useTheme();
+
     return (
-        <div className={classNames(cls.block, className)}>
+        <div
+            className={
+                classNames(
+                    cls.block,
+                    cls[`block--${theme}`],
+                    className,
+                )
+            }
+        >
             <Editor className={classNames(cls.editor)}>
                 <BlocksRenderer
                     content={data}

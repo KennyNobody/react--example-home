@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { ImageType } from '5_shared/types/Image';
 import cls from './DetailPicture.module.scss';
 import {EditorWrapper} from "5_shared/ui/EditorWrapper/EditorWrapper";
+import {useTheme} from "5_shared/libs/hooks/useTheme";
 
 interface DetailParagraphProps {
     image: ImageType;
@@ -13,9 +14,7 @@ export const DetailPicture = (props: DetailParagraphProps) => {
         image,
     } = props;
 
-    useEffect(() => {
-        console.log(image);
-    }, [image]);
+    const { theme } = useTheme();
 
     // TODO: Добавить srcset
     return (
@@ -46,7 +45,7 @@ export const DetailPicture = (props: DetailParagraphProps) => {
                     {
                         image?.caption
                         && (
-                            <p className={classNames(cls.caption)}>
+                            <p className={classNames(cls.caption, cls[`caption--${theme}`])}>
                                 { image.caption }
                             </p>
                         )

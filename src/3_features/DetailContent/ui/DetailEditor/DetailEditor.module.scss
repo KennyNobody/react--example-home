@@ -1,5 +1,12 @@
 .block {
     padding: 60px 50px;
     border-radius: 28px;
-    background-color: var(--dark-accent);
+
+    &--theme-light {
+        background-color: var(--light-accent);
+    }
+
+    &--theme-dark {
+        background-color: var(--dark-accent);
+    }
 }

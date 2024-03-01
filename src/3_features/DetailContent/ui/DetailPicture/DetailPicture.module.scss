@@ -23,5 +23,12 @@
 
 .caption {
     font-size: 18px;
-    color: var(--light-secondary);
+
+    &--theme-light {
+        color: var(--dark-secondary);
+    }
+
+    &--theme-dark {
+        color: var(--light-secondary);
+    }
 }

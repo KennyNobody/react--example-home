@@ -16,11 +16,19 @@
     display: flex;
     cursor: pointer;
     background: none;
+    border: 1px solid;
     border-radius: 48px;
     align-items: center;
+    transition: 0.3s all;
     justify-content: center;
-    transition: 0.3s opacity;
-    border: 1px solid var(--light-primary);
+
+    &--theme-light {
+        border-color: var(--dark-primary);
+    }
+
+    &--theme-dark {
+        border-color: var(--light-primary);
+    }
 
     &:hover {
         opacity: 0.7;
@@ -31,5 +39,13 @@
     width: 30px;
     height: 18px;
     display: block;
-    fill: var(--light-primary);
+    transition: 0.3s all;
+
+    &--theme-light {
+        fill: var(--dark-primary);
+    }
+
+    &--theme-dark {
+        fill: var(--light-primary);
+    }
 }

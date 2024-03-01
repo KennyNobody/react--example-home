@@ -10,7 +10,6 @@ export interface useStickyObserverOptions {
 
 export function useStickyObserver() {
     const ref = useRef<HTMLDivElement>(null);
-
     const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
