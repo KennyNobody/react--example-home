@@ -16,25 +16,23 @@ export const Switcher = memo((props: SwitcherProps) => {
     } = props;
 
     return (
-        <div className={classNames(cls.block, className)}>
-            <label className={classNames(cls.label)}>
-                <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={changeEvent}
-                    className={classNames(cls.input)}
+        <label className={classNames(cls.label, className)}>
+            <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={changeEvent}
+                className={classNames(cls.input)}
+            />
+            <span className={classNames(cls.wrapper)}>
+                <span
+                    className={
+                        classNames(
+                            cls.button,
+                            { [cls['button--fixed']]: true },
+                        )
+                    }
                 />
-                <span className={classNames(cls.wrapper)}>
-                    <span
-                        className={
-                            classNames(
-                                cls.button,
-                                { [cls['button--fixed']]: true },
-                            )
-                        }
-                    />
-                </span>
-            </label>
-        </div>
+            </span>
+        </label>
     );
 });

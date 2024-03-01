@@ -3,7 +3,15 @@
     cursor: pointer;
     overflow: hidden;
     border-radius: 50px;
-    border: 1px solid var(--light-primary, rgb(224 224 224 / 80%));
+    border: 1px solid;
+
+    &--theme-light {
+        border-color: var(--dark-secondary);
+    }
+
+    &--theme-dark {
+        border-color: var(--light-secondary);
+    }
 }
 
 .wrapper {
@@ -13,8 +21,6 @@
     display: block;
     position: relative;
     transition: 0.3s all;
-    background: var(--dark-secondary, rgb(96 96 96 / 80%));
-
 }
 
 .button {
@@ -33,8 +39,6 @@
     visibility: hidden;
 
     &:checked + .wrapper {
-        background-color: var(--dark-accent);
-
         .button {
             animation: enableSlide 0.3s forwards;
             background-color: var(--light-primary);

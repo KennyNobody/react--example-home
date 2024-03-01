@@ -1,0 +1,13 @@
+.block {
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+
+    &--theme-light {
+        color: var(--dark-secondary);
+    }
+
+    &--theme-dark {
+        color: var(--light-secondary);
+    }
+}

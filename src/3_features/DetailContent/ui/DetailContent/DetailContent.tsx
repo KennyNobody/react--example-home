@@ -5,19 +5,14 @@ import {
 import classNames from 'classnames';
 import { ArticleDevType } from '4_entities/Dev';
 import { PostArticleType } from '4_entities/Post';
-import { Container } from '5_shared/ui/Container';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { AppTheme } from '5_shared/config/ThemeContext';
+import { Container } from '5_shared/ui/Container/Container';
 import { useStickyObserver } from '5_shared/libs/hooks/useStickyObserver';
-import grid from '5_shared/css/grid.module.scss';
-import { DateInfo } from '5_shared/ui/DateInfo/DateInfo';
-import Icon from '5_shared/assets/icons/arrow-scroll.svg';
-import { ArticleCategory, ArticleCategorySize } from '4_entities/Category';
-import { Share } from '3_features/Share';
+import cls from './DetailContent.module.scss';
 import { DetailIntro } from '../DetailIntro/DetailIntro';
 import { DetailEditor } from '../DetailEditor/DetailEditor';
-import cls from './DetailContent.module.scss';
-import {DetailToolbar} from "3_features/DetailContent/ui/DetailToolbar/DetailToolbar";
+import { DetailToolbar } from '../DetailToolbar/DetailToolbar';
 
 interface DetailContentProps {
     className?: string;

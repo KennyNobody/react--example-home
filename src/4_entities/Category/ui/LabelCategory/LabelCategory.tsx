@@ -1,11 +1,14 @@
 import classNames from 'classnames';
 import cls from './LabelCategory.module.scss';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
+import {AppTheme} from "5_shared/config/ThemeContext";
+import {useTheme} from "5_shared/libs/hooks/useTheme";
 
 interface LabelCategoryProps {
     name?: string;
     className?: string;
     isActive?: boolean;
+    themeProp?: AppTheme;
     data?: ArticleCategoryType;
     clickEvent?: (arg0: ArticleCategoryType | undefined) => void;
 }
@@ -16,8 +19,11 @@ export const LabelCategory = (props: LabelCategoryProps) => {
         data,
         className,
         isActive,
+        themeProp,
         clickEvent,
     } = props;
+
+    const { theme } = useTheme();
 
     const skeleton = (
         <div className={classNames(cls.link, cls['link--skeleton'], className)} />
@@ -36,6 +42,7 @@ export const LabelCategory = (props: LabelCategoryProps) => {
             className={
                 classNames(
                     cls.link,
+                    cls[`link--${themeProp || theme}`],
                     {
                         [cls['link--active']]: isActive,
                     },

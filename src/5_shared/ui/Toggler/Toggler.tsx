@@ -1,10 +1,13 @@
 import classNames from 'classnames';
 import { ChangeEvent, memo } from 'react';
+import { AppTheme } from '5_shared/config/ThemeContext';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import cls from './Toggler.module.scss';
 
 interface TogglerProps {
     className?: string;
     isChecked: boolean;
+    themeProp?: AppTheme;
     arr?: [string, string];
     changeEvent: (e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -14,35 +17,53 @@ export const Toggler = memo((props: TogglerProps) => {
         arr,
         className,
         isChecked,
+        themeProp,
         changeEvent,
     } = props;
 
+    const { theme } = useTheme();
+
     return (
-        <div className={classNames(cls.block, className)}>
-            <label className={classNames(cls.label)}>
-                <div className={classNames(cls.content)}>
+        <label className={classNames(cls.label, className)}>
+            <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={changeEvent}
+                className={classNames(cls.input)}
+            />
+            <span
+                className={
+                    classNames(
+                        cls.wrapper,
+                        cls[`wrapper--${themeProp || theme}`],
+                    )
+                }
+            >
+                <span className={classNames(cls.content)}>
                     {
                         arr && arr[0] && (
-                            <div className={classNames(cls.cell)}>
+                            <span className={classNames(
+                                cls.cell,
+                                cls[`cell--${themeProp || theme}`],
+                            )}
+                            >
                                 { arr[0] }
-                            </div>
+                            </span>
                         )
                     }
                     {
                         arr && arr[1] && (
-                            <div className={classNames(cls.cell)}>
+                            <span className={classNames(
+                                cls.cell,
+                                cls[`cell--${themeProp || theme}`],
+                            )}
+                            >
                                 { arr[1] }
-                            </div>
+                            </span>
                         )
                     }
-                </div>
-                <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={changeEvent}
-                    className={classNames(cls.input)}
-                />
-                <div
+                </span>
+                <span
                     className={
                         classNames(
                             cls.button,
@@ -50,7 +71,7 @@ export const Toggler = memo((props: TogglerProps) => {
                         )
                     }
                 />
-            </label>
-        </div>
+            </span>
+        </label>
     );
 });

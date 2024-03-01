@@ -11,19 +11,35 @@
     align-items: center;
     text-decoration: none;
     justify-content: center;
-    color: var(--light-primary);
 
     @at-root button#{&} {
         cursor: pointer;
     }
 
-    &:not(.link--skeleton) {
-        border: 1px solid var(--light-primary);
+    &--theme-light {
+        color: var(--dark-primary);
+
+        &.link--active {
+            color: var(--light-primary);
+            background-color: var(--dark-primary);
+        }
+
+        &:not(.link--skeleton) {
+            border: 1px solid var(--dark-primary);
+        }
     }
 
-    &--active {
-        color: var(--bg-dark);
-        background-color: var(--light-primary);
+    &--theme-dark {
+        color: var(--light-primary);
+
+        &.link--active {
+            color: var(--bg-dark);
+            background-color: var(--light-primary);
+        }
+
+        &:not(.link--skeleton) {
+            border: 1px solid var(--light-primary);
+        }
     }
 
     &--skeleton {

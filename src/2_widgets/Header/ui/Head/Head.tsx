@@ -1,16 +1,23 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { AppTheme } from '5_shared/config/ThemeContext';
 import cls from './Head.module.scss';
 
 interface HeadProps {
     isMain: boolean;
     className?: string;
     children: ReactNode;
+    themeProp?: AppTheme;
 }
 
 export const Head = (props: HeadProps) => {
-    const { className, children, isMain } = props;
+    const {
+        isMain,
+        children,
+        className,
+        themeProp,
+    } = props;
     const { theme } = useTheme();
 
     return (
@@ -18,7 +25,7 @@ export const Head = (props: HeadProps) => {
             className={
                 classNames(
                     cls.block,
-                    cls[`block--${theme}`],
+                    cls[`block--${themeProp || theme}`],
                     { [cls['block--regular']]: !isMain },
                     className,
                 )

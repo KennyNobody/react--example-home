@@ -6,21 +6,26 @@ import {
     ArticleCategorySize,
 } from '4_entities/Category';
 import useHeight from '5_shared/libs/hooks/useHeight';
+import { AppTheme } from '5_shared/config/ThemeContext';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './ArticlePhoto.module.scss';
 import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
 
 interface ArticlePhotoProps {
     className?: string;
+    themeProp?: AppTheme;
     data?: ArticlePhotoType;
 }
 
 export const ArticlePhoto = (props: ArticlePhotoProps) => {
     const {
         data,
+        themeProp,
         className,
     } = props;
 
+    const { theme } = useTheme();
     const elRef = useRef(null);
     const heightEl = useHeight(elRef, 0.82);
     const previewUrl = data?.main?.preview?.data?.formats?.large?.url || '';
@@ -36,12 +41,13 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
             className={
                 classNames(
                     cls.article,
+                    cls[`article--${themeProp || theme}`],
                     cls['article--skeleton'],
                     className,
                 )
             }
         />
-    ), [heightEl, className]);
+    ), [heightEl, className, themeProp, theme, data]);
 
     const article = useMemo(() => (
         <Link
@@ -51,7 +57,13 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
                 height: `${heightEl}px`,
             }}
             to={`${RouterPath.photo_detail}${data?.id}`}
-            className={classNames(cls.article, className)}
+            className={
+                classNames(
+                    cls.article,
+                    cls[`article--${themeProp || theme}`],
+                    className,
+                )
+            }
         >
             {
                 data?.main?.showPreview
@@ -64,13 +76,27 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
             }
             <div className={classNames(cls.main)}>
                 {data?.main?.previewTitle && (
-                    <h3 className={classNames(cls.title)}>
+                    <h3
+                        className={
+                            classNames(
+                                cls.title,
+                                cls[`title--${themeProp || theme}`],
+                            )
+                        }
+                    >
                         {data.main.previewTitle}
                     </h3>
                 )}
                 {
                     data?.main?.previewCaption && (
-                        <p className={classNames(cls.caption)}>
+                        <p
+                            className={
+                                classNames(
+                                    cls.caption,
+                                    cls[`caption--${themeProp || theme}`],
+                                )
+                            }
+                        >
                             {data.main.previewCaption}
                         </p>
                     )
@@ -87,7 +113,7 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
                 )
             }
         </Link>
-    ), [heightEl, className, data]);
+    ), [heightEl, className, data, themeProp, theme]);
 
     return data ? article : skeleton;
 };

@@ -1,9 +1,10 @@
 import classNames from 'classnames';
+import { End } from '5_shared/ui/End/End';
 import grid from '5_shared/css/grid.module.scss';
+import { AppTheme } from '5_shared/config/ThemeContext';
 import cls from './GridPosts.module.scss';
 import { ArticlePost } from '../ArticlePost/ArticlePost';
 import { PostArticleType } from '../../model/types/PostArticle';
-import {End} from "5_shared/ui/End";
 
 interface GridPostsProps {
     className?: string;
@@ -34,14 +35,27 @@ export const GridPosts = (props: GridPostsProps) => {
     const content = (
         data
         && data?.length > 0
-        && data.map((item: PostArticleType, index: number) => (
-            <div
-                key={index}
-                className={classNames(grid['grid__col-1'])}
-            >
-                <ArticlePost data={item} />
-            </div>
-        ))
+        && data.map((item: PostArticleType, index: number) => {
+            let propTheme;
+
+            if (item?.main?.showPreview) {
+                propTheme = item?.main?.previewInverted
+                    ? AppTheme.DARK
+                    : AppTheme.LIGHT;
+            }
+
+            return (
+                <div
+                    key={index}
+                    className={classNames(grid['grid__col-1'])}
+                >
+                    <ArticlePost
+                        data={item}
+                        themeProp={propTheme}
+                    />
+                </div>
+            );
+        })
     );
 
     return (

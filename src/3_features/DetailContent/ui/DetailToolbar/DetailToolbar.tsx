@@ -76,6 +76,7 @@ export const DetailToolbar = forwardRef((props: DetailToolbarProps, ref: Forward
                             data?.category?.data
                             && (
                                 <ArticleCategory
+                                    themeProp={AppTheme.DARK}
                                     data={data?.category?.data}
                                     size={ArticleCategorySize.SMALL}
                                 />
@@ -87,7 +88,7 @@ export const DetailToolbar = forwardRef((props: DetailToolbarProps, ref: Forward
                     <div className={classNames(cls['share-column'])}>
                         <Share
                             className={classNames(cls.share)}
-                            theme={isSticky ? AppTheme.DARK : theme}
+                            themeProp={isSticky ? AppTheme.DARK : theme}
                         />
                     </div>
                 </div>

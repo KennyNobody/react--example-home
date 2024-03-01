@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import cls from './Name.module.scss';
-import {AppData} from "0_app/types/MainResponseType";
 
 interface NameProps {
     isMain: boolean;

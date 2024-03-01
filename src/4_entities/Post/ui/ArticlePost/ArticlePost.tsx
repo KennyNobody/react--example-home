@@ -1,26 +1,31 @@
 import classNames from 'classnames';
-import { useMemo, useRef } from 'react';
+import {useEffect, useMemo, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import {
     ArticleCategory,
     ArticleCategorySize,
 } from '4_entities/Category';
 import useHeight from '5_shared/libs/hooks/useHeight';
+import { AppTheme } from '5_shared/config/ThemeContext';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './ArticlePost.module.scss';
 import { PostArticleType } from '../../model/types/PostArticle';
 
 interface ArticlePostProps {
     className?: string;
+    themeProp?: AppTheme;
     data?: PostArticleType;
 }
 
 export const ArticlePost = (props: ArticlePostProps) => {
     const {
         data,
+        themeProp,
         className,
     } = props;
 
+    const { theme } = useTheme();
     const elRef = useRef(null);
     const heightEl = useHeight(elRef, 1.15);
     const previewUrl = data?.main?.preview?.data?.formats?.medium?.url || '';
@@ -36,12 +41,13 @@ export const ArticlePost = (props: ArticlePostProps) => {
             className={
                 classNames(
                     cls.article,
+                    cls[`article--${themeProp || theme}`],
                     cls['article--skeleton'],
                     className,
                 )
             }
         />
-    ), [heightEl, className]);
+    ), [heightEl, className, themeProp, theme]);
 
     const article = useMemo(() => (
         <Link
@@ -51,7 +57,13 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 height: `${heightEl}px`,
             }}
             to={`${RouterPath.post_detail}${data?.id}`}
-            className={classNames(cls.article, className)}
+            className={
+                classNames(
+                    cls.article,
+                    cls[`article--${themeProp || theme}`],
+                    className,
+                )
+            }
         >
             {
                 data?.main?.showPreview
@@ -64,13 +76,27 @@ export const ArticlePost = (props: ArticlePostProps) => {
             }
             <div className={classNames(cls.main)}>
                 {data?.main?.previewTitle && (
-                    <h3 className={classNames(cls.title)}>
+                    <h3
+                        className={
+                            classNames(
+                                cls.title,
+                                cls[`title--${themeProp || theme}`],
+                            )
+                        }
+                    >
                         {data.main.previewTitle}
                     </h3>
                 )}
                 {
                     data?.main?.previewCaption && (
-                        <p className={classNames(cls.caption)}>
+                        <p
+                            className={
+                                classNames(
+                                    cls.caption,
+                                    cls[`caption--${themeProp || theme}`],
+                                )
+                            }
+                        >
                             {data.main.previewCaption}
                         </p>
                     )
@@ -87,7 +113,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 )
             }
         </Link>
-    ), [heightEl, className, data]);
+    ), [heightEl, className, data, themeProp, theme]);
 
     return data ? article : skeleton;
 };

@@ -7,8 +7,6 @@
     border-radius: 28px;
     text-decoration: none;
     transition: 0.3s opacity;
-    color: var(--light-primary);
-    background-color: var(--dark-accent);
 
     &--skeleton {
         background-color: blue;
@@ -17,6 +15,16 @@
     &:hover,
     &:focus {
         opacity: 0.7;
+    }
+
+    &--theme-light {
+        color: var(--dark-primary);
+        background-color: var(--light-accent);
+    }
+
+    &--theme-dark {
+        color: var(--light-primary);
+        background-color: var(--dark-accent);
     }
 }
 

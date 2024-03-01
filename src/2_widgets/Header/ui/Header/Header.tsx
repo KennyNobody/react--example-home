@@ -1,16 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { AppData } from '0_app/types/MainResponseType';
 import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import grid from '5_shared/css/grid.module.scss';
-import { Container } from '5_shared/ui/Container';
+import { Container } from '5_shared/ui/Container/Container';
 import { Nav } from '../Nav/Nav';
 import { Head } from '../Head/Head';
 import { Name } from '../Name/Name';
 import cls from './Header.module.scss';
 import { Avatar } from '../Avatar/Avatar';
 import { Description } from '../Description/Description';
-import {AppData, AppResponseType} from "0_app/types/MainResponseType";
 
 export enum HeaderMode {
     MAIN = 'main',
@@ -43,14 +42,25 @@ export function Header(props: HeaderProps) {
         >
             <Container>
                 <div className={classNames(grid.grid)}>
-                    <div className={classNames(grid['grid__col-2'])}>
+                    <div
+                        className={
+                            classNames(
+                                grid['grid__col-2'],
+                                grid['grid__col-mob-4'],
+                            )
+                        }
+                    >
                         <Head
                             isMain={mode === HeaderMode.MAIN}
                         >
-                            <Avatar
-                                isMain={mode === HeaderMode.MAIN}
-                                className={classNames(cls.avatar)}
-                            />
+                            {data?.preview?.data?.formats?.thumbnail?.url
+                            && (
+                                <Avatar
+                                    isMain={mode === HeaderMode.MAIN}
+                                    className={classNames(cls.avatar)}
+                                    url={data.preview.data.formats.thumbnail.url}
+                                />
+                            )}
                             {
                                 data?.name
                                 && (
@@ -67,10 +77,17 @@ export function Header(props: HeaderProps) {
                                     />
                                 )
                             }
-                            <LanguageSwitcher />
+                            <LanguageSwitcher className={classNames(cls.langSwitcher)} />
                         </Head>
                     </div>
-                    <div className={classNames(grid['grid__col-2'])}>
+                    <div
+                        className={
+                            classNames(
+                                grid['grid__col-2'],
+                                grid['grid__col-mob-4'],
+                            )
+                        }
+                    >
                         { mode === HeaderMode.MAIN && <Description data={data} />}
                         { mode === HeaderMode.REGULAR && <Nav />}
                     </div>

@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import { AppTheme } from '5_shared/config/ThemeContext';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
 import cls from './ArticleCategory.module.scss';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
@@ -11,6 +13,7 @@ interface ArticleCategoryProps {
     className?: string;
     size: ArticleCategorySize;
     data?: ArticleCategoryType;
+    themeProp?: AppTheme;
 }
 
 export const ArticleCategory = (props: ArticleCategoryProps) => {
@@ -18,7 +21,10 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
         data,
         size,
         className,
+        themeProp,
     } = props;
+
+    const { theme } = useTheme();
 
     const skeleton = (
         <div
@@ -27,6 +33,7 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
                     cls.block,
                     cls['block--skeleton'],
                     cls[`block--${size}`],
+                    cls[`block--${themeProp || theme}`],
                     className,
                 )
             }
@@ -39,6 +46,7 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
                 classNames(
                     cls.block,
                     cls[`block--${size}`],
+                    cls[`block--${themeProp || theme}`],
                     className,
                 )
             }

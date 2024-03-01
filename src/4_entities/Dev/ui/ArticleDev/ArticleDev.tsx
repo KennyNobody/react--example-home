@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { GridCategory } from '4_entities/Category';
 import grid from '5_shared/css/grid.module.scss';
 import Icon from '5_shared/assets/icons/arrow-next.svg';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { AppTheme } from '5_shared/config/ThemeContext';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import { ArticleDevType } from '../../model/types/ArticleDev';
 import cls from './ArticleDev.module.scss';
@@ -11,17 +13,29 @@ import cls from './ArticleDev.module.scss';
 interface ArticleDevProps {
     className?: string;
     data?: ArticleDevType;
+    themeProp?: AppTheme;
 }
 
 export const ArticleDev = (props: ArticleDevProps) => {
     const {
         data,
+        themeProp,
         className,
     } = props;
 
+    const { theme } = useTheme();
+
     const skeleton = useMemo(() => (
-        <div className={classNames(cls.block, cls['block--skeleton'])} />
-    ), []);
+        <div
+            className={
+                classNames(
+                    cls.block,
+                    cls[`block--${themeProp || theme}`],
+                    cls['block--skeleton'],
+                )
+            }
+        />
+    ), [data, themeProp, theme]);
 
     const content = useMemo(() => (
         <Link
@@ -29,6 +43,7 @@ export const ArticleDev = (props: ArticleDevProps) => {
             className={
                 classNames(
                     cls.block,
+                    cls[`block--${themeProp || theme}`],
                     className,
                 )
             }
@@ -50,7 +65,7 @@ export const ArticleDev = (props: ArticleDevProps) => {
                 </div>
             </div>
         </Link>
-    ), []);
+    ), [data, themeProp, theme]);
 
     return data ? content : skeleton;
 };

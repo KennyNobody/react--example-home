@@ -6,11 +6,39 @@
     margin-right: 14px;
 }
 
+.langSwitcher {
+    flex-shrink: 0;
+}
 
 .name {
     margin-right: 32px;
 
     &--main {
         flex-grow: 1;
+    }
+}
+
+@media (max-width: 2160px) {
+    .block {
+        padding: 24px 0;
+    }
+
+    .avatar {
+        margin-right: 12px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .block {
+        padding: 14px 0;
+    }
+
+    .avatar {
+        margin-right: 8px;
+    }
+
+    .name {
+        flex-grow: 1;
+        margin-right: 0;
     }
 }

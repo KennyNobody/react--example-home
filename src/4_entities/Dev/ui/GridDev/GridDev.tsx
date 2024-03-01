@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { End } from '5_shared/ui/End';
+import { End } from '5_shared/ui/End/End';
 import cls from './GridDev.module.scss';
 import { ArticleDev } from '../ArticleDev/ArticleDev';
 import { ArticleDevType } from '../../model/types/ArticleDev';

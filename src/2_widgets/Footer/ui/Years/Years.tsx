@@ -12,8 +12,6 @@ export function Years(props: YearsProps) {
         className,
     } = props;
 
-    if (!data) return null;
-
     return (
         <p className={classNames(cls.block, className)}>
             { data }
