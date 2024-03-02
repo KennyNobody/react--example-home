@@ -1,10 +1,16 @@
 import classNames from 'classnames';
-import {ArticleCategory, ArticleCategorySize, ArticleCategoryType, ArticleTag, ListTags,} from '4_entities/Category';
-import {ArticleDevType} from '4_entities/Dev';
-import {PostArticleType} from '4_entities/Post';
-import {Editor} from '5_shared/ui/Editor/Editor';
-import {AppTheme} from '5_shared/config/ThemeContext';
-import {Container} from '5_shared/ui/Container/Container';
+import {
+    ListTags,
+    ArticleTag,
+    ArticleCategory,
+    ArticleCategorySize,
+    ArticleCategoryType,
+} from '4_entities/Category';
+import { ArticleDevType } from '4_entities/Dev';
+import { PostArticleType } from '4_entities/Post';
+import { Editor } from '5_shared/ui/Editor/Editor';
+import { AppTheme } from '5_shared/config/ThemeContext';
+import { Container } from '5_shared/ui/Container/Container';
 import grid from '5_shared/css/grid.module.scss';
 import cls from './DetailIntro.module.scss';
 
@@ -47,6 +53,7 @@ export const DetailIntro = (props: DetailIntroProps) => {
                                     data?.category?.data
                                     && (
                                         <ArticleCategory
+                                            themeProp={theme}
                                             data={data?.category?.data}
                                             size={ArticleCategorySize.BIG}
                                         />

@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { Controls } from '5_shared/ui/Controls/Controls';
 import { IconKey } from '5_shared/ui/IconSocial/IconSocial';
 import { LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
-import cls from './Socials.module.scss';
 
 interface SocialsProps {
     className?: string
@@ -32,7 +31,7 @@ export const Socials = (props: SocialsProps) => {
     ];
 
     return (
-        <Controls className={classNames(className, cls.block)}>
+        <Controls className={classNames(className)}>
             {
                 linksArray.map((item, index) => (
                     <LinkSocial

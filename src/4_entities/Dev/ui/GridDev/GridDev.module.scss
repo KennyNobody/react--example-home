@@ -14,3 +14,17 @@
 .item {
     width: 100%;
 }
+
+@media (max-width: 2160px) {
+
+}
+
+@media (max-width: 1200px) {
+    .block {
+        gap: 16px;
+    }
+
+    .list {
+        gap: 8px;
+    }
+}

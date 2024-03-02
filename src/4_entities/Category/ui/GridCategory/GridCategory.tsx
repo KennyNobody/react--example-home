@@ -1,7 +1,10 @@
 import classNames from 'classnames';
 import cls from './GridCategory.module.scss';
-import {ArticleCategory, ArticleCategorySize} from '../ArticleCategory/ArticleCategory';
-import {ArticleCategoryType} from '../../model/types/ArticleCategory';
+import {
+    ArticleCategory,
+    ArticleCategorySize,
+} from '../ArticleCategory/ArticleCategory';
+import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
 interface GridCategoryProps {
     className?: string;

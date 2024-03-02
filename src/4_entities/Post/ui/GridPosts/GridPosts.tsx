@@ -25,7 +25,7 @@ export const GridPosts = (props: GridPostsProps) => {
         new Array(12).fill(null).map((_, index) => (
             <div
                 key={index}
-                className={classNames(grid['grid__col-1'])}
+                className={classNames(grid['grid__col-1'], grid['grid__col-mob-2'])}
             >
                 <ArticlePost />
             </div>
@@ -47,7 +47,7 @@ export const GridPosts = (props: GridPostsProps) => {
             return (
                 <div
                     key={index}
-                    className={classNames(grid['grid__col-1'])}
+                    className={classNames(grid['grid__col-1'], grid['grid__col-mob-2'])}
                 >
                     <ArticlePost
                         data={item}

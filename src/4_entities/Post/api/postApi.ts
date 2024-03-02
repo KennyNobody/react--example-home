@@ -10,7 +10,7 @@ const postApi = rtkApi.injectEndpoints({
                 url: Routes.POSTS_LIST,
                 params: {
                     ...params,
-                    populate: 'main.preview',
+                    populate: 'main.preview,category',
                 },
             }),
             providesTags: ['post'],

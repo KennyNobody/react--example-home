@@ -7,7 +7,7 @@
     border-radius: 24px;
     text-decoration: none;
     flex-direction: column;
-    padding: 36px 40px 30px;
+    padding: var(--card-padding-l);
     justify-content: space-between;
     background-color: var(--dark-accent);
 
@@ -50,7 +50,6 @@
     font-size: 38px;
     font-weight: 400;
     margin-bottom: 7px;
-    letter-spacing: -0.38px;
 
     &--theme-light {
         color: var(--dark-primary);
@@ -76,6 +75,27 @@
 .tag {
     width: fit-content;
     align-self: flex-end;
+}
 
+@media (max-width: 2160px) {
+    .article {
+        padding: var(--card-padding-m);
+    }
+}
 
+@media (max-width: 1200px) {
+    .article {
+        height: 512px;
+        border-radius: 16px;
+        padding: var(--card-padding-s);
+    }
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 7px;
+    }
+
+    .caption {
+        font-size: 14px;
+    }
 }

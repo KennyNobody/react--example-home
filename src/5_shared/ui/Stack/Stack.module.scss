@@ -1,0 +1,36 @@
+.block {
+    display: flex;
+    flex-direction: column;
+
+    &--large {
+        gap: 140px;
+    }
+
+    &--middle {
+        gap: 65px;
+    }
+}
+
+@media (max-width: 2160px) {
+    .block {
+        &--large {
+            gap: 120px;
+        }
+
+        &--middle {
+            gap: 45px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .block {
+        &--large {
+            gap: 65px;
+        }
+
+        &--middle {
+            gap: 30px;
+        }
+    }
+}

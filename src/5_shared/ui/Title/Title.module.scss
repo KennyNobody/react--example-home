@@ -1,14 +1,19 @@
 .block {
     line-height: 1.2;
     font-weight: 450;
+    font-size: 90px;
     text-decoration: none;
     transition: 0.3s opacity;
+}
 
-    &--main {
-        font-size: 107px;
+@media (max-width: 2160px) {
+    .block {
+        font-size: 76px;
     }
+}
 
-    &--regular {
-        font-size: 90px;
+@media (max-width: 1200px) {
+    .block {
+        font-size: 32px;
     }
 }

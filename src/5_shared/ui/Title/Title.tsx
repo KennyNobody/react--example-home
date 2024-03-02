@@ -3,8 +3,8 @@ import { memo, ReactNode } from 'react';
 import cls from './Title.module.scss';
 
 export enum TitleModeType {
-    MAIN = 'main',
-    REGULAR = 'regular',
+    MAIN,
+    REGULAR,
 }
 
 interface TitleProps {
@@ -23,7 +23,6 @@ export const Title = memo((props: TitleProps) => {
             className={
                 classNames(
                     cls.block,
-                    cls[`block--${mode}`],
                     className,
                 )
             }

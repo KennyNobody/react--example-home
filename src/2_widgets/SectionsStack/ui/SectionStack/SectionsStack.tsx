@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, {ReactNode, useEffect} from 'react';
+import React, { ReactNode } from 'react';
 import { ContentKeyType } from '5_shared/types/CommonTypes';
-import { Stack, StackSizeType } from '5_shared/ui/Stack/ui/Stack';
+import { Stack, StackSizeType } from '5_shared/ui/Stack/Stack';
 import { SectionType } from '../../model/Section';
 import { SectionDev } from '../SectionDev/SectionDev';
 import { SectionPost } from '../SectionPost/SectionPost';

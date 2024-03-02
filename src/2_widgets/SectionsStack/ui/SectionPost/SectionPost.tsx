@@ -5,11 +5,10 @@ import {
     ListPost,
 } from '3_features/ListPost';
 import { PostFilter } from '3_features/PostFilter';
-import { Stack } from '5_shared/ui/Stack';
-import { Toolbar } from '5_shared/ui/Toolbar';
 import grid from '5_shared/css/grid.module.scss';
-import { StackSizeType } from '5_shared/ui/Stack/ui/Stack';
+import { Toolbar } from '5_shared/ui/Toolbar/Toolbar';
 import { Container } from '5_shared/ui/Container/Container';
+import { Stack, StackSizeType } from '5_shared/ui/Stack/Stack';
 import { Title, TitleModeType } from '5_shared/ui/Title/Title';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import { LinkRegular } from '5_shared/ui/LinkRegular/LinkRegular';

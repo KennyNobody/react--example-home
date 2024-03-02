@@ -7,13 +7,13 @@ import Icon from '5_shared/assets/icons/arrow-next.svg';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { RouterPath } from '5_shared/config/router/routerConfig';
-import { ArticleDevType } from '../../model/types/ArticleDev';
 import cls from './ArticleDev.module.scss';
+import { ArticleDevType } from '../../model/types/ArticleDev';
 
 interface ArticleDevProps {
     className?: string;
-    data?: ArticleDevType;
     themeProp?: AppTheme;
+    data?: ArticleDevType;
 }
 
 export const ArticleDev = (props: ArticleDevProps) => {
@@ -49,18 +49,21 @@ export const ArticleDev = (props: ArticleDevProps) => {
             }
         >
             <div className={classNames(grid.grid, cls.grid)}>
-                <div className={classNames(grid['grid__col-2'])}>
+                <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-3'])}>
                     <h3 className={classNames(cls.title)}>
                         { data?.title }
                     </h3>
                 </div>
-                <div className={classNames(grid['grid__col-2'])}>
+                <div className={classNames(grid['grid__col-mob-1'], cls['cell-mobile'])}>
+                    <Icon className={classNames(cls.icon, cls['icon--mobile'])} />
+                </div>
+                <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
                     <div className={classNames(cls.main)}>
                         <GridCategory
                             showSkeleton={false}
                             data={data?.tags?.data || []}
                         />
-                        <Icon className={classNames(cls.icon)} />
+                        <Icon className={classNames(cls.icon, cls['icon--desktop'])} />
                     </div>
                 </div>
             </div>

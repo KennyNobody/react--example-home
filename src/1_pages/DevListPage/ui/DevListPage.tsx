@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Main } from '5_shared/ui/Main/Main';
 import { SectionsStack } from '2_widgets/SectionsStack';
+import { Main } from '5_shared/ui/Main/Main';
 import cls from './DevListPage.module.scss';
 import { useFetchPageDev } from '../api/devListPageApi';
 

@@ -8,8 +8,7 @@ import { Container } from '5_shared/ui/Container/Container';
 import { IconKey } from '5_shared/ui/IconSocial/IconSocial';
 import { LinkSocial } from '5_shared/ui/LinkSocial/LinkSocial';
 import cls from './Footer.module.scss';
-import { Years } from '../Years/Years';
-import { Author } from '../Author/Author';
+import { FooterCaption } from '../FooterCaption/FooterCaption';
 
 interface FooterProps {
     data: AppData;
@@ -25,14 +24,14 @@ export function Footer(props: FooterProps) {
     return (
         <div className={classNames(cls.block, className)}>
             <Container>
-                <div className={classNames(grid.grid)}>
-                    <div className={classNames(grid['grid__col-2'])}>
+                <div className={classNames(grid.grid, cls.grid)}>
+                    <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
                         <div className={classNames(cls.info)}>
-                            { data?.years && <Years data={data?.years} /> }
-                            { data?.author && <Author data={data?.author} /> }
+                            { data?.years && <FooterCaption data={data?.years} /> }
+                            { data?.author && <FooterCaption data={data?.author} /> }
                         </div>
                     </div>
-                    <div className={classNames(grid['grid__col-2'])}>
+                    <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
                         <div className={classNames(cls.toolbar)}>
                             <ThemeSwitcher />
                             <Controls>

@@ -1,12 +1,12 @@
 import classNames from 'classnames';
-import cls from './Author.module.scss';
+import cls from './FooterCaption.module.scss';
 
 interface AuthorProps {
     data: string | null;
     className?: string;
 }
 
-export function Author(props: AuthorProps) {
+export function FooterCaption(props: AuthorProps) {
     const {
         data,
         className,
