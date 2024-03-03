@@ -2,8 +2,17 @@
     display: block;
     cursor: pointer;
     overflow: hidden;
-    border-radius: 50px;
+}
+
+.wrapper {
+    width: 80px;
+    height: 46px;
+    padding: 5px;
+    display: block;
     border: 1px solid;
+    position: relative;
+    border-radius: 50px;
+    transition: 0.3s all;
 
     &--theme-light {
         border-color: var(--dark-secondary);
@@ -12,15 +21,6 @@
     &--theme-dark {
         border-color: var(--light-secondary);
     }
-}
-
-.wrapper {
-    width: 80px;
-    height: 46px;
-    padding: 5px;
-    display: block;
-    position: relative;
-    transition: 0.3s all;
 }
 
 .button {
@@ -84,15 +84,15 @@
 
 @media (max-width: 2160px) {
     .wrapper {
-        width: 74px;
-        height: 42px;
+        width: 64px;
+        height: 38px;
     }
 }
 
 @media (max-width: 1200px) {
     .wrapper {
-        width: 62px;
-        height: 32px;
+        width: 42px;
+        height: 24px;
         padding: 2px;
     }
 }

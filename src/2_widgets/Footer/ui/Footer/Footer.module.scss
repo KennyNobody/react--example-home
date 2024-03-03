@@ -35,5 +35,14 @@
 
     .info {
         gap: 20px;
+        justify-content: space-between;
+    }
+
+    .caption-left {
+        order: 2;
+    }
+
+    .caption-right {
+        order: 1;
     }
 }

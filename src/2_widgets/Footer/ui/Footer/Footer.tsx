@@ -27,8 +27,8 @@ export function Footer(props: FooterProps) {
                 <div className={classNames(grid.grid, cls.grid)}>
                     <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
                         <div className={classNames(cls.info)}>
-                            { data?.years && <FooterCaption data={data?.years} /> }
-                            { data?.author && <FooterCaption data={data?.author} /> }
+                            { data?.years && <FooterCaption className={classNames(cls['caption-left'])} data={data?.years} /> }
+                            { data?.author && <FooterCaption className={classNames(cls['caption-right'])} data={data?.author} /> }
                         </div>
                     </div>
                     <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>

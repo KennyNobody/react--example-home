@@ -36,11 +36,11 @@
 
 .wrapper {
     width: 122px;
-    height: 48px;
     padding: 5px;
     display: block;
-    border-radius: 50px;
     border: 1px solid;
+    border-radius: 50px;
+    height: var(--ui-item-height-l);
 
     &--theme-light {
         border-color: var(--dark-secondary);
@@ -131,11 +131,16 @@
 @media (max-width: 2160px) {
     .wrapper {
         width: 90px;
-        height: 42px;
+        height: 38px;
+        padding: 2px;
+    }
+
+    .content {
+        padding: 2px;
     }
 
     .cell {
-        font-size: 20px;
+        font-size: 16px;
     }
 }
 
