@@ -79,20 +79,28 @@
 
 @media (max-width: 2160px) {
     .article {
+        height: 460px;
         padding: var(--card-padding-m);
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .caption {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 1200px) {
     .article {
-        height: 512px;
+        height: 260px;
         border-radius: 16px;
         padding: var(--card-padding-s);
     }
 
     .title {
         font-size: 20px;
-        margin-bottom: 7px;
     }
 
     .caption {

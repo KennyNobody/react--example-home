@@ -1,10 +1,13 @@
 .link {
-    display: block;
+    width: 40px;
+    height: 24px;
+    display: flex;
     border: 1px solid;
-    width: fit-content;
-    padding: 12px 30px;
     border-radius: 30px;
+    align-items: center;
     transition: 0.3s all;
+    flex-direction: column;
+    justify-content: center;
 
     &--theme-light {
         border-color: var(--dark-primary);
@@ -27,5 +30,19 @@
         height: 24px;
         display: block;
         transition: 0.3s fill;
+    }
+}
+
+@media (max-width: 2160px) {
+
+}
+
+@media (max-width: 1200px) {
+    .link {
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
     }
 }
