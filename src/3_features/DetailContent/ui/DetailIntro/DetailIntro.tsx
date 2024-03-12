@@ -1,16 +1,10 @@
 import classNames from 'classnames';
-import {
-    ListTags,
-    ArticleTag,
-    ArticleCategory,
-    ArticleCategorySize,
-    ArticleCategoryType,
-} from '4_entities/Category';
-import { ArticleDevType } from '4_entities/Dev';
-import { PostArticleType } from '4_entities/Post';
-import { Editor } from '5_shared/ui/Editor/Editor';
-import { AppTheme } from '5_shared/config/ThemeContext';
-import { Container } from '5_shared/ui/Container/Container';
+import {ArticleCategory, ArticleCategoryMode, ArticleCategoryType, ArticleTag, ListTags,} from '4_entities/Category';
+import {ArticleDevType} from '4_entities/Dev';
+import {PostArticleType} from '4_entities/Post';
+import {Editor} from '5_shared/ui/Editor/Editor';
+import {AppTheme} from '5_shared/config/ThemeContext';
+import {Container} from '5_shared/ui/Container/Container';
 import grid from '5_shared/css/grid.module.scss';
 import cls from './DetailIntro.module.scss';
 
@@ -40,14 +34,32 @@ export const DetailIntro = (props: DetailIntroProps) => {
             <Container>
                 <div className={classNames(cls['intro-content'])}>
                     <div className={classNames(grid.grid)}>
-                        <div className={classNames(grid['grid__col-2'])}>
+                        <div
+                            className={
+                                classNames(
+                                    grid['grid__col-2'],
+                                    grid['grid__col-lap-3'],
+                                    grid['grid__col-mob-4'],
+                                    cls['column-title'],
+                                )
+                            }
+                        >
                             <h1 className={classNames(cls.title)}>
                                 {data?.main?.previewTitle}
                                 <br />
                                 {data?.main?.previewCaption}
                             </h1>
                         </div>
-                        <div className={classNames(grid['grid__col-2'])}>
+                        <div
+                            className={
+                                classNames(
+                                    grid['grid__col-2'],
+                                    grid['grid__col-lap-1'],
+                                    grid['grid__col-mob-4'],
+                                    cls['column-cat'],
+                                )
+                            }
+                        >
                             <div className={classNames(cls['toolbar-category'])}>
                                 {
                                     data?.category?.data
@@ -55,7 +67,7 @@ export const DetailIntro = (props: DetailIntroProps) => {
                                         <ArticleCategory
                                             themeProp={theme}
                                             data={data?.category?.data}
-                                            size={ArticleCategorySize.BIG}
+                                            mode={ArticleCategoryMode.STATIC}
                                         />
                                     )
                                 }
@@ -64,7 +76,14 @@ export const DetailIntro = (props: DetailIntroProps) => {
                     </div>
                     <div className={classNames(cls['main-content'])}>
                         <div className={classNames(grid.grid, cls.grid)}>
-                            <div className={classNames(grid['grid__col-2'])}>
+                            <div
+                                className={
+                                    classNames(
+                                        grid['grid__col-2'],
+                                        grid['grid__col-mob-4'],
+                                    )
+                                }
+                            >
                                 {
                                     data?.tags?.data
                                     && data?.tags?.data?.length > 0
@@ -81,16 +100,16 @@ export const DetailIntro = (props: DetailIntroProps) => {
                                     )
                                 }
                             </div>
-                            <div className={classNames(grid['grid__col-1'])}>
-                                {
-                                    data?.main?.introCaption
-                                    && (
+                            {
+                                data?.main?.introCaption
+                                && (
+                                    <div className={classNames(grid['grid__col-1'])}>
                                         <Editor
                                             data={data.main.introCaption}
                                         />
-                                    )
-                                }
-                            </div>
+                                    </div>
+                                )
+                            }
                         </div>
                     </div>
                 </div>

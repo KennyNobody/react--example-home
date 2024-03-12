@@ -27,6 +27,7 @@
         font-size: 22px;
         padding: 1em 1.5em;
         border-radius: 6px;
+        overflow-x: scroll;
         font-family: monospace;
     }
 
@@ -75,6 +76,48 @@
     }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 2160px) {
+    .editor {
+        font-size: 22px;
+        line-height: 1.5;
 
+        & > * {
+            margin-bottom: 1.5em;
+        }
+
+        pre {
+            font-size: 18px;
+            padding: 1em 1.5em;
+            border-radius: 5px;
+        }
+
+        blockquote {
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            border-left: 4px solid;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .editor {
+        font-size: 16px;
+        line-height: 1.5;
+
+        & > * {
+            margin-bottom: 1.5em;
+        }
+
+        pre {
+            font-size: 14px;
+            padding: 1em 1.5em;
+            border-radius: 5px;
+        }
+
+        blockquote {
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            border-left: 2px solid;
+        }
+    }
 }

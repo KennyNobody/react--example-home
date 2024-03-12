@@ -6,13 +6,13 @@
 
 .wrapper {
     width: 80px;
-    height: 46px;
     padding: 5px;
     display: block;
     border: 1px solid;
     position: relative;
     border-radius: 50px;
     transition: 0.3s all;
+    height: var(--ui-item-height-l);
 
     &--theme-light {
         border-color: var(--dark-secondary);
@@ -85,14 +85,14 @@
 @media (max-width: 2160px) {
     .wrapper {
         width: 64px;
-        height: 38px;
+        height: var(--ui-item-height-m);
     }
 }
 
 @media (max-width: 1200px) {
     .wrapper {
         width: 42px;
-        height: 24px;
         padding: 2px;
+        height: var(--ui-item-height-s);
     }
 }

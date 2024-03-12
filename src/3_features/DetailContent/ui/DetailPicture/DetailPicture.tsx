@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
 import classNames from 'classnames';
 import { ImageType } from '5_shared/types/Image';
+import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { EditorWrapper } from '5_shared/ui/EditorWrapper/EditorWrapper';
 import cls from './DetailPicture.module.scss';
-import {EditorWrapper} from "5_shared/ui/EditorWrapper/EditorWrapper";
-import {useTheme} from "5_shared/libs/hooks/useTheme";
 
 interface DetailParagraphProps {
     image: ImageType;
@@ -52,7 +51,6 @@ export const DetailPicture = (props: DetailParagraphProps) => {
                     }
                 </EditorWrapper>
             </figcaption>
-
         </figure>
     );
 };

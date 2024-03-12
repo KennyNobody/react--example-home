@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import cls from './ListCategory.module.scss';
-import {LabelCategory} from '../LabelCategory/LabelCategory';
-import {ArticleCategory, ArticleCategorySize} from '../ArticleCategory/ArticleCategory';
+import {ArticleCategory, ArticleCategoryMode,} from '../ArticleCategory/ArticleCategory';
 import {ArticleCategoryType} from '../../model/types/ArticleCategory';
 
 interface ListCategoryProps {
@@ -25,7 +24,7 @@ export const ListCategory = (props: ListCategoryProps) => {
         new Array(5).fill(null).map((_, index: number) => (
             <ArticleCategory
                 key={index}
-                size={ArticleCategorySize.BIG}
+                mode={ArticleCategoryMode.STATIC}
             />
         ))
     );
@@ -34,11 +33,12 @@ export const ListCategory = (props: ListCategoryProps) => {
         data
         && data?.length > 0
         && data.map((item: ArticleCategoryType) => (
-            <LabelCategory
+            <ArticleCategory
                 data={item}
                 key={item.id}
                 name="category"
                 clickEvent={selectEvent}
+                mode={ArticleCategoryMode.INPUT}
                 isActive={selectedItem === item.id}
             />
         ))

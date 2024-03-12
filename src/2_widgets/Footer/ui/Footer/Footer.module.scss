@@ -20,7 +20,7 @@
 
 @media (max-width: 2160px) {
     .block {
-        padding: 20px 0;
+        padding: 15px 0;
     }
 
     .info {
@@ -29,10 +29,6 @@
 }
 
 @media (max-width: 1200px) {
-    .block {
-        padding: 14px 0;
-    }
-
     .info {
         gap: 20px;
         justify-content: space-between;

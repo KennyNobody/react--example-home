@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import {End} from '5_shared/ui/End/End';
+import { End } from '5_shared/ui/End/End';
 import grid from '5_shared/css/grid.module.scss';
+import { AppTheme } from '5_shared/config/ThemeContext';
 import cls from './GridPhoto.module.scss';
-import {ArticlePhoto} from '../ArticlePost/ArticlePhoto';
-import {ArticlePhotoType} from '../../model/types/ArticlePhoto';
-import {AppTheme} from "5_shared/config/ThemeContext";
+import { ArticlePhoto } from '../ArticlePost/ArticlePhoto';
+import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
 
 interface GridPostsProps {
     className?: string;
@@ -25,7 +25,7 @@ export const GridPhoto = (props: GridPostsProps) => {
         new Array(12).fill(null).map((_, index) => (
             <div
                 key={index}
-                className={classNames(grid['grid__col-2'])}
+                className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}
             >
                 <ArticlePhoto />
             </div>
@@ -47,7 +47,7 @@ export const GridPhoto = (props: GridPostsProps) => {
             return (
                 <div
                     key={index}
-                    className={classNames(grid['grid__col-2'])}
+                    className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}
                 >
                     <ArticlePhoto
                         data={item}

@@ -44,11 +44,14 @@ export const SectionPhoto = (props: SectionProps) => {
                             }
                         </div>
                         <div className={classNames(grid['grid__col-2'])}>
-                            <Toolbar>
+                            <Toolbar className={classNames(cls.toolbarLinks)}>
                                 {
                                     data?.years
                                     && (
-                                        <Title mode={TitleModeType.REGULAR}>
+                                        <Title
+                                            mode={TitleModeType.REGULAR}
+                                            className={classNames(cls.years)}
+                                        >
                                             { data.years }
                                         </Title>
                                     )
@@ -71,7 +74,7 @@ export const SectionPhoto = (props: SectionProps) => {
                     {
                         isPreview
                         && (
-                            <div className={classNames(grid.grid)}>
+                            <div className={classNames(grid.grid, cls.grid)}>
                                 <div className={classNames(grid['grid__col-2'])} />
                                 <div className={classNames(grid['grid__col-2'])}>
                                     <Toolbar>

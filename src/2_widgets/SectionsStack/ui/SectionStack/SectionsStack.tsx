@@ -17,8 +17,6 @@ interface PageIndexProps {
 const renderSection = (data: SectionType, isPreview: boolean): ReactNode | null => {
     const { contentKey } = data;
 
-    console.log('Пришло: ', contentKey);
-
     const ListComponents: Record<ContentKeyType, React.ReactNode> = {
         [ContentKeyType.DEV]: <SectionDev key={data.id} data={data} isPreview={isPreview} />,
         [ContentKeyType.PHOTO]: <SectionPhoto key={data.id} data={data} isPreview={isPreview} />,

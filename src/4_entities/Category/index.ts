@@ -4,12 +4,8 @@ export type {
 
 export {
     ArticleCategory,
-    ArticleCategorySize,
+    ArticleCategoryMode,
 } from './ui/ArticleCategory/ArticleCategory';
-
-export {
-    LabelCategory,
-} from './ui/LabelCategory/LabelCategory';
 
 export {
     ListCategory,

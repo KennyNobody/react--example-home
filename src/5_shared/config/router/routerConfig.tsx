@@ -7,6 +7,17 @@ import { NotFoundPage } from '1_pages/NotFoundPage';
 import { PhotoListPage } from '1_pages/PhotoListPage';
 import { ContentKeyType } from '5_shared/types/CommonTypes';
 
+export type AppRouteProps = RouteProps & {
+    layoutMode: PageLayoutMode;
+};
+
+export enum PageLayoutMode {
+    FRONT = 'front',
+    LIST = 'list',
+    STATIC = 'static',
+    DETAIL = 'detail',
+}
+
 export enum AppRouter {
     MAIN = 'main',
     DEV = 'dev',
@@ -29,37 +40,45 @@ export const RouterPath: Record<AppRouter, string> = {
     [AppRouter.NOT_FOUND]: '*',
 };
 
-export const routeConfig: RouteProps[] = [
+export const routeConfig: AppRouteProps[] = [
     {
         path: RouterPath.main,
         element: <FrontPage />,
+        layoutMode: PageLayoutMode.FRONT,
     },
     {
         path: RouterPath.posts,
         element: <PostListPage />,
+        layoutMode: PageLayoutMode.LIST,
     },
     {
         path: `${RouterPath.post_detail}:slug`,
         element: <DetailPage mode={ContentKeyType.POST} />,
+        layoutMode: PageLayoutMode.DETAIL,
     },
     {
         path: RouterPath.dev,
         element: <DevListPage />,
+        layoutMode: PageLayoutMode.LIST,
     },
     {
         path: `${RouterPath.dev_detail}:slug`,
         element: <DetailPage mode={ContentKeyType.DEV} />,
+        layoutMode: PageLayoutMode.DETAIL,
     },
     {
         path: RouterPath.photo,
         element: <PhotoListPage />,
+        layoutMode: PageLayoutMode.LIST,
     },
     {
         path: `${RouterPath.photo_detail}:slug`,
         element: <DetailPage mode={ContentKeyType.PHOTO} />,
+        layoutMode: PageLayoutMode.DETAIL,
     },
     {
         path: RouterPath.not_found,
         element: <NotFoundPage />,
+        layoutMode: PageLayoutMode.STATIC,
     },
 ];

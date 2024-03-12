@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classNames from 'classnames';
 import { AppData } from '0_app/types/MainResponseType';
 import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container/Container';
+import useLayoutMode from '5_shared/libs/hooks/useLayoutMode';
+import { PageLayoutMode } from '5_shared/config/router/routerConfig';
 import { Nav } from '../Nav/Nav';
 import { Head } from '../Head/Head';
 import { Name } from '../Name/Name';
@@ -11,23 +13,18 @@ import cls from './Header.module.scss';
 import { Avatar } from '../Avatar/Avatar';
 import { Description } from '../Description/Description';
 
-export enum HeaderMode {
-    MAIN = 'main',
-    REGULAR = 'regular',
-}
-
 interface HeaderProps {
     className?: string;
-    mode: HeaderMode;
     data: AppData,
 }
 
 export function Header(props: HeaderProps) {
     const {
-        mode,
         data,
         className,
     } = props;
+
+    const layoutMode = useLayoutMode();
 
     return (
         <div
@@ -35,7 +32,7 @@ export function Header(props: HeaderProps) {
             className={
                 classNames(
                     cls.block,
-                    cls[`block--${mode}`],
+                    cls[`block--${layoutMode}`],
                     className,
                 )
             }
@@ -51,12 +48,12 @@ export function Header(props: HeaderProps) {
                         }
                     >
                         <Head
-                            isMain={mode === HeaderMode.MAIN}
+                            isMain={layoutMode === PageLayoutMode.FRONT}
                         >
                             {data?.preview?.data?.formats?.thumbnail?.url
                             && (
                                 <Avatar
-                                    isMain={mode === HeaderMode.MAIN}
+                                    isMain={layoutMode === PageLayoutMode.FRONT}
                                     className={classNames(cls.avatar)}
                                     url={data.preview.data.formats.thumbnail.url}
                                 />
@@ -67,17 +64,17 @@ export function Header(props: HeaderProps) {
                                     <Name
                                         name={data.name}
                                         nickname={data.nickname}
-                                        isMain={mode === HeaderMode.MAIN}
+                                        isMain={layoutMode === PageLayoutMode.FRONT}
                                         className={
                                             classNames(
                                                 cls.name,
-                                                { [cls['name--main']]: mode !== HeaderMode.MAIN },
+                                                { [cls['name--front']]: layoutMode !== PageLayoutMode.FRONT },
                                             )
                                         }
                                     />
                                 )
                             }
-                            <LanguageSwitcher className={classNames(cls.langSwitcher)} />
+                            <LanguageSwitcher className={classNames(cls.switcher)} />
                         </Head>
                     </div>
                     <div
@@ -85,11 +82,12 @@ export function Header(props: HeaderProps) {
                             classNames(
                                 grid['grid__col-2'],
                                 grid['grid__col-mob-4'],
+                                cls['column-nav'],
                             )
                         }
                     >
-                        { mode === HeaderMode.MAIN && <Description data={data} />}
-                        { mode === HeaderMode.REGULAR && <Nav />}
+                        { layoutMode === PageLayoutMode.FRONT && <Description data={data} />}
+                        { layoutMode !== PageLayoutMode.FRONT && <Nav className={classNames(cls.nav, cls['nav--desktop'])} />}
                     </div>
                 </div>
             </Container>

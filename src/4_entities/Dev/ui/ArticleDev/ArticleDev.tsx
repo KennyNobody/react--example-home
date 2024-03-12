@@ -55,7 +55,15 @@ export const ArticleDev = (props: ArticleDevProps) => {
                     </h3>
                 </div>
                 <div className={classNames(grid['grid__col-mob-1'], cls['cell-mobile'])}>
-                    <Icon className={classNames(cls.icon, cls['icon--mobile'])} />
+                    <Icon
+                        className={
+                            classNames(
+                                cls.icon,
+                                cls['icon--mobile'],
+                                cls[`icon--${themeProp || theme}`],
+                            )
+                        }
+                    />
                 </div>
                 <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
                     <div className={classNames(cls.main)}>
@@ -63,7 +71,15 @@ export const ArticleDev = (props: ArticleDevProps) => {
                             showSkeleton={false}
                             data={data?.tags?.data || []}
                         />
-                        <Icon className={classNames(cls.icon, cls['icon--desktop'])} />
+                        <Icon
+                            className={
+                                classNames(
+                                    cls.icon,
+                                    cls['icon--desktop'],
+                                    cls[`icon--${themeProp || theme}`],
+                                )
+                            }
+                        />
                     </div>
                 </div>
             </div>

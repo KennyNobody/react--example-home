@@ -74,17 +74,18 @@ export const DetailContent = (props: DetailContentProps) => {
                         ref={ref}
                         data={data}
                         theme={blockTheme}
-                        isSticky={isSticky}
                     />
-                    {
-                        data?.main?.content
-                        && (
+                </Container>
+                {
+                    data?.main?.content
+                    && (
+                        <Container className={classNames(cls['container-editor'])}>
                             <DetailEditor
                                 data={data.main.content}
                             />
-                        )
-                    }
-                </Container>
+                        </Container>
+                    )
+                }
             </div>
         </div>
     );

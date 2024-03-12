@@ -30,7 +30,12 @@ export const Name = memo((props: NameProps) => {
             }
         >
             { name || '...' }
-            { nickname ? ` / ${nickname}` : null}
+            {
+                nickname
+                && (
+                    <span className={cls.nickname}>{` / ${nickname}`}</span>
+                )
+            }
         </Tag>
     );
 });

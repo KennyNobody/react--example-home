@@ -1,4 +1,3 @@
-import { ArticleTagType } from '4_entities/Tag';
 import { ArticleCategoryType } from '4_entities/Category';
 import { DetailMainType } from '5_shared/types/DetailMainContent';
 
@@ -12,7 +11,7 @@ export interface ArticleDevType {
     publishedAt?: Date;
     main: DetailMainType;
     tags?: {
-        data: ArticleTagType[];
+        data: ArticleCategoryType[];
     };
     category?: {
         data: ArticleCategoryType;

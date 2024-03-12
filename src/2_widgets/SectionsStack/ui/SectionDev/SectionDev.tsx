@@ -45,11 +45,14 @@ export const SectionDev = (props: SectionProps) => {
                             }
                         </div>
                         <div className={classNames(grid['grid__col-2'])}>
-                            <Toolbar>
+                            <Toolbar className={classNames(cls.toolbarLinks)}>
                                 {
                                     data?.years
                                     && (
-                                        <Title mode={TitleModeType.REGULAR}>
+                                        <Title
+                                            mode={TitleModeType.REGULAR}
+                                            className={classNames(cls.years)}
+                                        >
                                             { data.years }
                                         </Title>
                                     )
@@ -71,16 +74,29 @@ export const SectionDev = (props: SectionProps) => {
                             !isPreview
                             && (
                                 <>
-                                    <div className={classNames(grid['grid__col-2'])}>
+                                    <div
+                                        className={
+                                            classNames(
+                                                grid['grid__col-2'],
+                                                grid['grid__col-mob-4'],
+                                            )
+                                        }
+                                    >
                                         <LinkRegular
                                             to="#"
                                             text={t('resume')}
+                                            className={classNames(cls.link)}
                                         />
                                     </div>
-                                    <div className={classNames(grid['grid__col-2'])}>
-                                        <DevFilter
-                                            className={classNames(cls.category)}
-                                        />
+                                    <div
+                                        className={
+                                            classNames(
+                                                grid['grid__col-2'],
+                                                grid['grid__col-mob-4'],
+                                            )
+                                        }
+                                    >
+                                        <DevFilter />
                                     </div>
                                 </>
                             )
@@ -90,9 +106,21 @@ export const SectionDev = (props: SectionProps) => {
                     {
                         isPreview
                         && (
-                            <div className={classNames(grid.grid)}>
-                                <div className={classNames(grid['grid__col-2'])} />
-                                <div className={classNames(grid['grid__col-2'])}>
+                            <div className={classNames(grid.grid, cls.grid)}>
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                        )
+                                    }
+                                />
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                        )
+                                    }
+                                >
                                     <Toolbar>
                                         <LinkRegular
                                             to={RouterPath.dev}

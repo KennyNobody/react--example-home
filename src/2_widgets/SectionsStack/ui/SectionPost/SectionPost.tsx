@@ -35,7 +35,14 @@ export const SectionPost = (props: SectionProps) => {
             <Container>
                 <Stack size={StackSizeType.MIDDLE}>
                     <div className={classNames(grid.grid, cls.grid)}>
-                        <div className={classNames(grid['grid__col-2'])}>
+                        <div
+                            className={
+                                classNames(
+                                    grid['grid__col-2'],
+                                    grid['grid__col-mob-4'],
+                                )
+                            }
+                        >
                             {
                                 data?.title
                                 && (
@@ -45,7 +52,14 @@ export const SectionPost = (props: SectionProps) => {
                                 )
                             }
                         </div>
-                        <div className={classNames(grid['grid__col-2'])}>
+                        <div
+                            className={
+                                classNames(
+                                    grid['grid__col-2'],
+                                    cls['cell-years'],
+                                )
+                            }
+                        >
                             <Toolbar>
                                 {
                                     data?.years
@@ -61,8 +75,22 @@ export const SectionPost = (props: SectionProps) => {
                             !isPreview
                             && (
                                 <>
-                                    <div className={classNames(grid['grid__col-2'])} />
-                                    <div className={classNames(grid['grid__col-2'])}>
+                                    <div
+                                        className={
+                                            classNames(
+                                                grid['grid__col-2'],
+                                                cls['cell-separator'],
+                                            )
+                                        }
+                                    />
+                                    <div
+                                        className={
+                                            classNames(
+                                                grid['grid__col-2'],
+                                                grid['grid__col-mob-4'],
+                                            )
+                                        }
+                                    >
                                         <PostFilter
                                             className={classNames(cls.category)}
                                         />

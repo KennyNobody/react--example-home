@@ -16,20 +16,26 @@
     &--theme-dark {
         color: var(--light-primary);
     }
-
-    &--fixed {
-        color: var(--light-primary);
-        background-color: var(--bg-dark);
-    }
 }
 
 .footer-grid {
+    width: 100%;
+    display: flex;
     min-height: 60px;
     align-items: center;
+    justify-content: space-between;
 }
 
-.titleCaption {
-    font-size: 35px;
+.column-date {
+    width: 40%;
+}
+
+.column-button {
+    width: 20%;
+}
+
+.column-share {
+    width: 40%;
 }
 
 .button {
@@ -44,30 +50,12 @@
     align-items: center;
     transition: 0.3s all;
     justify-content: center;
-
-    &[hidden] {
-        opacity: 0;
-        display: none;
-        visibility: hidden;
-    }
-}
-
-.caption {
-    gap: 25px;
-    display: flex;
-    overflow: hidden;
-
-    &[hidden] {
-        display: none;
-        visibility: hidden;
-    }
 }
 
 .icon {
     width: 44px;
     height: 44px;
     display: block;
-
 
     &--theme-light {
         fill: var(--dark-primary);
@@ -80,4 +68,37 @@
 
 .share {
     justify-content: flex-end;
+}
+
+@media (width <= 2160px) {
+    .footer {
+        min-height: 60px;
+        margin-bottom: 25px;
+    }
+
+    .footer-grid {
+        min-height: 20px;
+    }
+
+    .icon {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (width <= 1200px) {
+    .footer {
+        min-height: 40px;
+        margin-bottom: 15px;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .column-share {
+        display: none;
+        visibility: hidden;
+    }
 }

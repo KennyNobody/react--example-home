@@ -6,7 +6,7 @@
     width: fit-content;
 
     img {
-        width: auto;
+        width: 100%;
         height: auto;
         margin: 0 auto;
         display: block;
@@ -30,5 +30,33 @@
 
     &--theme-dark {
         color: var(--light-secondary);
+    }
+}
+
+@media (max-width: 2160px) {
+    .figcaption {
+        padding-top: 10px;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    .caption {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .figcaption {
+        padding-top: 5px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .caption {
+        font-size: 14px;
     }
 }

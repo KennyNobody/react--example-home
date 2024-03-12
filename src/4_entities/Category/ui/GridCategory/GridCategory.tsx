@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import cls from './GridCategory.module.scss';
 import {
     ArticleCategory,
-    ArticleCategorySize,
+    ArticleCategoryMode,
 } from '../ArticleCategory/ArticleCategory';
+import cls from './GridCategory.module.scss';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
 interface GridCategoryProps {
@@ -23,7 +23,7 @@ export const GridCategory = (props: GridCategoryProps) => {
         new Array(4).fill(null).map((_, index: number) => (
             <ArticleCategory
                 key={index}
-                size={ArticleCategorySize.BIG}
+                mode={ArticleCategoryMode.STATIC}
             />
         ))
     );
@@ -35,7 +35,7 @@ export const GridCategory = (props: GridCategoryProps) => {
             <ArticleCategory
                 data={item}
                 key={item.id}
-                size={ArticleCategorySize.BIG}
+                mode={ArticleCategoryMode.STATIC}
             />
         ))
     );

@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
+import useLayoutMode from '5_shared/libs/hooks/useLayoutMode';
 import cls from './Main.module.scss';
 
 interface MainProps {
@@ -13,8 +14,18 @@ export const Main = (props: MainProps) => {
         className,
     } = props;
 
+    const layoutMode = useLayoutMode();
+
     return (
-        <main className={classNames(cls.block, className)}>
+        <main
+            className={
+                classNames(
+                    cls.block,
+                    cls[`block--${layoutMode}`],
+                    className,
+                )
+            }
+        >
             { children }
         </main>
     );

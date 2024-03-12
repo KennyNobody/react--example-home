@@ -3,7 +3,7 @@ import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
     ArticleCategory,
-    ArticleCategorySize,
+    ArticleCategoryMode,
 } from '4_entities/Category';
 import useHeight from '5_shared/libs/hooks/useHeight';
 import { AppTheme } from '5_shared/config/ThemeContext';
@@ -108,7 +108,7 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
                     <ArticleCategory
                         className={cls.tag}
                         data={data?.category?.data}
-                        size={ArticleCategorySize.SMALL}
+                        mode={ArticleCategoryMode.STATIC}
                     />
                 )
             }
