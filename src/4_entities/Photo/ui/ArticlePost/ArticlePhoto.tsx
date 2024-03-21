@@ -28,7 +28,9 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
     const { theme } = useTheme();
     const elRef = useRef(null);
     const heightEl = useHeight(elRef, 0.82);
-    const previewUrl = data?.main?.preview?.data?.formats?.large?.url || '';
+    const previewUrl = data?.main?.preview?.data?.formats?.large?.url
+        || data?.main?.preview?.data?.formats?.medium?.url
+        || data?.main?.preview?.data?.formats?.small?.url || '';
     const altText = data?.main?.preview?.data?.alternativeText || '#';
 
     const skeleton = useMemo(() => (

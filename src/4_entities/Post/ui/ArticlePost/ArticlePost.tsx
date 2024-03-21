@@ -28,15 +28,10 @@ export const ArticlePost = (props: ArticlePostProps) => {
     const { theme } = useTheme();
     const elRef = useRef(null);
     const heightEl = useHeight(elRef, 1.15);
-    const previewUrl = data?.main?.preview?.data?.formats?.medium?.url || data?.main?.preview?.data?.formats?.small?.url || '';
+    const previewUrl = data?.main?.preview?.data?.formats?.large?.url
+        || data?.main?.preview?.data?.formats?.medium?.url
+        || data?.main?.preview?.data?.formats?.small?.url || '';
     const altText = data?.main?.preview?.data?.alternativeText || '#';
-
-    useEffect(() => {
-        console.log('----');
-        console.log(data?.title);
-        console.log(themeProp);
-        console.log('----');
-    }, [data]);
 
     const skeleton = useMemo(() => (
         <div
