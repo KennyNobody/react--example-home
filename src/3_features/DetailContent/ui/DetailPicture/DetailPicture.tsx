@@ -21,31 +21,48 @@ export const DetailPicture = (props: DetailParagraphProps) => {
             {
                 image?.formats?.large?.url
                 && (
-                    <img src={`${__BASE_URL__}${image?.formats?.large?.url}`} alt={image?.alternativeText || '#'} />
+                    <img
+                        src={`${__BASE_URL__}${image?.formats?.large?.url}`}
+                        alt={image?.alternativeText || '#'}
+                    />
                 )
             }
             {
                 !image?.formats?.large?.url
                 && image?.formats?.medium?.url
                 && (
-                    <img src={`${__BASE_URL__}${image?.formats?.medium?.url}`} alt={image?.alternativeText || '#'} />
+                    <img
+                        src={`${__BASE_URL__}${image?.formats?.medium?.url}`}
+                        alt={image?.alternativeText || '#'}
+                    />
+                )
+            }
+            {
+                !image?.formats?.large?.url
+                && !image?.formats?.medium?.url
+                && image?.formats?.small?.url
+                && (
+                    <img
+                        src={`${__BASE_URL__}${image?.formats?.small?.url}`}
+                        alt={image?.alternativeText || '#'}
+                    />
                 )
             }
             <figcaption className={classNames(cls.figcaption)}>
                 <EditorWrapper>
                     {
-                        image?.alternativeText
+                        image?.caption
                         && (
                             <p className={classNames(cls.text)}>
-                                { image.alternativeText }
+                                { image.caption }
                             </p>
                         )
                     }
                     {
-                        image?.caption
+                        image?.alternativeText
                         && (
                             <p className={classNames(cls.caption, cls[`caption--${theme}`])}>
-                                { image.caption }
+                                { image.alternativeText }
                             </p>
                         )
                     }

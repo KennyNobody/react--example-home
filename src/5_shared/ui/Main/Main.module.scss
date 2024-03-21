@@ -3,14 +3,18 @@
     padding-bottom: 115px;
 }
 
-@media (max-width: 2160px) {
+@media (width <= 2160px) {
     .block {
         padding-bottom: 110px;
     }
 }
 
-@media (max-width: 1200px) {
+@media (width <= 1200px) {
     .block {
         padding-bottom: 40px;
+
+        &--list {
+            padding-top: 100px;
+        }
     }
 }

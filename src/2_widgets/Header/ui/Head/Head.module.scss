@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     border-radius: 15px;
+    transition: 0.3s all;
 
     &--regular {
         padding: 16px;
@@ -23,7 +24,7 @@
     }
 }
 
-@media (max-width: 2160px) {
+@media (width <= 2160px) {
     .block {
         &--regular {
             padding: 12px;
@@ -31,10 +32,13 @@
     }
 }
 
-@media (max-width: 1200px) {
+@media (width <= 1200px) {
     .block {
+        border-radius: 8px;
+
         &--regular {
             padding: 12px;
+            min-height: var(--menu-mobile-item-height-s);
         }
     }
 }

@@ -10,7 +10,6 @@ interface DetailMainType {
     previewTitle: string;
     previewCaption: string;
     previewInverted: boolean;
-    introCaption: string;
     content: BlocksContent;
 }
 

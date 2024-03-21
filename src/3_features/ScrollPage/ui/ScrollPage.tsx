@@ -10,7 +10,7 @@ export const ScrollPage = ({ children }: ScrollPageProps) => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const parentNode: Element | null = document.querySelector('.app');
+            const parentNode: Element | null = document.documentElement;
 
             if (parentNode && parentNode.scrollTop > 0) {
                 parentNode.scrollTo(0, 0);

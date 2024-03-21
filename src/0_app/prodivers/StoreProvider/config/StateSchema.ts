@@ -6,6 +6,7 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+import { MenuMobileSchema } from '3_features/MenuMobile';
 import { DevListSchema } from '4_entities/Dev';
 import { PostListSchema } from '4_entities/Post';
 import { PhotoListSchema } from '4_entities/Photo';
@@ -16,6 +17,7 @@ export interface StateSchema {
     postList?: PostListSchema;
     photoList?: PhotoListSchema;
     devList?: DevListSchema;
+    menuMobile?: MenuMobileSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
