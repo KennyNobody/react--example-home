@@ -3,5 +3,8 @@
   "allPosts": "All posts",
   "allProjects": "All projects",
   "resume": "Resume",
-  "share": "Share"
+  "share": "Share",
+  "language": "Language",
+  "theme": "Theme",
+  "loading": "Loading..."
 }

@@ -19,7 +19,7 @@ const postApi = rtkApi.injectEndpoints({
             query: (id: string) => ({
                 url: `${Routes.POSTS_LIST}/${id}/`,
                 params: {
-                    populate: 'main.preview,tags,category',
+                    populate: 'main.preview,tags,category,seo',
                 },
             }),
             providesTags: ['postSingle'],

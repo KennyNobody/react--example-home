@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import classNames from 'classnames';
+import { HelmetProvider } from 'react-helmet-async';
 import { useFetchMain } from '0_app/api/appApi';
 import { Footer } from '2_widgets/Footer';
 import { Header } from '2_widgets/Header';
@@ -37,7 +38,9 @@ function App() {
                     }
                 />
                 <ScrollPage>
-                    <AppRouter />
+                    <HelmetProvider context={{}}>
+                        <AppRouter />
+                    </HelmetProvider>
                 </ScrollPage>
                 <Footer
                     data={data?.data}

@@ -1,10 +1,10 @@
 import { rtkApi } from '5_shared/api/rtkApi';
 import { Routes } from '5_shared/api/endpoints';
-import { PageIndexResponseType } from '5_shared/types/CommonTypes';
+import { PageResponseType } from '5_shared/types/CommonTypes';
 
 const pagePhotoApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        fetchPagePhoto: build.query<PageIndexResponseType, null>({
+        fetchPagePhoto: build.query<PageResponseType, null>({
             query: () => ({
                 url: Routes.PAGE_PHOTO,
                 params: {

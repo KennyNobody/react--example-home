@@ -1,5 +1,7 @@
+import React from 'react';
 import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
+import { MetaPage } from '3_features/MetaPage';
 import { DetailContent } from '3_features/DetailContent';
 import { useFetchDevById } from '4_entities/Dev';
 import { useFetchPostById } from '4_entities/Post';
@@ -24,6 +26,10 @@ function DetailPage({ mode }: DetailPageProps) {
 
     return (
         <Main className={classNames(cls.main)}>
+            <MetaPage
+                isLoading={isLoading}
+                data={data?.seo || undefined}
+            />
             <DetailContent
                 data={data}
                 isLoading={isLoading}
