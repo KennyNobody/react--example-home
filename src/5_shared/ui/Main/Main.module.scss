@@ -1,6 +1,10 @@
 .block {
     flex-grow: 1;
     padding-bottom: 115px;
+
+    &--detail {
+        padding-bottom: 0;
+    }
 }
 
 @media (width <= 2160px) {

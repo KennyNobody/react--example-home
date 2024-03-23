@@ -8,6 +8,7 @@ import { PostArticleType } from '4_entities/Post';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { Container } from '5_shared/ui/Container/Container';
+import { useScrollPercent } from '5_shared/libs/hooks/useScrollPercent';
 import { useStickyObserver } from '5_shared/libs/hooks/useStickyObserver';
 import cls from './DetailContent.module.scss';
 import { DetailIntro } from '../DetailIntro/DetailIntro';
@@ -28,7 +29,7 @@ export const DetailContent = (props: DetailContentProps) => {
     } = props;
 
     const { theme } = useTheme();
-    const { ref, isSticky } = useStickyObserver();
+    const opacity = useScrollPercent(0.75);
     const [blockTheme, setBlockTheme] = useState<AppTheme>(theme);
 
     useEffect(() => {
@@ -52,7 +53,7 @@ export const DetailContent = (props: DetailContentProps) => {
             }
         >
             <picture
-                hidden={isSticky}
+                style={{ opacity }}
                 className={classNames(cls.picture)}
             >
                 {
@@ -71,7 +72,6 @@ export const DetailContent = (props: DetailContentProps) => {
             >
                 <Container>
                     <DetailToolbar
-                        ref={ref}
                         data={data}
                         theme={blockTheme}
                     />

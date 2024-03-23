@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { LinkNav } from '5_shared/ui/LinkNav/LinkNav';
@@ -9,9 +9,12 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import { ThemeSwitcher } from '3_features/ThemeSwitcher';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { Overlay } from '5_shared/ui/Overlay/Overlay';
+import { useLocation } from 'react-router-dom';
+import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import cls from './MenuMobile.module.scss';
+import { menuMobileActions } from '../../model/slices/menuMobile';
 import { getMenuMobileIsOpened } from '../../model/selectors/menuMobile';
-import {Overlay} from "5_shared/ui/Overlay/Overlay";
 
 interface MenuMobileProps {
     className?: string;
@@ -24,9 +27,18 @@ export const MenuMobile = (props: MenuMobileProps) => {
         className,
     } = props;
 
+    const location = useLocation();
+    const dispatch = useAppDispatch();
+
     const isOpened = useSelector(getMenuMobileIsOpened);
     const { theme } = useTheme();
     const { t } = useTranslation();
+
+    useEffect(() => {
+        if (isOpened) {
+            dispatch(menuMobileActions.setMenuMobileState());
+        }
+    }, [location]);
 
     return (
         <div

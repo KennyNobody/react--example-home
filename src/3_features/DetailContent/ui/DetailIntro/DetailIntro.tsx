@@ -12,6 +12,8 @@ import { AppTheme } from '5_shared/config/ThemeContext';
 import { Container } from '5_shared/ui/Container/Container';
 import grid from '5_shared/css/grid.module.scss';
 import cls from './DetailIntro.module.scss';
+import {useScrollPercent} from "5_shared/libs/hooks/useScrollPercent";
+import {useEffect} from "react";
 
 interface DetailIntroProps {
     theme: AppTheme;
@@ -26,6 +28,8 @@ export const DetailIntro = (props: DetailIntroProps) => {
         className,
     } = props;
 
+    const opacity = useScrollPercent(1);
+
     return (
         <div
             className={
@@ -37,7 +41,12 @@ export const DetailIntro = (props: DetailIntroProps) => {
             }
         >
             <Container>
-                <div className={classNames(cls['intro-content'])}>
+                <div
+                    hidden={opacity < 0}
+                    className={
+                        classNames(cls['intro-content'])
+                    }
+                >
                     <div className={classNames(grid.grid)}>
                         <div
                             className={

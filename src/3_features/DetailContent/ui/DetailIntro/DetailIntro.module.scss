@@ -17,11 +17,16 @@
 .intro-content {
     gap: 60px;
     z-index: 1;
+    opacity: 1;
     display: flex;
     height: 100vh;
     position: relative;
     flex-direction: column;
     padding: 185px 0 150px;
+
+    &[hidden] {
+        opacity: 0;
+    }
 }
 
 .toolbar-category {

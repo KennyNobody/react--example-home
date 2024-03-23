@@ -31,10 +31,18 @@ export function Footer(props: FooterProps) {
                             { data?.author && <FooterCaption className={classNames(cls['caption-right'])} data={data?.author} /> }
                         </div>
                     </div>
-                    <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
+                    <div
+                        className={
+                            classNames(
+                                grid['grid__col-2'],
+                                grid['grid__col-mob-4'],
+                            )
+                        }
+                    >
                         <div className={classNames(cls.toolbar)}>
                             <ThemeSwitcher />
                             <Controls>
+                                {/* TODO: Сделать данные динамичными */}
                                 <LinkSocial
                                     iconKey={IconKey.TG}
                                     href="https://web.telegram.org/"
