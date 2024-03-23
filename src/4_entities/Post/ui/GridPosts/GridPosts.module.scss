@@ -4,6 +4,19 @@
     flex-direction: column;
 }
 
+.item {
+    &:nth-child(2) {
+        &:after {
+            content: "";
+            display: block;
+            height: 100%;
+            width: 100%;
+            grid-column: span 1;
+            position: relative;
+        }
+    }
+}
+
 @media (width <= 2160px) {
 
 }

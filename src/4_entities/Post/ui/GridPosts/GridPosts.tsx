@@ -8,7 +8,7 @@ import { PostArticleType } from '../../model/types/PostArticle';
 
 interface GridPostsProps {
     className?: string;
-    data?: PostArticleType[];
+    data?: (PostArticleType | null)[];
     showSkeleton?: boolean;
     showEnd: boolean;
 }
@@ -41,7 +41,7 @@ export const GridPosts = (props: GridPostsProps) => {
     const content = (
         data
         && data?.length > 0
-        && data.map((item: PostArticleType, index: number) => {
+        && data.map((item: PostArticleType | null, index: number) => {
             let propTheme;
 
             if (item?.main?.showPreview) {
@@ -61,10 +61,15 @@ export const GridPosts = (props: GridPostsProps) => {
                         )
                     }
                 >
-                    <ArticlePost
-                        data={item}
-                        themeProp={propTheme}
-                    />
+                    {
+                        item
+                        && (
+                            <ArticlePost
+                                data={item}
+                                themeProp={propTheme}
+                            />
+                        )
+                    }
                 </div>
             );
         })

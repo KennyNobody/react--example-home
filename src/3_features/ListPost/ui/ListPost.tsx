@@ -15,12 +15,13 @@ import {
     PostArticleType,
     getPostList,
     postListReducer,
-    useLazyFetchPostList,
+    useLazyFetchPostList, postListActions,
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
 import cls from './ListPost.module.scss';
+import {addRandomNulls} from "5_shared/libs/helpers/addRandomNulls";
 
 interface ListPostsProps {
     className?: string;
@@ -56,6 +57,7 @@ export const ListPost = (props: ListPostsProps) => {
     };
 
     useEffect(() => {
+        dispatch(postListActions.setPerPage(isPreview ? 9 : 8));
         dispatch(initPostList(getData));
     }, []);
 
@@ -75,8 +77,8 @@ export const ListPost = (props: ListPostsProps) => {
                 }
             >
                 <GridPosts
-                    data={data}
                     showSkeleton={isLoading && !data?.length}
+                    data={isPreview ? addRandomNulls(data) : data}
                     showEnd={!isPreview && !isLoading && pageIndex === pageTotal}
                 />
                 {!isPreview && <div ref={triggerRef} />}

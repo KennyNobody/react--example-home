@@ -1,7 +1,6 @@
 import { rtkApi } from '5_shared/api/rtkApi';
 import { Routes } from '5_shared/api/endpoints';
-import {PostArticleType} from "4_entities/Post";
-import {BaseResponseType} from "5_shared/types/CommonTypes";
+import { BaseResponseType } from '5_shared/types/CommonTypes';
 
 const postApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({

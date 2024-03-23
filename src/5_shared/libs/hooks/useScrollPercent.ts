@@ -13,7 +13,7 @@ const calcOpacity = (offset: number, height: number, ratio: number): number => {
 };
 
 export const useScrollPercent = (ratio: number) => {
-    const [scrollPosition, setScrollPosition] = useState<number>(0);
+    const [scrollPosition, setScrollPosition] = useState<number>(1);
 
     useEffect(() => {
         const updatePosition = () => {

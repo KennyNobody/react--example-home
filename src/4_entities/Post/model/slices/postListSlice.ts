@@ -36,6 +36,9 @@ const postListSlice = createSlice({
         setLength: (state, action: PayloadAction<number>) => {
             state.count = action.payload;
         },
+        setPerPage: (state, action: PayloadAction<number>) => {
+            state.perPage = action.payload;
+        },
         addData: (state, action: PayloadAction<PostArticleType[]>) => {
             postListAdapter.addMany(state, action.payload);
         },
