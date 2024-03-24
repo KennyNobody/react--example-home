@@ -18,7 +18,7 @@ import { SectionType } from '../../model/Section';
 interface SectionProps {
     isPreview: boolean;
     className?: string;
-    data: SectionType | undefined;
+    data: SectionType | null;
 }
 
 export const SectionPost = (props: SectionProps) => {
