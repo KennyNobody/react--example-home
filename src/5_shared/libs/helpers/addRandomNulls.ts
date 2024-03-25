@@ -2,8 +2,8 @@ import { PostArticleType } from '4_entities/Post';
 
 const addRandomNulls = (inputArray: PostArticleType[]): (PostArticleType | null)[] => {
     const resultArray: (PostArticleType | null)[] = [];
-    const nullInterval = 6; // интервал для проверки массива на вставку null
-    const nullPosition = [1, 2, 6]; // позиции для вставки null
+    const nullInterval = 12;
+    const nullPosition = [1, 2, 4, 5];
 
     for (let i = 0; i < inputArray.length; i += 1) {
         resultArray.push(inputArray[i]);

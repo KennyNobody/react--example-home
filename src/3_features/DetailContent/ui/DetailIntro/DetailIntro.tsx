@@ -8,16 +8,20 @@ import {
 } from '4_entities/Category';
 import { ArticleDevType } from '4_entities/Dev';
 import { PostArticleType } from '4_entities/Post';
+import {
+    Skeleton,
+    SkeletonMode,
+} from '5_shared/ui/Skeleton/Skeleton';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { Container } from '5_shared/ui/Container/Container';
 import grid from '5_shared/css/grid.module.scss';
+import { useScrollPercent } from '5_shared/libs/hooks/useScrollPercent';
 import cls from './DetailIntro.module.scss';
-import {useScrollPercent} from "5_shared/libs/hooks/useScrollPercent";
-import {useEffect} from "react";
 
 interface DetailIntroProps {
     theme: AppTheme;
     className?: string;
+    isLoading?: boolean;
     data?: PostArticleType | ArticleDevType;
 }
 
@@ -25,10 +29,14 @@ export const DetailIntro = (props: DetailIntroProps) => {
     const {
         data,
         theme,
+        isLoading,
         className,
     } = props;
 
     const opacity = useScrollPercent(1);
+    const tagArray = data?.tags?.data;
+    const category = data?.category?.data;
+    const isInverted = data?.main?.previewInverted;
 
     return (
         <div
@@ -59,9 +67,25 @@ export const DetailIntro = (props: DetailIntroProps) => {
                             }
                         >
                             <h1 className={classNames(cls.title)}>
-                                {data?.main?.previewTitle}
-                                <br />
-                                {data?.main?.previewCaption}
+                                {
+                                    !isLoading
+                                    && (
+                                        <>
+                                            {data?.main?.previewTitle}
+                                            <br />
+                                            {data?.main?.previewCaption}
+                                        </>
+                                    )
+                                }
+                                {
+                                    isLoading
+                                    && (
+                                        <Skeleton
+                                            strings={2}
+                                            mode={SkeletonMode.LINES}
+                                        />
+                                    )
+                                }
                             </h1>
                         </div>
                         <div
@@ -76,11 +100,11 @@ export const DetailIntro = (props: DetailIntroProps) => {
                         >
                             <div className={classNames(cls['toolbar-category'])}>
                                 {
-                                    data?.category?.data
+                                    category
                                     && (
                                         <ArticleCategory
+                                            data={category}
                                             themeProp={theme}
-                                            data={data?.category?.data}
                                             mode={ArticleCategoryMode.STATIC}
                                         />
                                     )
@@ -99,15 +123,15 @@ export const DetailIntro = (props: DetailIntroProps) => {
                                 }
                             >
                                 {
-                                    data?.tags?.data
-                                    && data?.tags?.data?.length > 0
+                                    tagArray
+                                    && tagArray?.length > 0
                                     && (
                                         <ListTags>
-                                            {data.tags.data.map((item: ArticleCategoryType) => (
+                                            {tagArray.map((item: ArticleCategoryType) => (
                                                 <ArticleTag
                                                     data={item}
                                                     key={item.id}
-                                                    themeProp={data?.main?.previewInverted ? AppTheme.DARK : AppTheme.LIGHT}
+                                                    themeProp={isInverted ? AppTheme.DARK : AppTheme.LIGHT}
                                                 />
                                             ))}
                                         </ListTags>

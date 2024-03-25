@@ -15,6 +15,7 @@
 
 @media (width <= 1200px) {
     .block {
-        font-size: var(--title-line-height-s);
+        font-size: 32px;
+        line-height: var(--title-line-height-s);
     }
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
-import { DevFilter } from '3_features/DevFilter';
-import { SkeletonBlock } from '3_features/Skeleton';
+import {useTranslation} from 'react-i18next';
+import {DevFilter} from '3_features/DevFilter';
 import grid from '5_shared/css/grid.module.scss';
-import { Toolbar } from '5_shared/ui/Toolbar/Toolbar';
-import { Container } from '5_shared/ui/Container/Container';
-import { Stack, StackSizeType } from '5_shared/ui/Stack/Stack';
-import { LinkRegular } from '5_shared/ui/LinkRegular/LinkRegular';
+import {Toolbar} from '5_shared/ui/Toolbar/Toolbar';
+import {Container} from '5_shared/ui/Container/Container';
+import {Stack, StackSizeType} from '5_shared/ui/Stack/Stack';
+import {LinkRegular} from '5_shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionLoading.module.scss';
+import {Skeleton, SkeletonMode} from "5_shared/ui/Skeleton/Skeleton";
 
 interface SectionProps {
     isPreview: boolean;
@@ -29,12 +29,14 @@ export const SectionLoading = (props: SectionProps) => {
                 <Stack size={StackSizeType.MIDDLE}>
                     <div className={classNames(grid.grid, cls.grid)}>
                         <div className={classNames(grid['grid__col-2'])}>
-                            <SkeletonBlock
+                            <Skeleton
+                                mode={SkeletonMode.BLOCK}
                                 className={classNames(cls.title)}
                             />
                         </div>
                         <div className={classNames(grid['grid__col-2'])}>
-                            <SkeletonBlock
+                            <Skeleton
+                                mode={SkeletonMode.BLOCK}
                                 className={classNames(cls.title)}
                             />
                         </div>
@@ -70,7 +72,10 @@ export const SectionLoading = (props: SectionProps) => {
                             )
                         }
                     </div>
-                    <SkeletonBlock className={classNames(cls.main)} />
+                    <Skeleton
+                        mode={SkeletonMode.BLOCK}
+                        className={classNames(cls.main)}
+                    />
                     {
                         isPreview
                         && (
@@ -82,7 +87,10 @@ export const SectionLoading = (props: SectionProps) => {
                                         )
                                     }
                                 >
-                                    <SkeletonBlock className={classNames(cls.link)} />
+                                    <Skeleton
+                                        mode={SkeletonMode.BLOCK}
+                                        className={classNames(cls.link)}
+                                    />
                                 </div>
                                 <div
                                     className={
@@ -92,8 +100,14 @@ export const SectionLoading = (props: SectionProps) => {
                                     }
                                 >
                                     <Toolbar>
-                                        <SkeletonBlock className={classNames(cls.link)} />
-                                        <SkeletonBlock className={classNames(cls.link)} />
+                                        <Skeleton
+                                            mode={SkeletonMode.BLOCK}
+                                            className={classNames(cls.link)}
+                                        />
+                                        <Skeleton
+                                            mode={SkeletonMode.BLOCK}
+                                            className={classNames(cls.link)}
+                                        />
                                     </Toolbar>
                                 </div>
                             </div>

@@ -9,7 +9,6 @@ import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { Container } from '5_shared/ui/Container/Container';
 import { useScrollPercent } from '5_shared/libs/hooks/useScrollPercent';
-import { useStickyObserver } from '5_shared/libs/hooks/useStickyObserver';
 import cls from './DetailContent.module.scss';
 import { DetailIntro } from '../DetailIntro/DetailIntro';
 import { DetailEditor } from '../DetailEditor/DetailEditor';
@@ -66,6 +65,7 @@ export const DetailContent = (props: DetailContentProps) => {
             <DetailIntro
                 data={data}
                 theme={blockTheme}
+                isLoading={isLoading}
             />
             <div
                 className={classNames(cls['intro-main'])}
@@ -74,6 +74,7 @@ export const DetailContent = (props: DetailContentProps) => {
                     <DetailToolbar
                         data={data}
                         theme={blockTheme}
+                        isLoading={isLoading}
                     />
                 </Container>
                 {
@@ -81,6 +82,7 @@ export const DetailContent = (props: DetailContentProps) => {
                     && (
                         <Container className={classNames(cls['container-editor'])}>
                             <DetailEditor
+                                isLoading={isLoading}
                                 data={data.main.content}
                             />
                         </Container>

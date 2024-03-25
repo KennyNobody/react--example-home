@@ -14,6 +14,7 @@ import cls from './DetailToolbar.module.scss';
 interface DetailToolbarProps {
     theme: AppTheme;
     className?: string;
+    isLoading?: boolean;
     data: PostArticleType | ArticleDevType | undefined;
 }
 
@@ -21,6 +22,7 @@ export const DetailToolbar = forwardRef((props: DetailToolbarProps, ref: Forward
     const {
         data,
         theme,
+        isLoading,
         className,
     } = props;
 
@@ -39,7 +41,8 @@ export const DetailToolbar = forwardRef((props: DetailToolbarProps, ref: Forward
             <div className={classNames(cls['footer-grid'])}>
                 <div className={classNames(cls['column-date'])}>
                     {
-                        data?.publishedAt
+                        !isLoading
+                        && data?.publishedAt
                         && (
                             <DateInfo
                                 date={data?.publishedAt}
@@ -64,12 +67,16 @@ export const DetailToolbar = forwardRef((props: DetailToolbarProps, ref: Forward
                     </a>
                 </div>
                 <div className={classNames(cls['column-share'])}>
-                    <div className={classNames(cls['share-column'])}>
-                        <Share
-                            themeProp={theme}
-                            className={classNames(cls.share)}
-                        />
-                    </div>
+                    {
+                        !isLoading
+                        && data
+                        && (
+                            <Share
+                                themeProp={theme}
+                                className={classNames(cls.share)}
+                            />
+                        )
+                    }
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
-import { memo } from 'react';
+import {memo} from 'react';
 import classNames from 'classnames';
-import { AppData } from '0_app/types/MainResponseType';
-import { SkeletonLine } from '3_features/Skeleton';
+import {AppData} from '0_app/types/MainResponseType';
 import cls from './Description.module.scss';
+import {Skeleton, SkeletonMode} from "5_shared/ui/Skeleton/Skeleton";
 
 interface DescriptionProps {
     data?: AppData;
@@ -24,7 +24,10 @@ export const Description = memo((props: DescriptionProps) => {
     );
 
     const skeleton = (
-        <SkeletonLine />
+        <Skeleton
+            strings={3}
+            mode={SkeletonMode.LINES}
+        />
     );
 
     return (

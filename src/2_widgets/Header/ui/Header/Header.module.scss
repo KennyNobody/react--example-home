@@ -51,10 +51,8 @@
     }
 
     .switcher {
-        &--mob-hidden {
-            display: none;
-            visibility: hidden;
-        }
+        display: none;
+        visibility: hidden;
     }
 
     .nav {

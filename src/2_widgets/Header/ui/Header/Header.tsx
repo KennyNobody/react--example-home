@@ -95,16 +95,21 @@ export function Header(props: HeaderProps) {
                                             )
                                         }
                                     />
-                                    <LanguageSwitcher
-                                        className={
-                                            classNames(
-                                                cls.switcher,
-                                                { [cls['switcher--mob-hidden']]: layoutMode !== PageLayoutMode.FRONT },
-                                            )
-                                        }
-                                    />
                                     {
-                                        layoutMode !== PageLayoutMode.FRONT
+                                        data
+                                        && !isLoading
+                                        && (
+                                            <LanguageSwitcher
+                                                className={
+                                                    classNames(
+                                                        cls.switcher,
+                                                    )
+                                                }
+                                            />
+                                        )
+                                    }
+                                    {
+                                        !isLoading
                                         && (
                                             <MenuMobileButton
                                                 clickEvent={toggleMenu}

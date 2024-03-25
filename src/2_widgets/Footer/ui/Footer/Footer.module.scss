@@ -18,6 +18,11 @@
     align-items: center;
 }
 
+.skeleton {
+    width: 33%;
+    height: var(--ui-item-height-l);
+}
+
 @media (width <= 2160px) {
     .block {
         padding: 15px 0;
@@ -25,6 +30,10 @@
 
     .info {
         gap: 30px;
+    }
+
+    .skeleton {
+        height: var(--ui-item-height-m);
     }
 }
 
@@ -40,5 +49,9 @@
 
     .caption-right {
         order: 1;
+    }
+
+    .skeleton {
+        height: var(--ui-item-height-s);
     }
 }

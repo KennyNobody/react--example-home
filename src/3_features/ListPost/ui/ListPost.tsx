@@ -57,7 +57,6 @@ export const ListPost = (props: ListPostsProps) => {
     };
 
     useEffect(() => {
-        dispatch(postListActions.setPerPage(isPreview ? 9 : 8));
         dispatch(initPostList(getData));
     }, []);
 

@@ -111,6 +111,7 @@ export const SectionDev = (props: SectionProps) => {
                                     className={
                                         classNames(
                                             grid['grid__col-2'],
+                                            cls['col-clear'],
                                         )
                                     }
                                 />
@@ -118,10 +119,17 @@ export const SectionDev = (props: SectionProps) => {
                                     className={
                                         classNames(
                                             grid['grid__col-2'],
+                                            grid['grid__col-mob-4'],
                                         )
                                     }
                                 >
-                                    <Toolbar>
+                                    <Toolbar
+                                        className={
+                                            classNames(
+                                                cls['toolbar-bottom'],
+                                            )
+                                        }
+                                    >
                                         <LinkRegular
                                             to={RouterPath.dev}
                                             text={t('allProjects')}

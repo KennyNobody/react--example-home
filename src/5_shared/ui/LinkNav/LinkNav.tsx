@@ -1,20 +1,11 @@
 import classNames from 'classnames';
-import {
-    memo,
-    useState,
-    ReactNode,
-    useEffect,
-} from 'react';
-import {
-    NavLink,
-    useLocation,
-    NavLinkProps,
-} from 'react-router-dom';
-import { SkeletonBlock } from '3_features/Skeleton';
-import { useTheme } from '5_shared/libs/hooks/useTheme';
-import { AppTheme } from '5_shared/config/ThemeContext';
-import { ContentKeyType } from '5_shared/types/CommonTypes';
+import {memo, ReactNode, useEffect, useState,} from 'react';
+import {NavLink, NavLinkProps, useLocation,} from 'react-router-dom';
+import {useTheme} from '5_shared/libs/hooks/useTheme';
+import {AppTheme} from '5_shared/config/ThemeContext';
+import {ContentKeyType} from '5_shared/types/CommonTypes';
 import cls from './LinkNav.module.scss';
+import {Skeleton, SkeletonMode} from "5_shared/ui/Skeleton/Skeleton";
 
 interface LinkAppProps extends NavLinkProps {
     className?: string;
@@ -43,7 +34,8 @@ export const LinkNav = memo((props: LinkAppProps) => {
     }, [pathname]);
 
     const skeleton = (
-        <SkeletonBlock
+        <Skeleton
+            mode={SkeletonMode.BLOCK}
             className={
                 classNames(
                     cls.skeleton,

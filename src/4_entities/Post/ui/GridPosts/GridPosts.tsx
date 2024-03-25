@@ -57,7 +57,12 @@ export const GridPosts = (props: GridPostsProps) => {
                         classNames(
                             grid['grid__col-1'],
                             grid['grid__col-mob-2'],
-                            grid['grid__col-x-mob-4'],
+                            {
+                                [grid['grid__col-x-mob-4']]: item,
+                            },
+                            {
+                                [cls['mobile-hidden']]: !item,
+                            },
                         )
                     }
                 >

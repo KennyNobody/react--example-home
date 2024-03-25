@@ -29,8 +29,8 @@ function App() {
         <Suspense fallback="">
             <div className={classNames(cls.app, cls[`app--${theme}`])}>
                 <Header
-                    isLoading
-                    // data={data?.data}
+                    data={data?.data}
+                    isLoading={isLoading}
                     className={
                         classNames(
                             cls.header,
@@ -45,6 +45,7 @@ function App() {
                 </ScrollPage>
                 <Footer
                     data={data?.data}
+                    isLoading={isLoading}
                     className={cls.footer}
                 />
             </div>

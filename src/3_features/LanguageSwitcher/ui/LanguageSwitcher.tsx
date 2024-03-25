@@ -6,7 +6,7 @@ import { LangEngineType, LangShownType } from '5_shared/types/CommonTypes';
 import cls from './LanguageSwitcher.module.scss';
 
 interface LanguageSwitcherProps {
-    className?: string
+    className?: string;
 }
 
 export const LanguageSwitcher = memo((props: LanguageSwitcherProps) => {

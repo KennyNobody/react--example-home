@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {useEffect, useMemo, useRef} from 'react';
+import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
     ArticleCategory,

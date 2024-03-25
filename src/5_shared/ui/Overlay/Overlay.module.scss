@@ -10,8 +10,8 @@
     visibility: visible;
     transition: 0.3s opacity;
     // TODO: Протестировать в других браузерах
-    -webkit-backdrop-filter: blur(1rem);
-    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(0.4rem);
+    backdrop-filter: blur(0.4rem);
 
     &[hidden] {
         opacity: 0;
