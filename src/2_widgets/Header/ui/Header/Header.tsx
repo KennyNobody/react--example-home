@@ -1,24 +1,33 @@
 import React from 'react';
 import classNames from 'classnames';
 import { AppData } from '0_app/types/MainResponseType';
+import {
+    MenuMobile,
+    MenuMobileButton,
+    menuMobileActions,
+    menuMobileReducer,
+} from '3_features/MenuMobile';
 import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container/Container';
 import useLayoutMode from '5_shared/libs/hooks/useLayoutMode';
+import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
 import { PageLayoutMode } from '5_shared/config/router/routerConfig';
-import {MenuMobile, menuMobileActions, MenuMobileButton, menuMobileReducer} from '3_features/MenuMobile';
+import {
+    ReducersList,
+    DynamicModuleLoader,
+} from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Nav } from '../Nav/Nav';
 import { Head } from '../Head/Head';
 import { Name } from '../Name/Name';
 import cls from './Header.module.scss';
 import { Avatar } from '../Avatar/Avatar';
 import { Description } from '../Description/Description';
-import {DynamicModuleLoader, ReducersList} from "5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader";
-import {useAppDispatch} from "5_shared/libs/hooks/useAppDispatch";
 
 interface HeaderProps {
+    data?: AppData,
     className?: string;
-    data: AppData,
+    isLoading?: boolean;
 }
 
 const reducers: ReducersList = {
@@ -28,6 +37,7 @@ const reducers: ReducersList = {
 export function Header(props: HeaderProps) {
     const {
         data,
+        isLoading,
         className,
     } = props;
 
@@ -67,30 +77,24 @@ export function Header(props: HeaderProps) {
                                 <Head
                                     isMain={layoutMode === PageLayoutMode.FRONT}
                                 >
-                                    {data?.preview?.data?.formats?.thumbnail?.url
-                                    && (
-                                        <Avatar
-                                            isMain={layoutMode === PageLayoutMode.FRONT}
-                                            className={classNames(cls.avatar)}
-                                            url={data.preview.data.formats.thumbnail.url}
-                                        />
-                                    )}
-                                    {
-                                        data?.name
-                                        && (
-                                            <Name
-                                                name={data.name}
-                                                nickname={data.nickname}
-                                                isMain={layoutMode === PageLayoutMode.FRONT}
-                                                className={
-                                                    classNames(
-                                                        cls.name,
-                                                        { [cls['name--front']]: layoutMode !== PageLayoutMode.FRONT },
-                                                    )
-                                                }
-                                            />
-                                        )
-                                    }
+                                    <Avatar
+                                        isLoading={isLoading}
+                                        isMain={layoutMode === PageLayoutMode.FRONT}
+                                        className={classNames(cls.avatar)}
+                                        url={data?.preview?.data?.formats?.thumbnail?.url}
+                                    />
+                                    <Name
+                                        name={data?.name}
+                                        isLoading={isLoading}
+                                        nickname={data?.nickname}
+                                        isMain={layoutMode === PageLayoutMode.FRONT}
+                                        className={
+                                            classNames(
+                                                cls.name,
+                                                { [cls['name--front']]: layoutMode !== PageLayoutMode.FRONT },
+                                            )
+                                        }
+                                    />
                                     <LanguageSwitcher
                                         className={
                                             classNames(
@@ -124,8 +128,29 @@ export function Header(props: HeaderProps) {
                                 )
                             }
                         >
-                            { layoutMode === PageLayoutMode.FRONT && <Description data={data} />}
-                            { layoutMode !== PageLayoutMode.FRONT && <Nav className={classNames(cls.nav, cls['nav--desktop'])} />}
+                            {
+                                layoutMode === PageLayoutMode.FRONT
+                                && (
+                                    <Description
+                                        data={data}
+                                        isLoading={isLoading}
+                                    />
+                                )
+                            }
+                            {
+                                layoutMode !== PageLayoutMode.FRONT
+                                && (
+                                    <Nav
+                                        isLoading={isLoading}
+                                        className={
+                                            classNames(
+                                                cls.nav,
+                                                cls['nav--desktop'],
+                                            )
+                                        }
+                                    />
+                                )
+                            }
                         </div>
                     </div>
                 </Container>

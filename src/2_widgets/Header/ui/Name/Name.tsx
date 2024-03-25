@@ -1,23 +1,30 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import cls from './Name.module.scss';
+import {SkeletonBlock} from "3_features/Skeleton";
 
 interface NameProps {
     isMain: boolean;
     className?: string;
-    name: string | null;
+    isLoading?: boolean;
+    name?: string | null;
     nickname?: string | null;
 }
 
 export const Name = memo((props: NameProps) => {
     const {
         name,
-        nickname,
         isMain,
+        isLoading,
+        nickname,
         className,
     } = props;
 
     const Tag: keyof JSX.IntrinsicElements = isMain ? 'h1' : 'p';
+
+    if (isLoading) {
+        return <SkeletonBlock className={classNames(cls.skeleton, className)} />;
+    }
 
     return (
         <Tag

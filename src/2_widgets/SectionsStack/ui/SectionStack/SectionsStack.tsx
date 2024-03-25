@@ -1,11 +1,12 @@
-import classNames from 'classnames';
-import React, { ReactNode } from 'react';
-import { ContentKeyType } from '5_shared/types/CommonTypes';
-import { Stack, StackSizeType } from '5_shared/ui/Stack/Stack';
-import { SectionType } from '../../model/Section';
-import { SectionDev } from '../SectionDev/SectionDev';
-import { SectionPost } from '../SectionPost/SectionPost';
-import { SectionPhoto } from '../SectionPhoto/SectionPhoto';
+import classNames from "classnames";
+import React, {ReactNode} from 'react';
+import {ContentKeyType} from '5_shared/types/CommonTypes';
+import {Stack, StackSizeType} from '5_shared/ui/Stack/Stack';
+import {SectionType} from '../../model/Section';
+import {SectionDev} from '../SectionDev/SectionDev';
+import {SectionPost} from '../SectionPost/SectionPost';
+import {SectionPhoto} from '../SectionPhoto/SectionPhoto';
+import {SectionLoading} from '../SectionLoading/SectionLoading';
 
 interface PageIndexProps {
     className?: string;
@@ -34,7 +35,15 @@ export const SectionsStack = (props: PageIndexProps) => {
         isPreview,
     } = props;
 
-    if (isLoading) return <>Загрузка...</>;
+    if (isLoading) {
+        return (
+            <Stack
+                size={StackSizeType.LARGE}
+            >
+                <SectionLoading isPreview />
+            </Stack>
+        );
+    }
 
     return (
         <Stack

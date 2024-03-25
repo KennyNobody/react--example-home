@@ -29,7 +29,8 @@ function App() {
         <Suspense fallback="">
             <div className={classNames(cls.app, cls[`app--${theme}`])}>
                 <Header
-                    data={data?.data}
+                    isLoading
+                    // data={data?.data}
                     className={
                         classNames(
                             cls.header,

@@ -7,16 +7,38 @@ import cls from './Nav.module.scss';
 
 interface NavProps {
     className?: string;
+    isLoading?: boolean;
 }
 
 export const Nav = memo((props: NavProps) => {
-    const { className } = props;
+    const {
+        isLoading,
+        className,
+    } = props;
 
     return (
         <nav className={classNames(cls.block, className)}>
-            <LinkNav linkKey={ContentKeyType.DEV} to={RouterPath.dev}>Разработка</LinkNav>
-            <LinkNav linkKey={ContentKeyType.PHOTO} to={RouterPath.photo}>Фото-проекты</LinkNav>
-            <LinkNav linkKey={ContentKeyType.POST} to={RouterPath.posts}>Заметки</LinkNav>
+            <LinkNav
+                isLoading={isLoading}
+                to={RouterPath.dev}
+                linkKey={ContentKeyType.DEV}
+            >
+                Разработка
+            </LinkNav>
+            <LinkNav
+                isLoading={isLoading}
+                to={RouterPath.photo}
+                linkKey={ContentKeyType.PHOTO}
+            >
+                Фото-проекты
+            </LinkNav>
+            <LinkNav
+                isLoading={isLoading}
+                to={RouterPath.posts}
+                linkKey={ContentKeyType.POST}
+            >
+                Заметки
+            </LinkNav>
         </nav>
     );
 });
