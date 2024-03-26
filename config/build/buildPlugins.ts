@@ -29,6 +29,10 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
                     from: paths.locales,
                     to: paths.buildLocales,
                 },
+                {
+                    from: paths.favicons,
+                    to: paths.buildFavicons,
+                },
             ],
         }),
         new CircularDependencyPlugin({

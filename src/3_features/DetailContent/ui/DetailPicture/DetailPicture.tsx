@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { ImageType } from '5_shared/types/Image';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
+import { useImageAlt } from '5_shared/libs/hooks/useImageAlt';
 import { EditorWrapper } from '5_shared/ui/EditorWrapper/EditorWrapper';
 import cls from './DetailPicture.module.scss';
 
@@ -14,37 +15,21 @@ export const DetailPicture = (props: DetailParagraphProps) => {
     } = props;
 
     const { theme } = useTheme();
+    const altText = useImageAlt(image);
 
-    // TODO: Добавить srcset
+    const imagePath = image?.formats?.large?.url
+        || image?.formats?.medium?.url
+        || image?.formats?.small?.url;
+
     return (
         <figure className={classNames(cls.figure)}>
             {
-                image?.formats?.large?.url
+                imagePath
                 && (
                     <img
-                        src={`${__BASE_URL__}${image?.formats?.large?.url}`}
-                        alt={image?.alternativeText || '#'}
-                    />
-                )
-            }
-            {
-                !image?.formats?.large?.url
-                && image?.formats?.medium?.url
-                && (
-                    <img
-                        src={`${__BASE_URL__}${image?.formats?.medium?.url}`}
-                        alt={image?.alternativeText || '#'}
-                    />
-                )
-            }
-            {
-                !image?.formats?.large?.url
-                && !image?.formats?.medium?.url
-                && image?.formats?.small?.url
-                && (
-                    <img
-                        src={`${__BASE_URL__}${image?.formats?.small?.url}`}
-                        alt={image?.alternativeText || '#'}
+                        alt={altText}
+                        loading="lazy"
+                        src={`${__BASE_URL__}${imagePath}`}
                     />
                 )
             }

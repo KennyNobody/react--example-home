@@ -1,5 +1,7 @@
 .block {
-    background-color: var(--bg-dark);
+    &--theme-dark {
+        background-color: var(--bg-dark);
+    }
 }
 
 .picture {

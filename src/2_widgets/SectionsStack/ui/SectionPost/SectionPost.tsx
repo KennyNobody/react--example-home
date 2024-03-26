@@ -1,9 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import {
-    ListPost,
-} from '3_features/ListPost';
+import { ListPost } from '3_features/ListPost';
 import { PostFilter } from '3_features/PostFilter';
 import grid from '5_shared/css/grid.module.scss';
 import { Toolbar } from '5_shared/ui/Toolbar/Toolbar';
@@ -103,10 +101,30 @@ export const SectionPost = (props: SectionProps) => {
                     {
                         isPreview
                         && (
-                            <div className={classNames(grid.grid)}>
-                                <div className={classNames(grid['grid__col-2'])} />
-                                <div className={classNames(grid['grid__col-2'])}>
-                                    <Toolbar>
+                            <div className={classNames(grid.grid, cls.grid)}>
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                            cls['col-clear'],
+                                        )
+                                    }
+                                />
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                            grid['grid__col-mob-4'],
+                                        )
+                                    }
+                                >
+                                    <Toolbar
+                                        className={
+                                            classNames(
+                                                cls['toolbar-bottom'],
+                                            )
+                                        }
+                                    >
                                         <LinkRegular
                                             to={RouterPath.posts}
                                             text={t('Все заметки')}

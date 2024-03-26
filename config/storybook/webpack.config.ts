@@ -11,6 +11,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
         locales: '',
         buildLocales: '',
+        favicons: '',
+        buildFavicons: '',
     };
 
     config?.resolve?.modules?.push(paths.src);

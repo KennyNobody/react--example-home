@@ -75,9 +75,29 @@ export const SectionPhoto = (props: SectionProps) => {
                         isPreview
                         && (
                             <div className={classNames(grid.grid, cls.grid)}>
-                                <div className={classNames(grid['grid__col-2'])} />
-                                <div className={classNames(grid['grid__col-2'])}>
-                                    <Toolbar>
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                            cls['col-clear'],
+                                        )
+                                    }
+                                />
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                            grid['grid__col-mob-4'],
+                                        )
+                                    }
+                                >
+                                    <Toolbar
+                                        className={
+                                            classNames(
+                                                cls['toolbar-bottom'],
+                                            )
+                                        }
+                                    >
                                         <LinkRegular
                                             to={RouterPath.photo}
                                             text={t('allProjects')}

@@ -13,7 +13,9 @@ export default (env: BuildEnv) => {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         html: path.resolve(__dirname, 'public', 'index.html'),
         locales: path.resolve(__dirname, 'public', 'locales'),
-        buildLocales: path.resolve(__dirname, 'build', 'locales'),
+        buildLocales: path.resolve(__dirname, 'docs', 'locales'),
+        favicons: path.resolve(__dirname, 'public', 'favicons'),
+        buildFavicons: path.resolve(__dirname, 'docs', 'favicons'),
     };
 
     return buildWebpackConfig({

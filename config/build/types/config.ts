@@ -10,6 +10,8 @@ export interface BuildPaths {
     src: string;
     locales: string;
     buildLocales: string;
+    favicons: string;
+    buildFavicons: string;
 }
 
 export enum BuildProject {

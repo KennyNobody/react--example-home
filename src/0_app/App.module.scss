@@ -6,6 +6,11 @@
     flex-direction: column;
     justify-content: space-between;
 
+    &--fixed {
+        height: 100vh;
+        overflow: hidden;
+    }
+
     &--theme-light {
         color: var(--dark-primary);
         background-color: var(--bg-light);
