@@ -13,6 +13,7 @@ import cls from './DetailContent.module.scss';
 import { DetailIntro } from '../DetailIntro/DetailIntro';
 import { DetailEditor } from '../DetailEditor/DetailEditor';
 import { DetailToolbar } from '../DetailToolbar/DetailToolbar';
+import FancyboxDecorator from "5_shared/libs/decorators/FancyboxDecorator";
 
 interface DetailContentProps {
     className?: string;
@@ -81,10 +82,12 @@ export const DetailContent = (props: DetailContentProps) => {
                     data?.main?.content
                     && (
                         <Container className={classNames(cls['container-editor'])}>
-                            <DetailEditor
-                                isLoading={isLoading}
-                                data={data.main.content}
-                            />
+                            <FancyboxDecorator>
+                                <DetailEditor
+                                    isLoading={isLoading}
+                                    data={data.main.content}
+                                />
+                            </FancyboxDecorator>
                         </Container>
                     )
                 }

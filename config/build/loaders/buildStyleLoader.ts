@@ -4,7 +4,7 @@ import { BuildMode } from '../types/config';
 
 export function buildStyleLoader(isDev: boolean): webpack.RuleSetRule {
     return {
-        test: /\.s[c]ss$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {

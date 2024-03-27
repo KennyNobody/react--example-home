@@ -6,12 +6,14 @@ import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { Skeleton, SkeletonMode } from '5_shared/ui/Skeleton/Skeleton';
 import { RouterPath } from '5_shared/config/router/routerConfig';
 import cls from './Avatar.module.scss';
+import FancyboxDecorator from "5_shared/libs/decorators/FancyboxDecorator";
 
 interface AvatarProps {
     url?: string;
     isMain: boolean;
     className?: string;
     isLoading?: boolean;
+    galleryKey?: string;
     themeProp?: AppTheme;
 }
 
@@ -21,12 +23,51 @@ export const Avatar = memo((props: AvatarProps) => {
         isMain,
         className,
         isLoading,
+        galleryKey,
         themeProp,
     } = props;
 
     const { theme } = useTheme();
 
-    return (
+    const main = (
+        <div
+            className={
+                classNames(
+                    cls.block,
+                    cls['block--main'],
+                    cls[`block--${themeProp || theme}`],
+                    className,
+                )
+            }
+        >
+            {
+                isLoading
+                && (
+                    <Skeleton
+                        mode={SkeletonMode.BLOCK}
+                        className={classNames(cls.skeleton)}
+                    />
+                )
+            }
+            {
+                !isLoading
+                && url
+                && (
+                    <FancyboxDecorator>
+                        <img
+                            alt="#"
+                            loading="lazy"
+                            src={`${__BASE_URL__}${url}`}
+                            data-fancybox={galleryKey || 'avatar-gallery'}
+                        />
+                    </FancyboxDecorator>
+                )
+            }
+
+        </div>
+    );
+
+    const regular = (
         <Link
             to={RouterPath.main}
             className={
@@ -48,9 +89,19 @@ export const Avatar = memo((props: AvatarProps) => {
                 )
             }
             {
-                !isLoading && url && <img src={`${__BASE_URL__}${url}`} alt="" />
+                !isLoading
+                && url
+                && (
+                    <img
+                        alt="#"
+                        loading="lazy"
+                        src={`${__BASE_URL__}${url}`}
+                    />
+                )
             }
 
         </Link>
     );
+
+    return isMain ? main : regular;
 });

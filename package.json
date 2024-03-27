@@ -98,6 +98,7 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.23.3",
+    "@fancyapps/ui": "^5.0.35",
     "@reduxjs/toolkit": "^1.9.7",
     "@sentry/react": "^7.108.0",
     "@strapi/blocks-react-renderer": "^1.0.0",

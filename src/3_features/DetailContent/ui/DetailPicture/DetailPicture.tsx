@@ -5,13 +5,15 @@ import { useImageAlt } from '5_shared/libs/hooks/useImageAlt';
 import { EditorWrapper } from '5_shared/ui/EditorWrapper/EditorWrapper';
 import cls from './DetailPicture.module.scss';
 
-interface DetailParagraphProps {
+interface DetailPictureProps {
     image: ImageType;
+    galleryKey?: string;
 }
 
-export const DetailPicture = (props: DetailParagraphProps) => {
+export const DetailPicture = (props: DetailPictureProps) => {
     const {
         image,
+        galleryKey,
     } = props;
 
     const { theme } = useTheme();
@@ -29,7 +31,9 @@ export const DetailPicture = (props: DetailParagraphProps) => {
                     <img
                         alt={altText}
                         loading="lazy"
+                        data-caption={altText}
                         src={`${__BASE_URL__}${imagePath}`}
+                        data-fancybox={galleryKey || 'post-gallery'}
                     />
                 )
             }
