@@ -1,16 +1,14 @@
 import classNames from 'classnames';
-import { useMemo, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import {
-    ArticleCategory,
-    ArticleCategoryMode,
-} from '4_entities/Category';
+import {useMemo, useRef} from 'react';
+import {Link} from 'react-router-dom';
+import {ArticleCategory, ArticleCategoryMode,} from '4_entities/Category';
 import useHeight from '5_shared/libs/hooks/useHeight';
-import { AppTheme } from '5_shared/config/ThemeContext';
-import { useTheme } from '5_shared/libs/hooks/useTheme';
-import { RouterPath } from '5_shared/config/router/routerConfig';
+import {AppTheme} from '5_shared/config/ThemeContext';
+import {useTheme} from '5_shared/libs/hooks/useTheme';
+import {RouterPath} from '5_shared/config/router/routerConfig';
 import cls from './ArticlePost.module.scss';
-import { PostArticleType } from '../../model/types/PostArticle';
+import {PostArticleType} from '../../model/types/PostArticle';
+import {Skeleton, SkeletonMode} from "5_shared/ui/Skeleton/Skeleton";
 
 interface ArticlePostProps {
     className?: string;
@@ -43,12 +41,16 @@ export const ArticlePost = (props: ArticlePostProps) => {
             className={
                 classNames(
                     cls.article,
-                    cls[`article--${themeProp || theme}`],
                     cls['article--skeleton'],
                     className,
                 )
             }
-        />
+        >
+            <Skeleton
+                mode={SkeletonMode.BLOCK}
+                className={classNames(cls.skeleton)}
+            />
+        </div>
     ), [heightEl, className, themeProp, theme]);
 
     const article = useMemo(() => (
@@ -62,6 +64,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
             className={
                 classNames(
                     cls.article,
+                    cls['article--content'],
                     cls[`article--${themeProp || theme}`],
                     className,
                 )

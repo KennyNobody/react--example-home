@@ -5,6 +5,10 @@ import {
     ArticleCategory,
     ArticleCategoryMode,
 } from '4_entities/Category';
+import {
+    Skeleton,
+    SkeletonMode,
+} from '5_shared/ui/Skeleton/Skeleton';
 import useHeight from '5_shared/libs/hooks/useHeight';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
@@ -43,12 +47,17 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
             className={
                 classNames(
                     cls.article,
-                    cls[`article--${themeProp || theme}`],
+                    cls[`article--${theme}`],
                     cls['article--skeleton'],
                     className,
                 )
             }
-        />
+        >
+            <Skeleton
+                mode={SkeletonMode.BLOCK}
+                className={classNames(cls.skeleton)}
+            />
+        </div>
     ), [heightEl, className, themeProp, theme, data]);
 
     const article = useMemo(() => (
@@ -62,6 +71,7 @@ export const ArticlePhoto = (props: ArticlePhotoProps) => {
             className={
                 classNames(
                     cls.article,
+                    cls['article--content'],
                     cls[`article--${themeProp || theme}`],
                     className,
                 )

@@ -7,7 +7,6 @@ import {
     menuMobileActions,
     menuMobileReducer,
 } from '3_features/MenuMobile';
-import { LanguageSwitcher } from '3_features/LanguageSwitcher';
 import grid from '5_shared/css/grid.module.scss';
 import { Container } from '5_shared/ui/Container/Container';
 import useLayoutMode from '5_shared/libs/hooks/useLayoutMode';
@@ -95,19 +94,20 @@ export function Header(props: HeaderProps) {
                                             )
                                         }
                                     />
-                                    {
-                                        data
-                                        && !isLoading
-                                        && (
-                                            <LanguageSwitcher
-                                                className={
-                                                    classNames(
-                                                        cls.switcher,
-                                                    )
-                                                }
-                                            />
-                                        )
-                                    }
+                                    {/* TODO: Раскомментировать, когда будет голова английская версия */}
+                                    {/* { */}
+                                    {/*     data */}
+                                    {/*     && !isLoading */}
+                                    {/*     && ( */}
+                                    {/*         <LanguageSwitcher */}
+                                    {/*             className={ */}
+                                    {/*                 classNames( */}
+                                    {/*                     cls.switcher, */}
+                                    {/*                 ) */}
+                                    {/*             } */}
+                                    {/*         /> */}
+                                    {/*     ) */}
+                                    {/* } */}
                                     {
                                         !isLoading
                                         && (

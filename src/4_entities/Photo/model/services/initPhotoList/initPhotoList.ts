@@ -20,7 +20,6 @@ export const initPhotoList = createAsyncThunk<void, LazyQueryTrigger<any>, Thunk
             [PaginationParams.SIZE]: perPage,
             sort: 'publishedAt:DESC',
             replace: false,
-            // TODO: Вынести постоянные параметры в API
             populate: '*',
         };
 

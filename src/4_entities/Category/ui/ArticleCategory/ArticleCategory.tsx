@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import { AppTheme } from '5_shared/config/ThemeContext';
-import { useTheme } from '5_shared/libs/hooks/useTheme';
+import {AppTheme} from '5_shared/config/ThemeContext';
+import {useTheme} from '5_shared/libs/hooks/useTheme';
+import {Skeleton, SkeletonMode} from '5_shared/ui/Skeleton/Skeleton';
 import cls from './ArticleCategory.module.scss';
-import { ArticleCategoryType } from '../../model/types/ArticleCategory';
+import {ArticleCategoryType} from '../../model/types/ArticleCategory';
 
 export enum ArticleCategoryMode {
     STATIC,
@@ -43,7 +44,8 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
     };
 
     const skeleton = (
-        <div
+        <Skeleton
+            mode={SkeletonMode.BLOCK}
             className={
                 classNames(
                     cls.block,
@@ -55,12 +57,13 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
         />
     );
 
-    const article = (
+    const content = (
         <Tag
             className={
                 classNames(
                     cls.block,
                     cls[`block--${themeProp || theme}`],
+                    cls['block--content'],
                     { [cls['block--label']]: mode === ArticleCategoryMode.INPUT },
                     { [cls['block--active']]: isActive },
                     className,
@@ -85,5 +88,5 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
         </Tag>
     );
 
-    return data ? article : skeleton;
+    return data ? content : skeleton;
 };

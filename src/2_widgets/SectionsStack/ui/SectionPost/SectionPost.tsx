@@ -50,25 +50,25 @@ export const SectionPost = (props: SectionProps) => {
                                 )
                             }
                         </div>
-                        <div
-                            className={
-                                classNames(
-                                    grid['grid__col-2'],
-                                    cls['cell-years'],
-                                )
-                            }
-                        >
-                            <Toolbar>
-                                {
-                                    data?.years
-                                    && (
-                                        <Title mode={TitleModeType.REGULAR}>
-                                            { data.years }
-                                        </Title>
-                                    )
-                                }
-                            </Toolbar>
-                        </div>
+                        {/* <div */}
+                        {/*     className={ */}
+                        {/*         classNames( */}
+                        {/*             grid['grid__col-2'], */}
+                        {/*             cls['cell-years'], */}
+                        {/*         ) */}
+                        {/*     } */}
+                        {/* > */}
+                        {/*     <Toolbar> */}
+                        {/*         { */}
+                        {/*             data?.years */}
+                        {/*             && ( */}
+                        {/*                 <Title mode={TitleModeType.REGULAR}> */}
+                        {/*                     { data.years } */}
+                        {/*                 </Title> */}
+                        {/*             ) */}
+                        {/*         } */}
+                        {/*     </Toolbar> */}
+                        {/* </div> */}
                         {
                             !isPreview
                             && (

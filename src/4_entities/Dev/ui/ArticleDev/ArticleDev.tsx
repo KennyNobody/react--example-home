@@ -7,6 +7,7 @@ import Icon from '5_shared/assets/icons/arrow-next.svg';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { RouterPath } from '5_shared/config/router/routerConfig';
+import { Skeleton, SkeletonMode } from '5_shared/ui/Skeleton/Skeleton';
 import cls from './ArticleDev.module.scss';
 import { ArticleDevType } from '../../model/types/ArticleDev';
 
@@ -26,12 +27,12 @@ export const ArticleDev = (props: ArticleDevProps) => {
     const { theme } = useTheme();
 
     const skeleton = useMemo(() => (
-        <div
+        <Skeleton
+            mode={SkeletonMode.BLOCK}
             className={
                 classNames(
                     cls.block,
                     cls[`block--${themeProp || theme}`],
-                    cls['block--skeleton'],
                 )
             }
         />

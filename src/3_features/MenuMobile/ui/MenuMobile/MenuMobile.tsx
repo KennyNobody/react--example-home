@@ -64,17 +64,18 @@ export const MenuMobile = (props: MenuMobileProps) => {
                 <LinkNav linkKey={ContentKeyType.DEV} to={RouterPath.dev}>Разработка</LinkNav>
                 <LinkNav linkKey={ContentKeyType.PHOTO} to={RouterPath.photo}>Фото-проекты</LinkNav>
                 <LinkNav linkKey={ContentKeyType.POST} to={RouterPath.posts}>Заметки</LinkNav>
-                <WidgetMobile
-                    title={t('language')}
-                >
-                    <LanguageSwitcher
-                        className={
-                            classNames(
-                                cls.switcher,
-                            )
-                        }
-                    />
-                </WidgetMobile>
+                {/* TODO: Раскомментировать, когда будет голова английская версия */}
+                {/* <WidgetMobile */}
+                {/*     title={t('language')} */}
+                {/* > */}
+                {/*     <LanguageSwitcher */}
+                {/*         className={ */}
+                {/*             classNames( */}
+                {/*                 cls.switcher, */}
+                {/*             ) */}
+                {/*         } */}
+                {/*     /> */}
+                {/* </WidgetMobile> */}
                 <WidgetMobile
                     title={t('theme')}
                 >

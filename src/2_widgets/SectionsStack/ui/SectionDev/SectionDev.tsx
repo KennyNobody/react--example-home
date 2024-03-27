@@ -47,17 +47,6 @@ export const SectionDev = (props: SectionProps) => {
                         <div className={classNames(grid['grid__col-2'])}>
                             <Toolbar className={classNames(cls.toolbarLinks)}>
                                 {
-                                    data?.years
-                                    && (
-                                        <Title
-                                            mode={TitleModeType.REGULAR}
-                                            className={classNames(cls.years)}
-                                        >
-                                            { data.years }
-                                        </Title>
-                                    )
-                                }
-                                {
                                     data?.linkTitle
                                     && data?.linkPath
                                     && (
