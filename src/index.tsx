@@ -6,6 +6,9 @@ import { StoreProvider } from '0_app/prodivers/StoreProvider';
 import { ErrorBoundary } from '0_app/prodivers/ErrorBoundary';
 import ThemeProvider from '0_app/prodivers/theme/ThemeProvider';
 import '5_shared/config/i18n/i18n';
+import { initSentry } from '../scripts/initSentry';
+
+initSentry();
 
 const container = document.getElementById('root');
 

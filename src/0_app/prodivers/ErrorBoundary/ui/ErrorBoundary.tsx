@@ -16,13 +16,12 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
     }
 
     static getDerivedStateFromError(error: Error) {
-        console.log(error);
+        console.error(error);
         return { hasError: true };
     }
 
     componentDidCatch(error: Error, info: ErrorInfo) {
-        // TODO: Отправить ошибку в https://sentry.io/
-        console.log(error, info.componentStack);
+        console.error(error, info.componentStack);
     }
 
     render() {
