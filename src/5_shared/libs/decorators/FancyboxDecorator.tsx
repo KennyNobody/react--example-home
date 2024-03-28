@@ -3,6 +3,7 @@ import { Fancybox as NativeFancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 interface FancyboxProps {
+    className?: string;
     children: ReactNode;
     delegate?: string;
     options?: object;
@@ -10,6 +11,7 @@ interface FancyboxProps {
 
 export const FancyboxDecorator = (props: FancyboxProps) => {
     const {
+        className,
         children,
         delegate,
         options,
@@ -31,7 +33,14 @@ export const FancyboxDecorator = (props: FancyboxProps) => {
         };
     });
 
-    return <div ref={containerRef}>{children}</div>;
+    return (
+        <div
+            ref={containerRef}
+            className={className}
+        >
+            {children}
+        </div>
+    );
 };
 
 export default FancyboxDecorator;

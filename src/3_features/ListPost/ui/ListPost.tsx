@@ -15,13 +15,13 @@ import {
     PostArticleType,
     getPostList,
     postListReducer,
-    useLazyFetchPostList, postListActions,
+    useLazyFetchPostList,
 } from '4_entities/Post';
 import { useAppDispatch } from '5_shared/libs/hooks/useAppDispatch';
-import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInfiniteScroll } from '5_shared/libs/hooks/useInfiniteScroll';
+import { addRandomNulls } from '5_shared/libs/helpers/addRandomNulls/addRandomNulls';
+import { DynamicModuleLoader, ReducersList } from '5_shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
 import cls from './ListPost.module.scss';
-import {addRandomNulls} from "5_shared/libs/helpers/addRandomNulls";
 
 interface ListPostsProps {
     className?: string;

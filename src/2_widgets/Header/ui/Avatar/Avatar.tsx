@@ -53,7 +53,9 @@ export const Avatar = memo((props: AvatarProps) => {
                 !isLoading
                 && url
                 && (
-                    <FancyboxDecorator>
+                    <FancyboxDecorator
+                        className={classNames(cls.decorator)}
+                    >
                         <img
                             alt="#"
                             loading="lazy"
