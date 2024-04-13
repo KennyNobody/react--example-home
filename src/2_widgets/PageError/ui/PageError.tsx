@@ -10,7 +10,7 @@ export const PageError = (props: PageErrorProps) => {
     const { className } = props;
 
     return (
-        <div className={classNames(cls.PageError, className)}>
+        <div className={classNames(cls.block, className)}>
             <Error />
         </div>
     );

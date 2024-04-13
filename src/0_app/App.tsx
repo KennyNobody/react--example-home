@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
+import React, { Suspense, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { useFetchMain } from '0_app/api/appApi';
 import { Footer } from '2_widgets/Footer';
@@ -24,9 +24,9 @@ function App() {
     const menuOpened = useSelector(getMenuMobileIsOpened);
 
     // Раскомментировать, чтобы протестировать сообщение об ошибке
-    // useEffect(() => {
-    //     throw new Error();
-    // }, []);
+    useEffect(() => {
+        throw new Error();
+    }, []);
 
     return (
         <Suspense fallback="">

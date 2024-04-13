@@ -11,7 +11,7 @@ const initSentry = () => {
             }),
         ],
         tracesSampleRate: 1.0,
-        tracePropagationTargets: ['localhost', /^https:\/\/yourserver\.io\/api/],
+        tracePropagationTargets: ['egor-badulin.ru'],
         replaysSessionSampleRate: 0.1,
         replaysOnErrorSampleRate: 1.0,
     });
