@@ -24,9 +24,9 @@ function App() {
     const menuOpened = useSelector(getMenuMobileIsOpened);
 
     // Раскомментировать, чтобы протестировать сообщение об ошибке
-    useEffect(() => {
-        throw new Error();
-    }, []);
+    // useEffect(() => {
+    //     throw new Error();
+    // }, []);
 
     return (
         <Suspense fallback="">
