@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { AppTheme } from '5_shared/config/ThemeContext';
 import { useTheme } from '5_shared/libs/hooks/useTheme';
-import { Skeleton, SkeletonMode } from '5_shared/ui/Skeleton/Skeleton';
 import { RouterPath } from '5_shared/config/router/routerConfig';
+import { Skeleton, SkeletonMode } from '5_shared/ui/Skeleton/Skeleton';
+import FancyboxDecorator from '5_shared/libs/decorators/FancyboxDecorator';
 import cls from './Avatar.module.scss';
-import FancyboxDecorator from "5_shared/libs/decorators/FancyboxDecorator";
 
 interface AvatarProps {
     url?: string;

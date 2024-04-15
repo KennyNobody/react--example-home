@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import cls from './NotFoundPage.module.scss';
 
 interface NotFoundPageProps {
-    className?: string
+    className?: string;
 }
 
 export const NotFoundPage = (props: NotFoundPageProps) => {
@@ -10,7 +10,7 @@ export const NotFoundPage = (props: NotFoundPageProps) => {
 
     return (
         <div className={classNames(cls.block, className)}>
-            Страница не найдена
+            404
         </div>
     );
 };

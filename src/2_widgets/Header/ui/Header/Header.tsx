@@ -80,7 +80,7 @@ export function Header(props: HeaderProps) {
                                         isLoading={isLoading}
                                         isMain={layoutMode === PageLayoutMode.FRONT}
                                         className={classNames(cls.avatar)}
-                                        url={data?.preview?.data?.formats?.thumbnail?.url}
+                                        url={data?.preview?.data?.formats?.small?.url}
                                     />
                                     <Name
                                         name={data?.name}

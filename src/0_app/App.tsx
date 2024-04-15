@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense  } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { useFetchMain } from '0_app/api/appApi';
 import { Footer } from '2_widgets/Footer';

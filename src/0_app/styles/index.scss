@@ -13,3 +13,7 @@ html {
     font-family: var(--font-regular);
     font-size: var(--font-size-regular);
 }
+
+a, input, button {
+    outline-color: var(--blue);
+}

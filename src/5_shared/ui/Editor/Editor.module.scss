@@ -12,6 +12,10 @@
 
     a {
         color: inherit;
+        max-width: 100%;
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
         text-decoration-color: var(--blue);
 
         &:hover {
@@ -62,6 +66,26 @@
         }
     }
 
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 42px;
+    }
+
+    h3 {
+        font-size: 38px;
+    }
+
+    h4 {
+        font-size: 34px;
+    }
+
+    h5 {
+        font-size: 30px;
+    }
+
     &--theme-dark {
         pre {
             color: var(--light-primary);
@@ -96,6 +120,26 @@
             padding: 0.5em 1em;
             border-left: 4px solid;
         }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        h2 {
+            font-size: 46px;
+        }
+
+        h3 {
+            font-size: 32px;
+        }
+
+        h4 {
+            font-size: 28px;
+        }
+
+        h5 {
+            font-size: 24px;
+        }
     }
 }
 
@@ -118,6 +162,26 @@
             margin: 1em 0;
             padding: 0.5em 1em;
             border-left: 2px solid;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        h4 {
+            font-size: 22px;
+        }
+
+        h5 {
+            font-size: 18px;
         }
     }
 }
